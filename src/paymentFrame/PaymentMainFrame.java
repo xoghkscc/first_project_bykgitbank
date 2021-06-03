@@ -32,6 +32,6 @@ public class PaymentMainFrame extends JFrame{
 
 		add(test2);//메인으로 돌아가는 버튼
 		
-		
+		setVisible(true);
 		}
 	}
