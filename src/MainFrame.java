@@ -22,9 +22,6 @@ public class MainFrame extends JFrame{
 		return Y;
 	}
 
-
-
-
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
