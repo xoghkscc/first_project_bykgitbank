@@ -24,7 +24,6 @@ public class MainFrame extends JFrame{
 
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 		setSize(WIDTH, HEIGHT);
 		setLocation(X, Y);
 		setLayout(null);
@@ -49,6 +48,7 @@ public class MainFrame extends JFrame{
 		add(store_btn);
 		add(delivery_btn);
 		
+		setVisible(true);
 	}
 	
 

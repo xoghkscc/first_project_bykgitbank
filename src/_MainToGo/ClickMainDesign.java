@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 public class ClickMainDesign extends JButton {
 	public ClickMainDesign() {
-		setSize(150, 150);
+		setSize(50, 50);
 		setLocation(0, 0);
 	}
 }
