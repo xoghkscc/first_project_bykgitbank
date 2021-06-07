@@ -4,8 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class MainFrame extends JFrame{
-	static final int WIDTH = 1200; 
-	static final int HEIGHT = 600; 
+	static final int WIDTH = 1280; 
+	static final int HEIGHT = 720; 
 	static final int X = 50; 
 	static final int Y = 50; 
 	public int getWidth() {
