@@ -65,5 +65,6 @@ public class MainFrame extends JFrame{
 
 	public static void main(String[] args) {
 		new MainFrame();
+		System.out.println("1");
 	}
 }
