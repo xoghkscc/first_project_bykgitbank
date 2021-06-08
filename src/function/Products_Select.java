@@ -29,7 +29,8 @@ public class Products_Select {
 				productDb = new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11));
 			}
-			
+			rs.close();
+			ds.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +49,8 @@ public class Products_Select {
 				product_list.add(new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11)));
 			}
-			
+			rs.close();
+			ds.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

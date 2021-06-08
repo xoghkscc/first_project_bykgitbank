@@ -47,6 +47,7 @@ public class PaymentInsertTable implements ActionListener{//생성자에 table�
 				""+(before_discount - discount)//총가격(할인액이 반영된 가격)
 		};
 		model.addRow(data);
+		((JTextField) e.getSource()).setText("");
 	}
 
 }
