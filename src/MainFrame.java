@@ -57,6 +57,7 @@ public class MainFrame extends JFrame{
 		add(delivery_btn);
 		
 		setVisible(true);
+		
 	}
 	
 
