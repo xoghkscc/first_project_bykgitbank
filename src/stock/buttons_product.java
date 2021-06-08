@@ -26,29 +26,6 @@ public class buttons_product {
 		jbArr.add(new JButton("유통기한폐기"));
 		jbArr.add(new JButton("행사품목관리"));	//폐기테이블, 폐기완료버튼
 		jbArr.add(new JButton("원가 및 마진율"));
-//		buttons.setBackground(new Color(43,51,62));
-//		buttons.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-//		
-//		Product_ButtonClass dd = new Product_ButtonClass("품목등록");
-//		
-//		JButton button2 = new Product_ButtonClass_update("품목수정");
-//		
-//		JButton button3 = new Product_Button_order("품목주문");
-//		JButton button4 = new Product_ButtonClass_select("대분류조회");
-//		JButton button5 = new Product_ButtonClass_expiryDate("유통기한조회");
-//		JButton button6 = new Product_ButtonClass_expiryDay("유통기한폐기");
-//		JButton button7 = new Product_ButtonClass_event("행사품목관리");
-		
-//		JButton button8 = new Product_ButtonClass_rating("원가 및 마진율");
-//		
-//		JButton jb1 = new JButton("품목등록");
-//		JButton jb2 = new JButton("품목수정");
-//		JButton jb3 = new JButton("품목주문");
-//		JButton jb4 = new JButton("대분류조회");
-//		JButton jb5 = new JButton("유통기한조회");
-//		JButton jb6 = new JButton("유통기한폐기"); //폐기테이블, 폐기완료버튼
-//		JButton jb7 = new JButton("행사품목관리");
-//		JButton jb8 = new JButton("원가 및 마진율");
 	
 		for(int i = 0; i < 8; i++) {
 			new MyButton(jbArr.get(i));
