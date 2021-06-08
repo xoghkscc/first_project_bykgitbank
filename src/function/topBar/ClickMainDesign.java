@@ -1,4 +1,4 @@
-package _topBar;
+package function.topBar;
 
 import javax.swing.JButton;
 

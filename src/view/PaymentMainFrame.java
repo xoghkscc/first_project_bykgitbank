@@ -1,4 +1,5 @@
-package memberFrame;
+package view;
+
 
 import java.awt.BorderLayout;
 
@@ -6,20 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import _topBar.ClickMain;
-import _topBar.ClickMainDesign;
-import _topBar.TopBar;
+import function.topBar.ClickMain;
+import function.topBar.ClickMainDesign;
+import function.topBar.TopBar;
 
-public class MemberMainFrame extends JFrame{
+public class PaymentMainFrame extends JFrame{
 	JFrame jf;
-	public MemberMainFrame(JFrame jf) {
-		this.jf = jf;
+	public PaymentMainFrame(JFrame jf) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		setSize(jf.getWidth(), jf.getHeight());
-		setLocation(jf.getX(), jf.getY());
+		setSize(1200, 600);
+		setLocation(40, 40);
+		setLayout(null);
 		
-		JButton test = new JButton("여긴 회원 관리 화면을 구현하면 됩니다");//JButton test는 지워도 됩니다.
+		JButton test = new JButton("여긴 결제 관리 화면을 구현하면 됩니다");//JButton test는 지워도 됩니다.
 		test.setLocation(500, 200);
 		test.setSize(150, 150);
 		

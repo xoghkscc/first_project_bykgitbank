@@ -1,11 +1,10 @@
+package function.viewToGo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import deliveryFrame.DeliveryMainFrame;
-import memberFrame.MemberMainFrame;
-import paymentFrame.PaymentMainFrame;
+import view.*;
 
 public class ClickDelivery implements ActionListener{
 	JFrame jf;

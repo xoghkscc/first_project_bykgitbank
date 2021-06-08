@@ -3,9 +3,17 @@ import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import function.*;
+import function.viewToGo.ClickDelivery;
+import function.viewToGo.ClickMember;
+import function.viewToGo.ClickPayment;
+import function.viewToGo.ClickStock;
+import function.viewToGo.ClickStore;
+import function.viewToGo.FrameMoveButton;
+
 public class MainFrame extends JFrame{
 	static final int WIDTH = 1280; 
-	static final int HEIGHT = 720; 
+	static final int HEIGHT = 720; //topbar는 50
 	static final int X = 50; 
 	static final int Y = 50; 
 	public int getWidth() {

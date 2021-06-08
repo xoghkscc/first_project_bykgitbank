@@ -1,13 +1,11 @@
-package storeFrame;
+package view;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import _topBar.ClickMain;
-import _topBar.ClickMainDesign;
-import _topBar.TopBar;
+import function.topBar.*;
 public class StoreMainFrame extends JFrame{
 	JFrame jf;
 	public StoreMainFrame(JFrame jf) {
