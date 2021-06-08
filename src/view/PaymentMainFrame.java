@@ -6,6 +6,7 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,7 +20,7 @@ import view.Payment.east.*;
 public class PaymentMainFrame extends JFrame{
 	JFrame jf;
 	JTextField text;
-	JTable top;
+	JTable table;
 	public PaymentMainFrame(JFrame jf) {
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,11 +32,11 @@ public class PaymentMainFrame extends JFrame{
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
-		
-		
 		JPanel center = new CenterPayPanel(this);
-		top = ((CenterPayPanel) center).getTop();
-		JPanel east = new EastPanel(this, top);
+		table = ((CenterPayPanel) center).getTop();
+		JLabel total_payment =  ((CenterPayPanel) center).getMiddle().get_total_payment();//합계 숫자임
+		//가지고 오기 왜케 힘들지..
+		JPanel east = new EastPanel(this, table, total_payment);
 		
 		
 		east.setPreferredSize(new Dimension(350, 720));
@@ -45,4 +46,8 @@ public class PaymentMainFrame extends JFrame{
 		setVisible(true);
 		
 		}
+	
+	public JTable getTable() {
+		return table;
 	}
+}

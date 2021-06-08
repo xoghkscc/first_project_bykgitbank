@@ -14,12 +14,12 @@ import javax.swing.JTextField;
 
 public class EastPanel extends JPanel{
 	JFrame mainJf;
-	public EastPanel(JFrame mainJf, JTable top) {
+	public EastPanel(JFrame mainJf, JTable top, JLabel total_payment) {
 		this.mainJf = mainJf;
 		setBackground(new Color(43, 51, 62));
 		setLayout(new GridLayout(3, 1, 30, 30));
 		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 40));
-		JPanel bacode = new BacodePanel(top);
+		JPanel bacode = new BacodePanel(top, total_payment);
 		
 		JPanel memberPanel = new MemberPanel();
 		bacode.setPreferredSize(new Dimension(10, 10));

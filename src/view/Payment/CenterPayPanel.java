@@ -20,16 +20,22 @@ import view.Payment.topPanel.TopTable;
 public class CenterPayPanel extends JPanel{
 	JFrame mainJf;
 	JTable table;
+	JPanel middle;
 	public JTable getTop() {
 		return table;
+	}
+	public MiddlePanel getMiddle() {
+		return (MiddlePanel) middle;
 	}
 	public CenterPayPanel(JFrame mainJf) {
 		this.mainJf = mainJf;
 		
 		table = new TopTable();
 		JScrollPane scrollPane = new JScrollPane(table);
-		JPanel middle = new MiddlePanel();
+		middle = new MiddlePanel(table);
 		JPanel low = new LowPanel();
+		
+		
 		
 		setBackground(new Color(43, 51, 62));
 		setBorder(BorderFactory.createEmptyBorder(10, 40, 20, 0));
