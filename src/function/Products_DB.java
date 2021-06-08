@@ -21,6 +21,15 @@ public class Products_DB {
 			int stocks, int gram, String sales_type) {
 		this.product_id = product_id;
 		this.product_name = product_name;
+		this.product_type = product_type;
+		this.product_price = product_price;
+		this.expiration_date = expiration_date;
+		this.discount_type = discount_type;
+		this.discount_rate = discount_rate;
+		this.pruduct_origin = pruduct_origin;
+		this.stocks = stocks;
+		this.gram = gram;
+		this.sales_type = sales_type;
 		
 	}
 	public int getProduct_id() {

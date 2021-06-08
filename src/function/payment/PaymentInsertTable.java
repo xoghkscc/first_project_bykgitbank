@@ -15,9 +15,9 @@ public class PaymentInsertTable implements ActionListener{//생성자에 table�
 	JTable table;
 	Products_DB productDb;
 	DefaultTableModel model;
-	public PaymentInsertTable(JTable table) {
-		this.table = table;
-		model = (DefaultTableModel) table.getModel();
+	public PaymentInsertTable(DefaultTableModel model) {
+		this.model = model;
+		
 		
 	}
 	@Override
@@ -47,7 +47,6 @@ public class PaymentInsertTable implements ActionListener{//생성자에 table�
 				""+(before_discount - discount)//총가격(할인액이 반영된 가격)
 		};
 		model.addRow(data);
-		
 	}
 
 }

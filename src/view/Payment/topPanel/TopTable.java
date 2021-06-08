@@ -38,44 +38,5 @@ public class TopTable extends JTable{
 		
 	}
 	
-	public void addRow(int product_id) {
-		try (
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				
-				){
-			pstmt.setString(1, ""+product_id);
-			ResultSet rs = pstmt.executeQuery();
-			list = new ArrayList<String>();
-			while(rs.next()){
-				list.add(""+rs.getInt("product_id"));
-				list.add(""+rs.getString("product_name"));
-				String cnt;
-				if(rs.getInt("stocks") ==0) {
-					cnt = JOptionPane.showInputDialog("무게를 입력하세요.");
-				}else {
-					cnt = "" + 1;
-				}
-				list.add(cnt);
-				list.add(""+rs.getInt("product_price"));
-				list.add(""+rs.getInt("product_price") * Integer.parseInt(cnt));
-				if(rs.getDouble("discount_rate") > 0) {
-					list.add(""+Math.round((rs.getInt("product_price") * Integer.parseInt(cnt)*(1-rs.getDouble("discount_rate")))));
-				}else {
-					list.add(""+0);
-				}
-				System.out.println((Integer.parseInt(list.get(4)) - Integer.parseInt(list.get(5))));
-				list.add(""+ (Integer.parseInt(list.get(4)) - Integer.parseInt(list.get(5)))); 
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String[] row = new String[list.size()];
-		list.toArray(row);
-		model.addRow(row);
-		setVisible(true);
-	}
-	
 }
 
