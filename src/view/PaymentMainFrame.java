@@ -21,6 +21,7 @@ public class PaymentMainFrame extends JFrame{
 	JFrame jf;
 	JTextField text;
 	JTable table;
+	JPanel east;
 	public PaymentMainFrame(JFrame jf) {
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +37,7 @@ public class PaymentMainFrame extends JFrame{
 		table = ((CenterPayPanel) center).getTop();
 		JLabel total_payment =  ((CenterPayPanel) center).getMiddle().get_total_payment();//합계 숫자임
 		//가지고 오기 왜케 힘들지..
-		JPanel east = new EastPanel(this, table, total_payment);
+		east = new EastPanel(this, table, total_payment);
 		
 		
 		east.setPreferredSize(new Dimension(350, 720));

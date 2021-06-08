@@ -11,12 +11,17 @@ import javax.swing.table.DefaultTableModel;
 
 import function.Products_DB;
 import function.Products_Select;
+import view.Payment.east.*;
+import view.PaymentMainFrame;
 
 public class PaymentInsertTable implements ActionListener {// 생성자에 table을 넣으면 해당 번호가 입력된 데이터를 넣어줌
 	Products_DB productDb;
 	DefaultTableModel model;
-	JLabel total_payment;
-
+	private static JLabel total_payment;
+	
+	public static JLabel getTotal_payment() {
+		return total_payment;
+	}
 	public PaymentInsertTable(DefaultTableModel model, JLabel total_payment) {
 		this.model = model;
 		this.total_payment = total_payment;
@@ -52,7 +57,19 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		((JTextField) e.getSource()).setText("");
 		
 		//view.Payment.middlePanel에 있는 합계 JLabel을 바꿔주는 기능임
-		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));
+		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계
+		
+		String before_discount2 = EastPayPanel.getAmountValue().getText().trim();
+		EastPayPanel.getAmountValue().setText(Integer.toString(Integer.parseInt(before_discount2) + Integer.parseInt(data[4])));//우측 하단 합계금액
+		
+		String disCount = EastPayPanel.getDiscountValue().getText().trim();
+		EastPayPanel.getDiscountValue().setText(Integer.toString((Integer.parseInt(disCount) + Integer.parseInt(data[5]))));//우측 하단 할인
+		
+		String sumPrice = EastPayPanel.getAmountValue().getText().trim();//합계금액
+		String disCountPrice =  EastPayPanel.getDiscountValue().getText().trim();//할인
+		String pointValue = EastPayPanel.getPointValue().getText().trim();//포인트 사용
+		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
+		
 	}
 
 }
