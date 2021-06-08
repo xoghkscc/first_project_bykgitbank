@@ -23,6 +23,7 @@ public class HikariCP {
 		ds = new HikariDataSource(config);
 	}
 	
+	
 	public HikariDataSource getHikariDataSource() {
 		return ds;
 	}
