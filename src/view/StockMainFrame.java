@@ -58,6 +58,5 @@ public class StockMainFrame extends JFrame{
 		
 		
 		setVisible(true);
-		System.out.println();
 	}
 }
