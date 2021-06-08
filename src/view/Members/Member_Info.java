@@ -58,7 +58,7 @@ public class Member_Info extends JFrame{
 			
 		add(new TopBar(), BorderLayout.NORTH);
 		add(new ClickMainDesign());
-		add(new Mainpan(), BorderLayout.WEST);
+		add(new Mainpan());
 				
 		content_panel.add(panel);
 				
