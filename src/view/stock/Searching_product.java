@@ -1,4 +1,4 @@
-package stock;
+package view.stock;
 
 import java.awt.Color;
 
@@ -22,7 +22,7 @@ public class Searching_product {
 		
 		JButton jButton = new JButton("검색");
 		
-		JComboBox<String> jComboBox = new JComboBox<String>(new String[] {"ID", "Name", "Address","전체검색"}); 
+		JComboBox<String> jComboBox = new JComboBox<String>(new String[] {"ID", "품목이름", "유통기한","전체검색"}); 
 		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu adminMenu = new JMenu("메뉴");

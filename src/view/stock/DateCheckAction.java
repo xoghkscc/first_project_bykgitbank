@@ -1,4 +1,4 @@
-package stock;
+package view.stock;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

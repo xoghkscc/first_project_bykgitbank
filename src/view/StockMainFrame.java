@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import function.topBar.ClickMain;
 import function.topBar.ClickMainDesign;
 import function.topBar.TopBar;
-import stock.DateCheck;
-import stock.buttons_product;
+import view.stock.DateCheck;
+import view.stock.buttons_product;
 
 public class StockMainFrame extends JFrame{
 	JFrame jf;
@@ -45,7 +45,7 @@ public class StockMainFrame extends JFrame{
 //		test.setSize(50, 50);
 //		buttons.add(test);
 		
-		buttons = new buttons_product(buttons, jf).getButtons();
+		buttons = new buttons_product(buttons, this).getButtons(); //this를 이용해 지금의 프레임전달
 		add(buttons, BorderLayout.WEST);
 		
 		//날짜, 달력, 검색 판넬
@@ -54,8 +54,6 @@ public class StockMainFrame extends JFrame{
 //		index = new Searching_product(index).getIndex();
 //		
 		add(index); 
-		
-		
 		
 		setVisible(true);
 	}

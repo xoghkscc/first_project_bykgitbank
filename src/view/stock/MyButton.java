@@ -1,4 +1,4 @@
-package stock;
+package view.stock;
 
 import java.awt.Color;
 import java.awt.Font;

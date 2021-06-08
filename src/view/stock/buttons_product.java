@@ -1,12 +1,15 @@
-package stock;
+package view.stock;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import view.stock.nextFrame.Prouduct_regist;
 
 public class buttons_product {
 
@@ -26,10 +29,21 @@ public class buttons_product {
 		jbArr.add(new JButton("유통기한폐기"));
 		jbArr.add(new JButton("행사품목관리"));	//폐기테이블, 폐기완료버튼
 		jbArr.add(new JButton("원가 및 마진율"));
-	
+
 		for(int i = 0; i < 8; i++) {
 			new MyButton(jbArr.get(i));
 			
+			jbArr.get(i).addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					jf.setVisible(false);
+					
+					new Prouduct_regist(jf);					
+				}
+				
+			});
 			if(i == 0) {
 				jbArr.get(i).setBackground(new Color(245,173,37));
 			}else if(i == 2){
@@ -41,20 +55,6 @@ public class buttons_product {
 			buttons.add(jbArr.get(i));
 		}
 		
-		
-		//버튼별 액션
-//		jbArr.get(0).addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				jf.setVisible(false);//MainFrame에서 받은 JFrame을 꺼버림
-//				
-//				new regist_product(jf);//여기에 MainFrame의 JFrame을 넘기는 이유는 결제 창에서 다시 메인 MainFrame으로
-//				//돌아가기 위해서는 jf.setVisible(true);을 해주기 위해서임
-//			}
-//			
-//		});
 	}
 
 	public JPanel getButtons() {
