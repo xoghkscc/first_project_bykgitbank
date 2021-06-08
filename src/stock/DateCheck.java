@@ -50,11 +50,6 @@ public class DateCheck {
 		datePanel.add(datePickerStart);
 		datePanel.add(datePickerEnd);
 
-//		JButton jb = new JButton("바보");
-//		jb.setSize(80,80);
-//		jb.setLocation(100, 100);
-//		jb.setVisible(true);
-//		datePanel.add(jb);
 		
 		datePanel = new Searching_product(datePanel).getIndex();
 		
