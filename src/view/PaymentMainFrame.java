@@ -1,40 +1,48 @@
 package view;
 
-
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-import function.topBar.ClickMain;
-import function.topBar.ClickMainDesign;
-import function.topBar.TopBar;
+import function.topBar.*;
+import view.Payment.*;
+import view.Payment.east.*;
 
 public class PaymentMainFrame extends JFrame{
 	JFrame jf;
+	JTextField text;
+	JTable top;
 	public PaymentMainFrame(JFrame jf) {
+		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setSize(1200, 600);
-		setLocation(40, 40);
-		setLayout(null);
+		setBackground(new Color(43, 51, 62));
+		setSize(jf.getWidth(), jf.getHeight());
+		setLocation(jf.getX(), jf.getY());
+		setLayout(new BorderLayout());
 		
-		JButton test = new JButton("여긴 결제 관리 화면을 구현하면 됩니다");//JButton test는 지워도 됩니다.
-		test.setLocation(500, 200);
-		test.setSize(150, 150);
-		
-		add(test);
-		
-		JButton test2 = new ClickMainDesign();
-		test2.addActionListener(new ClickMain(jf, this));
-
-		add(test2);
-		
-		JPanel topBar = new TopBar();
+		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
 		
-		setLayout(null);
+		
+		JPanel center = new CenterPayPanel(this);
+		top = ((CenterPayPanel) center).getTop();
+		JPanel east = new EastPanel(this, top);
+		
+		
+		east.setPreferredSize(new Dimension(350, 720));
+		add(east, BorderLayout.EAST);
+		add(center, BorderLayout.CENTER);
+		
+		setVisible(true);
+		
+		}
 	}
-}
