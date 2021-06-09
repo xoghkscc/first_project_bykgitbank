@@ -16,9 +16,13 @@ public class PointUse implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		DecimalFormat formatMoney = new DecimalFormat("###,###");
+		DecimalFormat formatMoney = new DecimalFormat("###,### ");
+		DecimalFormat formatPoint = new DecimalFormat("# ");
 		((JTextField) e.getSource()).setForeground(Color.BLACK);
 		String pointValue = ((JTextField) e.getSource()).getText();
+		
+		((JTextField) e.getSource()).setText(formatPoint.format(Integer.parseInt(pointValue)));
+		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		
 		EastPayPanel.getPaymentValue().setText(Integer.toString(Integer.parseInt(finalPrice)-Integer.parseInt(pointValue)));

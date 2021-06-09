@@ -39,7 +39,6 @@ public class Customer_Search {
 												rs.getString(3), rs.getString(4), rs.getInt(5));
 				
 			}	
-			
 			rs.close();
 			ds.close();
 		} catch (SQLException e) {

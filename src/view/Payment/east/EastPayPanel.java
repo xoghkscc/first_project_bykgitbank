@@ -27,6 +27,8 @@ public class EastPayPanel extends JPanel{
 	private static JLabel paymentValue;
 	private static JLabel moneypaymentValue;
 	private static JTextField pointValue;
+	private static JTextField moneypointValue;
+	
 	public EastPayPanel() {
 		setLayout(new GridLayout(4, 2, 0, 0));
 		setBackground(new Color(43, 51, 62));
@@ -40,7 +42,7 @@ public class EastPayPanel extends JPanel{
 		moneydiscountValue =  new PayLabelDesign3("0");//실제 화페 단위로 출력할 JLabel
 		
 		JLabel point = new PayLabelDesign2_1("포인트 사용");
-		pointValue = new PayTextDesign("0");
+		pointValue = new PayTextDesign("0 ");
 		pointValue.addActionListener(new PointUse());
 		pointValue.addMouseListener(new PointReset());
 		
@@ -58,6 +60,9 @@ public class EastPayPanel extends JPanel{
 		add(payment);
 		add(moneypaymentValue);
 		
+	}
+	public static JTextField getMoneypointValue() {
+		return moneypointValue;
 	}
 	public static JLabel getMoneypaymentValue() {
 		return moneypaymentValue;

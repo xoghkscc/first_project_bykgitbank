@@ -12,7 +12,7 @@ import view.Payment.middlePanel.TotalPaymentPanel;
 public class PointReset extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		DecimalFormat formatMoney = new DecimalFormat("###,###");
+		DecimalFormat formatMoney = new DecimalFormat("###,### ");
 		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		String pointValue = ((JTextField) e.getSource()).getText().trim();

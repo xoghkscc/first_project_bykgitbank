@@ -15,10 +15,12 @@ import view.PaymentMainFrame;
 public class Products_Select {
 	Products_DB productDb;
 	
-	HikariCP cp = new HikariCP();
-	HikariDataSource ds = cp.getHikariDataSource();
+	HikariCP cp;
+	HikariDataSource ds;
 	
 	public Products_Select(int product_id) {//이 생성자는 PRODUCT_ID에 대해 물건의 정보를 받아오는 생성자(개별 조회용)
+		cp = new HikariCP();
+		ds = cp.getHikariDataSource();
 		String sql= "SELECT * FROM Products WHERE PRODUCT_ID = ?";
 		try(
 				Connection conn = ds.getConnection();
@@ -40,6 +42,8 @@ public class Products_Select {
 		}
 	}
 	public Products_Select() {//이 생성자는 PRODUCTS테이블에 대해 정보를 product_list에 받는 생성자(전체 조회용)
+		cp = new HikariCP();
+		ds = cp.getHikariDataSource();
 		String sql= "SELECT * FROM Products ";
 		try(
 				Connection conn = ds.getConnection();

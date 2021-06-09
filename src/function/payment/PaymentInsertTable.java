@@ -22,11 +22,15 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 	Products_DB productDb;
 	DefaultTableModel model;
 	private static JLabel total_payment;
-	
+	private static String stocksOrgram;
 	
 	public static JLabel getTotal_payment() {
 		return total_payment;
 	}
+	public static String getStocksOrgram() {
+		return stocksOrgram;
+	}
+	
 	
 	public PaymentInsertTable(DefaultTableModel model, JLabel total_payment) {
 		this.model = model;
@@ -37,7 +41,6 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 	public void actionPerformed(ActionEvent e) {
 		int product_id = Integer.parseInt(((JTextField) e.getSource()).getText());
 		productDb = new Products_Select(product_id).getProducts_DB();
-		String stocksOrgram;
 		if (productDb.getStocks() == 0) {// 단위가 무게일 경우 무게를 입력하게 하는 팝업창이 띄워짐
 			stocksOrgram = JOptionPane.showInputDialog("무게를 입력하세요.");
 		} else {
@@ -62,7 +65,7 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		model.addRow(data);
 		((JTextField) e.getSource()).setText("");
 		
-		DecimalFormat formatMoney = new DecimalFormat("###,###");
+		DecimalFormat formatMoney = new DecimalFormat("###,### ");
 		
 		//view.Payment.middlePanel에 있는 합계 JLabel을 바꿔주는 기능임
 		
