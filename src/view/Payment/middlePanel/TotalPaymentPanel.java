@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class TotalPaymentPanel extends JPanel{
-	JLabel total_payment;
+	private static JLabel total_payment;
 	private static JLabel money_total_payment;
 	public TotalPaymentPanel() {
 		setLayout(new BorderLayout());
@@ -36,7 +36,7 @@ public class TotalPaymentPanel extends JPanel{
 		return money_total_payment;
 	}
 	
-	public JLabel get_total_payment() {
+	public static JLabel get_total_payment() {
 		return total_payment;
 		
 	}

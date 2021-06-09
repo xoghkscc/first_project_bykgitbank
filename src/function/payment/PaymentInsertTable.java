@@ -80,9 +80,11 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		
 		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
 		EastPayPanel.getMoneypaymentValue().setText(formatMoney.format(Integer.parseInt(EastPayPanel.getPaymentValue().getText())));//최종 금액을 화폐단위로 출력
-		
+
 		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계
-		TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(total_payment.getText())));//최종 금액을 화폐단위로 출력
+		System.out.println(total_payment.getText());
+		TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(total_payment.getText())));
+		
 	}
 
 }
