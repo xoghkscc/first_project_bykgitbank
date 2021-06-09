@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import function.model.Member_Informations_DB;
 import hikariCP.HikariCP;
 
 

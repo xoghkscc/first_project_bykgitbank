@@ -1,4 +1,4 @@
-package function;
+package function.model;
 
 public class Member_Informations_DB {
 	
@@ -18,30 +18,8 @@ public class Member_Informations_DB {
 			this.MEMBERS_POINT = MEMBERS_POINT;
 		}
 
-		
-
 		public int getMEMBERS_ID() {
 			return MEMBERS_ID;
-		}
-
-		public void setMEMBERS_ID(int mEMBERS_ID) {
-			MEMBERS_ID = mEMBERS_ID;
-		}
-
-		public void setMEMBERS_NAME(String mEMBERS_NAME) {
-			MEMBERS_NAME = mEMBERS_NAME;
-		}
-
-		public void setMEMBERS_ADDRESS(String mEMBERS_ADDRESS) {
-			MEMBERS_ADDRESS = mEMBERS_ADDRESS;
-		}
-
-		public void setMEMBERS_PHONENUMBER(String mEMBERS_PHONENUMBER) {
-			MEMBERS_PHONENUMBER = mEMBERS_PHONENUMBER;
-		}
-
-		public void setMEMBERS_POINT(int mEMBERS_POINT) {
-			MEMBERS_POINT = mEMBERS_POINT;
 		}
 
 		public String getMEMBERS_NAME() {

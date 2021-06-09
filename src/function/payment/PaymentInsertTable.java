@@ -9,8 +9,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import function.Products_DB;
 import function.Products_Select;
+import function.model.Products_DB;
 import view.Payment.east.*;
 import view.PaymentMainFrame;
 
