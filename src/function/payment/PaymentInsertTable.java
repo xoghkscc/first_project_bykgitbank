@@ -19,9 +19,11 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 	DefaultTableModel model;
 	private static JLabel total_payment;
 	
+	
 	public static JLabel getTotal_payment() {
 		return total_payment;
 	}
+	
 	public PaymentInsertTable(DefaultTableModel model, JLabel total_payment) {
 		this.model = model;
 		this.total_payment = total_payment;
@@ -69,6 +71,14 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		String disCountPrice =  EastPayPanel.getDiscountValue().getText().trim();//할인
 		String pointValue = EastPayPanel.getPointValue().getText().trim();//포인트 사용
 		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
+		
+		int total_payment = Integer.parseInt(PaymentInsertTable.getTotal_payment().getText());
+		
+		int reserved_point = (int)(total_payment * 0.01);
+		
+		if(!MemberPanel.getMemberNameValue().getText().trim().equals("")) {
+			MemberPanel.getAccumulateValue().setText("" + reserved_point);
+		}
 		
 	}
 
