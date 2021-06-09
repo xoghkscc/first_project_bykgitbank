@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import view.PaymentMainFrame;
 import view.Payment.CenterPayPanel;
 import view.Payment.east.EastPayPanel;
+import view.Payment.east.MemberPanel;
 import view.Payment.middlePanel.TotalPaymentPanel;
 import view.Payment.topPanel.TopTable;
 
@@ -16,6 +17,7 @@ public class PayTableReset implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		TopTable.getDefaultModel().setNumRows(0);
+		PaymentInsertTable.getTotal_payment().setText("0");
 		TotalPaymentPanel.get_money_total_payment().setText("0");
 		EastPayPanel.getMoneyamountValue().setText("0");
 		EastPayPanel.getDiscountValue().setText("0");
@@ -24,6 +26,11 @@ public class PayTableReset implements ActionListener{
 		EastPayPanel.getPaymentValue().setText("0");
 		EastPayPanel.getMoneypaymentValue().setText("0");
 		PaymentMainFrame.getProduct_list().clear();
+		MemberPanel.getMemberNumberValue().setText("회원 번호");
+		MemberPanel.getMemberNumberValue().setText("회원 번호 입력");
+		MemberPanel.getMemberNameValue().setText("");
+		MemberPanel.getMemberPointValue().setText("");
+		MemberPanel.getAccumulateValue().setText("");
 	}
 
 }

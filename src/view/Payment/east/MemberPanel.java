@@ -22,8 +22,7 @@ public class MemberPanel extends JPanel{
 		setLayout(new GridLayout(4, 2, 0, 0));
 		setBackground(new Color(43, 51, 62));
 		JLabel memberNumber = new EastLabel("회원 번호");
-		memberNumberValue = new EastJText("회원 번호 입력");
-		JTextField memberNumberValue = new EastJText3("회원 번호 입력");
+		memberNumberValue = new EastJText3("회원 번호 입력");
 		memberNumberValue.addActionListener(new Payment_Custormer_infor());	
 		JLabel memberName = new EastLabel("회원 이름");
 		memberNameValue = new EastLabel2("");
