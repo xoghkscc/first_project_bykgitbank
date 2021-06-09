@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
 
+import function.payment.PointReset;
 import function.payment.PointUse;
 
 public class EastPayPanel extends JPanel{
@@ -34,6 +35,7 @@ public class EastPayPanel extends JPanel{
 		JLabel point = new PayLabelDesign2_1("포인트 사용");
 		pointValue = new PayTextDesign("0");
 		pointValue.addActionListener(new PointUse());
+		pointValue.addMouseListener(new PointReset());
 		JLabel payment = new PayLabelDesign4("결제 금액");
 		paymentValue = new PayLabelDesign3("0");
 		
@@ -69,12 +71,6 @@ class PayTextDesign extends JTextField {
 		setPreferredSize(new Dimension(300, 150));
 		setHorizontalAlignment(JLabel.RIGHT);
 		setForeground(Color.gray);
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				((JTextField) e.getSource()).setText("");
-			}
-		});
 	}
 }
 
