@@ -16,7 +16,7 @@ import hikariCP.HikariCP;
 
 public class Customer_Search {
 	
-	Member_Informations_DB member_informations_DB;
+	private static Member_Informations_DB member_informations_DB;
 	ArrayList<Member_Informations_DB> Member_Informations_DB_list;
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();
@@ -73,7 +73,7 @@ public class Customer_Search {
 	}
 	
 
-	public Member_Informations_DB getMember_Informations_DB() {
+	public static Member_Informations_DB getMember_Informations_DB() {
 		return member_informations_DB;
 	}
 	public ArrayList<Member_Informations_DB> getMember_Informations_DB_list() {
