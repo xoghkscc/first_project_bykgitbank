@@ -17,7 +17,7 @@ public class Products_Select {
 	
 	HikariCP cp;
 	HikariDataSource ds;
-	
+	ArrayList<Products_DB> list = new ArrayList<Products_DB>();
 	public Products_Select(int product_id) {//이 생성자는 PRODUCT_ID에 대해 물건의 정보를 받아오는 생성자(개별 조회용)
 		cp = new HikariCP();
 		ds = cp.getHikariDataSource();
@@ -32,7 +32,6 @@ public class Products_Select {
 			while(rs.next()) {
 				productDb = new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11));
-				PaymentMainFrame.getProduct_list().add(productDb);
 			}
 			rs.close();
 			ds.close();
@@ -52,7 +51,7 @@ public class Products_Select {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				PaymentMainFrame.getProduct_list().add(new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
+				list.add(new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11)));
 			}
 			rs.close();

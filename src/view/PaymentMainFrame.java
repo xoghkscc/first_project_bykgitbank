@@ -25,7 +25,6 @@ public class PaymentMainFrame extends JFrame{
 	JTable table;
 	JPanel east;
 	
-	private static ArrayList<Products_DB> product_list = new ArrayList<Products_DB>();
 	public PaymentMainFrame(JFrame jf) {
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +55,4 @@ public class PaymentMainFrame extends JFrame{
 		return table;
 	}
 	
-	public static ArrayList<Products_DB> getProduct_list(){
-		return product_list;
-	}
 }

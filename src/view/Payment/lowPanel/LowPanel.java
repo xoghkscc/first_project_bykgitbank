@@ -19,12 +19,16 @@ public class LowPanel extends JPanel{
 		reset.addActionListener(new PayTableReset());
 		
 		JButton receipt = new LowJButton("영수증출력");
-		JButton cashPayment = new LowJButtoncashPayment("현금결제");
-		cashPayment.addActionListener(new FinalPayment("CASH"));
 		JButton cancelPayment = new LowJButtonCancel("배달");
 		JButton refund = new LowJButton("환불");
+		
+		
+		JButton cashPayment = new LowJButtoncashPayment("현금결제");
+		cashPayment.addActionListener(new FinalPayment("CASH"));//산 품목들을 SALES에 넘기는 이벤트
+		
+		
 		JButton cardPayment = new LowJButtoncardPayment("카드결제");
-		cashPayment.addActionListener(new FinalPayment("CARD"));
+		cardPayment.addActionListener(new FinalPayment("CARD"));//산 품목들을 SALES에 넘기는 이벤트
 		
 		add(reset);
 		add(receipt);

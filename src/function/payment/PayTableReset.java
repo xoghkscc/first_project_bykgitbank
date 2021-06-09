@@ -18,14 +18,13 @@ public class PayTableReset implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		TopTable.getDefaultModel().setNumRows(0);
 		PaymentInsertTable.getTotal_payment().setText("0");
-		TotalPaymentPanel.get_money_total_payment().setText("0");
-		EastPayPanel.getMoneyamountValue().setText("0");
+		TotalPaymentPanel.get_money_total_payment().setText("0 ");
+		EastPayPanel.getMoneyamountValue().setText("0 ");
 		EastPayPanel.getDiscountValue().setText("0");
-		EastPayPanel.getMoneydiscountValue().setText("0");
+		EastPayPanel.getMoneydiscountValue().setText("0 ");
 		EastPayPanel.getPointValue().setText("0");
 		EastPayPanel.getPaymentValue().setText("0");
-		EastPayPanel.getMoneypaymentValue().setText("0");
-		PaymentMainFrame.getProduct_list().clear();
+		EastPayPanel.getMoneypaymentValue().setText("0 ");
 		MemberPanel.getMemberNumberValue().setText("회원 번호");
 		MemberPanel.getMemberNumberValue().setText("회원 번호 입력");
 		MemberPanel.getMemberNameValue().setText("");
