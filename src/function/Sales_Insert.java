@@ -37,7 +37,7 @@ public class Sales_Insert {
 
 			int members_id = 0;
 			if (!MemberPanel.getMemberNumberValue().getText().trim().equals("회원 번호 입력")) {
-				members_id = Integer.parseInt(MemberPanel.getAccumulateValue().getText());
+				members_id = Integer.parseInt(MemberPanel.getMemberNumberValue().getText());
 			}
 			int point_score = 0;
 			if (!MemberPanel.getAccumulateValue().getText().trim().equals("")) {
@@ -45,7 +45,6 @@ public class Sales_Insert {
 			}
 
 			String sql = null;
-			System.out.println(model.getRowCount());
 			for (int i = 0; i < model.getRowCount(); i++) {
 				if(members_id == 0) {
 					sql = String.format(
