@@ -23,9 +23,11 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 	DefaultTableModel model;
 	private static JLabel total_payment;
 	
+	
 	public static JLabel getTotal_payment() {
 		return total_payment;
 	}
+	
 	public PaymentInsertTable(DefaultTableModel model, JLabel total_payment) {
 		this.model = model;
 		this.total_payment = total_payment;
@@ -83,6 +85,14 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 
 		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계
 		TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(total_payment.getText())));
+		
+		int total_payment = Integer.parseInt(PaymentInsertTable.getTotal_payment().getText());
+		
+		int reserved_point = (int)(total_payment * 0.01);
+		
+		if(!MemberPanel.getMemberNameValue().getText().trim().equals("")) {
+			MemberPanel.getAccumulateValue().setText("" + reserved_point);
+		}
 		
 	}
 
