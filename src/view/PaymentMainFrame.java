@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import function.model.Products_DB;
 import function.topBar.*;
 import view.Payment.*;
 import view.Payment.east.*;
@@ -22,6 +24,8 @@ public class PaymentMainFrame extends JFrame{
 	JTextField text;
 	JTable table;
 	JPanel east;
+	
+	private static ArrayList<Products_DB> product_list = new ArrayList<Products_DB>();
 	public PaymentMainFrame(JFrame jf) {
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,5 +54,9 @@ public class PaymentMainFrame extends JFrame{
 	
 	public JTable getTable() {
 		return table;
+	}
+	
+	public static ArrayList<Products_DB> getProduct_list(){
+		return product_list;
 	}
 }

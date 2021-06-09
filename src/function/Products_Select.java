@@ -10,10 +10,11 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Products_DB;
 import hikariCP.HikariCP;
+import view.PaymentMainFrame;
 
 public class Products_Select {
 	Products_DB productDb;
-	ArrayList<Products_DB> product_list;
+	
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();
 	
@@ -29,6 +30,7 @@ public class Products_Select {
 			while(rs.next()) {
 				productDb = new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11));
+				PaymentMainFrame.getProduct_list().add(productDb);
 			}
 			rs.close();
 			ds.close();
@@ -38,7 +40,6 @@ public class Products_Select {
 		}
 	}
 	public Products_Select() {//이 생성자는 PRODUCTS테이블에 대해 정보를 product_list에 받는 생성자(전체 조회용)
-		product_list = new ArrayList<Products_DB>();
 		String sql= "SELECT * FROM Products ";
 		try(
 				Connection conn = ds.getConnection();
@@ -47,7 +48,7 @@ public class Products_Select {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				product_list.add(new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
+				PaymentMainFrame.getProduct_list().add(new Products_DB(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4), rs.getDate(5), 
 						 rs.getString(6), rs.getDouble(7),  rs.getString(8), rs.getInt(9), rs.getInt(10),  rs.getString(11)));
 			}
 			rs.close();
@@ -61,8 +62,5 @@ public class Products_Select {
 	//필요에 따라 아래의 것들을 리턴
 	public Products_DB getProducts_DB() {
 		return productDb;
-	}
-	public ArrayList<Products_DB> getProduct_list() {
-		return product_list;
 	}
 }
