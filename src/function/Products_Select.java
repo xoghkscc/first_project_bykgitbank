@@ -38,7 +38,7 @@ public class Products_Select {
 	}
 	public Products_Select() {//이 생성자는 PRODUCTS테이블에 대해 정보를 product_list에 받는 생성자(전체 조회용)
 		product_list = new ArrayList<Products_DB>();
-		String sql= "SELECT * FROM Products WHERE PRODUCT_ID = ?";
+		String sql= "SELECT * FROM Products ";
 		try(
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
