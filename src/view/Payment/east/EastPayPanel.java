@@ -21,33 +21,52 @@ import function.payment.PointUse;
 
 public class EastPayPanel extends JPanel{
 	private static JLabel amountValue;
+	private static JLabel moneyamountValue;
 	private static JLabel discountValue;
+	private static JLabel moneydiscountValue;
 	private static JLabel paymentValue;
+	private static JLabel moneypaymentValue;
 	private static JTextField pointValue;
 	public EastPayPanel() {
 		setLayout(new GridLayout(4, 2, 0, 0));
 		setBackground(new Color(43, 51, 62));
 		setBorder(BorderFactory.createEmptyBorder(0, 0, 7, 0));
 		JLabel amount = new PayLabelDesign1("합계금액");
-		amountValue = new PayLabelDesign3("0");
+		amountValue = new PayLabelDesign3("0");//계산용
+		moneyamountValue =  new PayLabelDesign3("0");//실제 화페 단위로 출력할 JLabel
+		
 		JLabel discount = new PayLabelDesign2_1("할인");
-		discountValue = new PayLabelDesign3("0");
+		discountValue = new PayLabelDesign3("0");//계산용
+		moneydiscountValue =  new PayLabelDesign3("0");//실제 화페 단위로 출력할 JLabel
+		
 		JLabel point = new PayLabelDesign2_1("포인트 사용");
 		pointValue = new PayTextDesign("0");
 		pointValue.addActionListener(new PointUse());
 		pointValue.addMouseListener(new PointReset());
+		
 		JLabel payment = new PayLabelDesign4("결제 금액");
-		paymentValue = new PayLabelDesign3("0");
+		paymentValue = new PayLabelDesign3("0");//계산용
+		moneypaymentValue = new PayLabelDesign3("0");//실제 화폐 단위로 출력할 JLabel
+		//얘가 테이블 아래에 나타날 변수
 		
 		add(amount);
-		add(amountValue);
+		add(moneyamountValue);
 		add(discount);
-		add(discountValue);
+		add(moneydiscountValue);
 		add(point);
 		add(pointValue);
 		add(payment);
-		add(paymentValue);
+		add(moneypaymentValue);
 		
+	}
+	public static JLabel getMoneypaymentValue() {
+		return moneypaymentValue;
+	}
+	public static JLabel getMoneydiscountValue() {
+		return moneydiscountValue;
+	}
+	public static JLabel getMoneyamountValue() {
+		return moneyamountValue;
 	}
 	public static JTextField getPointValue() {
 		return pointValue;

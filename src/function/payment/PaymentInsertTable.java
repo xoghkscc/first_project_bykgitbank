@@ -2,6 +2,9 @@ package function.payment;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.Format;
+import java.text.NumberFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import function.Products_Select;
 import function.model.Products_DB;
 import view.Payment.east.*;
+import view.Payment.middlePanel.TotalPaymentPanel;
 import view.PaymentMainFrame;
 
 public class PaymentInsertTable implements ActionListener {// 생성자에 table을 넣으면 해당 번호가 입력된 데이터를 넣어줌
@@ -56,20 +60,29 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		model.addRow(data);
 		((JTextField) e.getSource()).setText("");
 		
+		DecimalFormat formatMoney = new DecimalFormat("###,###");
+		
 		//view.Payment.middlePanel에 있는 합계 JLabel을 바꿔주는 기능임
-		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계
 		
 		String before_discount2 = EastPayPanel.getAmountValue().getText().trim();
-		EastPayPanel.getAmountValue().setText(Integer.toString(Integer.parseInt(before_discount2) + Integer.parseInt(data[4])));//우측 하단 합계금액
+		EastPayPanel.getAmountValue().setText(Integer.toString((Integer.parseInt(before_discount2) + Integer.parseInt(data[4]))));//우측 하단 합계금액
 		
 		String disCount = EastPayPanel.getDiscountValue().getText().trim();
 		EastPayPanel.getDiscountValue().setText(Integer.toString((Integer.parseInt(disCount) + Integer.parseInt(data[5]))));//우측 하단 할인
 		
 		String sumPrice = EastPayPanel.getAmountValue().getText().trim();//합계금액
-		String disCountPrice =  EastPayPanel.getDiscountValue().getText().trim();//할인
-		String pointValue = EastPayPanel.getPointValue().getText().trim();//포인트 사용
-		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
+		EastPayPanel.getMoneyamountValue().setText(formatMoney.format(Integer.parseInt(sumPrice)));//합계를 화폐단위로 출력
 		
+		String disCountPrice =  EastPayPanel.getDiscountValue().getText().trim();//할인
+		EastPayPanel.getMoneydiscountValue().setText(formatMoney.format(Integer.parseInt(disCountPrice)));//합계를 화폐단위로 출력
+		
+		String pointValue = EastPayPanel.getPointValue().getText().trim();//포인트 사용
+		
+		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
+		EastPayPanel.getMoneypaymentValue().setText(formatMoney.format(Integer.parseInt(EastPayPanel.getPaymentValue().getText())));//최종 금액을 화폐단위로 출력
+		
+		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계
+		TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(total_payment.getText())));//최종 금액을 화폐단위로 출력
 	}
 
 }

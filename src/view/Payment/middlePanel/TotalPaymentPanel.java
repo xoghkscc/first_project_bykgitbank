@@ -19,23 +19,25 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 
-
-public class MiddlePanel extends JPanel{
-	JPanel total_payment;
-	public MiddlePanel(JTable table) {
-		setBackground(new Color(236, 238, 236));
+public class TotalPaymentPanel extends JPanel{
+	JLabel total_payment;
+	private static JLabel money_total_payment;
+	public TotalPaymentPanel() {
 		setLayout(new BorderLayout());
+		setBorder(new TitledBorder(new LineBorder(new Color(43, 51, 62), 1)));
+		total_payment = new total_payment("0");
+		money_total_payment = new total_payment("0");
+		money_total_payment.setPreferredSize(new Dimension(650, 50));
+		add(money_total_payment, BorderLayout.CENTER);
 		
-		total_payment = new TotalPaymentPanel();
-		
-		add(total_payment, BorderLayout.EAST);
-		JLabel MiddleJLabel = new MiddleJLabel("합계");
-//		MiddleJLabel.setBorder(new TitledBorder(new LineBorder(new Color(43, 51, 62), 1)));
-		MiddleJLabel.setPreferredSize(new Dimension(230, 50));
-		add(MiddleJLabel, BorderLayout.WEST);
 	}
+	
+	public static JLabel get_money_total_payment() {
+		return money_total_payment;
+	}
+	
 	public JLabel get_total_payment() {
-		return ((TotalPaymentPanel)total_payment).get_total_payment();
+		return total_payment;
+		
 	}
 }
-
