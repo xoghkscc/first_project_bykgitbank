@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import function.payment.Payment_Custormer_name;
+import function.payment.Payment_Custormer_infor;
 
 public class MemberPanel extends JPanel{
 	private static JLabel memberNameValue;
@@ -23,7 +23,7 @@ public class MemberPanel extends JPanel{
 		setBackground(new Color(43, 51, 62));
 		JLabel memberNumber = new EastLabel("회원 번호");
 		JTextField memberNumberValue = new EastJText("회원 번호 입력");
-		memberNumberValue.addActionListener(new Payment_Custormer_name());
+		memberNumberValue.addActionListener(new Payment_Custormer_infor());
 		JLabel memberName = new EastLabel("회원 이름");
 		memberNameValue = new EastLabel2("");
 		JLabel memberPoint = new EastLabel("보유 포인트");

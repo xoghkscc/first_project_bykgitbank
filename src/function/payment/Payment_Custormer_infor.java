@@ -10,7 +10,7 @@ import function.Customer_Search;
 import function.model.Member_Informations_DB;
 import view.Payment.east.MemberPanel;
 
-public class Payment_Custormer_name implements ActionListener {
+public class Payment_Custormer_infor implements ActionListener {
 
 	
 	Member_Informations_DB member_informations_DB;
