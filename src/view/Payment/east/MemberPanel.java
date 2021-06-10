@@ -13,17 +13,20 @@ import function.payment.Payment_Custormer_infor;
 public class MemberPanel extends JPanel{
 	private static JLabel memberNameValue;
 	private static JLabel memberPointValue;
-	private static JTextField memberNumberValue;
+	private static JTextField memberPhoneNumberValue;
 	private static JLabel accumulateValue;
+	private static JLabel memberNumberValue;
 
 	
 	public MemberPanel() {
 		
-		setLayout(new GridLayout(4, 2, 0, 0));
+		setLayout(new GridLayout(5, 2, 0, 0));
 		setBackground(new Color(43, 51, 62));
+		JLabel MemberPhoneNumber = new EastLabel("전화 번호");
+		memberPhoneNumberValue = new EastJText3("뒷자리 입력");
+		memberPhoneNumberValue.addActionListener(new Payment_Custormer_infor());	
 		JLabel memberNumber = new EastLabel("회원 번호");
-		memberNumberValue = new EastJText3("회원 번호 입력");
-		memberNumberValue.addActionListener(new Payment_Custormer_infor());	
+		memberNumberValue = new EastLabel2("");
 		JLabel memberName = new EastLabel("회원 이름");
 		memberNameValue = new EastLabel2("");
 		JLabel memberPoint = new EastLabel("보유 포인트");
@@ -31,7 +34,8 @@ public class MemberPanel extends JPanel{
 		JLabel accumulate = new EastLabel("적립 예정 포인트");
 		accumulateValue= new EastLabel2("");
 		
-			
+		add(MemberPhoneNumber);
+		add(memberPhoneNumberValue);
 		add(memberNumber);
 		add(memberNumberValue);
 		add(memberName);
@@ -44,8 +48,8 @@ public class MemberPanel extends JPanel{
 	
 	
 	
-	public static JTextField getMemberNumberValue(){
-		return memberNumberValue;
+	public static JTextField getMemberPhoneNumberValue(){
+		return memberPhoneNumberValue;
 	}
 	
 	public static JLabel getMemberPointValue(){
@@ -58,6 +62,10 @@ public class MemberPanel extends JPanel{
 		
 	public static JLabel getMemberNameValue(){
 		return memberNameValue;
+	}
+	
+	public static JLabel getMemberNumberValue(){
+		return memberNumberValue;
 	}
 		
 	class EastLabel2 extends EastLabel{

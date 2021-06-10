@@ -26,15 +26,16 @@ public class Payment_Custormer_infor implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		int Customer_id = Integer.parseInt(((JTextField) e.getSource()).getText().trim());
-		member_informations_DB = new Customer_Search(Customer_id).getMember_Informations_DB();
+		int Customer_Phone_num = Integer.parseInt(((JTextField) e.getSource()).getText().trim());
+		member_informations_DB = new Customer_Search(Customer_Phone_num).getMember_Informations_DB();
 	
-
+		int Customer_id = member_informations_DB.getMEMBERS_ID();
 		String name = member_informations_DB.getMEMBERS_NAME();
 		int point = member_informations_DB.getMEMBERS_POINT();
 		
+		MemberPanel.getMemberNumberValue().setText("" + Customer_id);
 		MemberPanel.getMemberNameValue().setText(name);
-		MemberPanel.getMemberPointValue().setText(""+point);
+		MemberPanel.getMemberPointValue().setText("" + point);
 		
 		int total_payment = Integer.parseInt(PaymentInsertTable.getTotal_payment().getText());
 		

@@ -24,13 +24,13 @@ public class Customer_Search {
 	public Customer_Search(int Customer_num) {
 		
 	
-		String sql = "SELECT * FROM member_informations WHERE members_id = ? ";
+		String sql = "SELECT * FROM member_informations WHERE members_phonenumber LIKE ? ";
 		
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 		){
-			pstmt.setString(1, "" + Customer_num);
+			pstmt.setString(1, "%" + Customer_num + "%");
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -39,6 +39,7 @@ public class Customer_Search {
 												rs.getString(3), rs.getString(4), rs.getInt(5));
 				
 			}	
+			
 			rs.close();
 			ds.close();
 		} catch (SQLException e) {
