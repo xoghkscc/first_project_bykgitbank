@@ -11,8 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Products_DB;
-import function.payment.PayTableReset;
-import function.payment.PaymentInsertTable;
 import hikariCP.HikariCP;
 import view.PaymentMainFrame;
 import view.Payment.east.MemberPanel;
@@ -25,7 +23,8 @@ public class Sales_Insert {
 	public Sales_Insert(String Payment_type) {
 		String sales_id_get = "SELECT max(sales_id) FROM sales";
 		DefaultTableModel model = TopTable.getDefaultModel();
-		try (Connection conn = ds.getConnection(); PreparedStatement pstmt2 = conn.prepareStatement(sales_id_get);) {
+		try (Connection conn = ds.getConnection(); 
+				PreparedStatement pstmt2 = conn.prepareStatement(sales_id_get);) {
 
 			PreparedStatement pstmt = null;
 			ResultSet rs2 = pstmt2.executeQuery();
@@ -37,11 +36,11 @@ public class Sales_Insert {
 
 			int members_id = 0;
 			if (!MemberPanel.getMemberNumberValue().getText().trim().equals("회원 번호 입력")) {
-				members_id = Integer.parseInt(MemberPanel.getMemberNumberValue().getText());
+				members_id = Integer.parseInt(MemberPanel.getMemberNumberValue().getText().trim());
 			}
 			int point_score = 0;
 			if (!MemberPanel.getAccumulateValue().getText().trim().equals("")) {
-				point_score = Integer.parseInt(MemberPanel.getAccumulateValue().getText());
+				point_score = Integer.parseInt(MemberPanel.getAccumulateValue().getText().trim());
 			}
 
 			String sql = null;

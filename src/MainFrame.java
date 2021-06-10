@@ -46,7 +46,7 @@ public class MainFrame extends JFrame{
 		stock_btn.addActionListener(new ClickStock(this));
 		JButton store_btn = new FrameMoveButton(729, 200, "매장 관리");
 		store_btn.addActionListener(new ClickStore(this));
-		
+		                                       
 		JButton delivery_btn = new FrameMoveButton(933, 200, "배달 관리");
 		delivery_btn.addActionListener(new ClickDelivery(this));
 		

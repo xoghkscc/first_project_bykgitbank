@@ -11,7 +11,7 @@ import view.Payment.east.MemberPanel;
 
 public class DeliveryButton implements ActionListener{
 	
-	
+	private static boolean deliverycheck = false;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -25,7 +25,7 @@ public class DeliveryButton implements ActionListener{
 				int result = JOptionPane.showConfirmDialog(null, "이름 : "+name+"\n주소 : "+ address+"\n배달하시겠습니까?");
 				
 				if(result == JOptionPane.YES_OPTION) {
-					//팝업창에서 yes를 누를 경우 돌아가는 코드
+					deliverycheck = true;
 				}else {
 					//팝업창에서 no와 창을 닫을 경우 그냥 넘어가는 걸로
 				}
@@ -36,6 +36,10 @@ public class DeliveryButton implements ActionListener{
 		}else {
 			JOptionPane.showMessageDialog(null, "물품번호를 입력하세요.");
 		}
+	}
+	
+	public static boolean getDeliverycheck() {
+		return deliverycheck;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import function.Delivery_Insert;
 import function.Sales_Insert;
 import view.Payment.east.EastPayPanel;
 import view.Payment.east.MemberPanel;
@@ -19,6 +20,9 @@ public class FinalPayment implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(DeliveryButton.getDeliverycheck()) {
+			new Delivery_Insert();
+		}
 		new Sales_Insert(Payment_type);//SALES에 반영하는 메서드
 		
 		
