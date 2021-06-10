@@ -25,7 +25,6 @@ import hikariCP.HikariCP;
 
 public class TopTable extends JTable{
 	private static DefaultTableModel model;
-	ArrayList<String> list;
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();
 	String[] header = {"품번", "품명", "개수 및 무게", "정상가","할인 전 가격",  "할인액", "총 가격"};

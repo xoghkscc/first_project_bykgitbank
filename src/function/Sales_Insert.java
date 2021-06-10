@@ -11,9 +11,11 @@ import javax.swing.table.DefaultTableModel;
 import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Products_DB;
+import function.payment.DeliveryButton;
 import function.payment.Products_update;
 import hikariCP.HikariCP;
 import view.PaymentMainFrame;
+import view.Payment.east.EastPayPanel;
 import view.Payment.east.MemberPanel;
 import view.Payment.topPanel.TopTable;
 
@@ -24,6 +26,7 @@ public class Sales_Insert {
 	public Sales_Insert(String Payment_type) {
 		String sales_id_get = "SELECT max(sales_id) FROM sales";
 		String sales_num_get = "SELECT max(sales_num) FROM sales";
+		
 		DefaultTableModel model = TopTable.getDefaultModel();
 		try (Connection conn = ds.getConnection(); 
 				PreparedStatement pstmt2 = conn.prepareStatement(sales_id_get);
@@ -49,7 +52,7 @@ public class Sales_Insert {
 			}
 			int point_score = 0;
 			if (!MemberPanel.getAccumulateValue().getText().trim().equals("")) {
-				point_score = Integer.parseInt(MemberPanel.getAccumulateValue().getText().trim());
+				point_score = Integer.parseInt(MemberPanel.getAccumulateValue().getText().trim()) - Integer.parseInt(EastPayPanel.getPointValue().getText().trim());
 			}
 
 			String sql = null;
@@ -79,7 +82,30 @@ public class Sales_Insert {
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.executeUpdate();
+				
+				if(DeliveryButton.getDeliverycheck()) {//배달을 할경우 배달 번호도 추가
+					String delivery_id_get = "SELECT max(delivery_id) FROM delivery";
+					PreparedStatement pstmt4 = conn.prepareStatement(delivery_id_get);
+					ResultSet rs4 = pstmt4.executeQuery();
+					int max_delivery_id = 0;
+					while(rs4.next()) {
+						max_delivery_id = rs4.getInt(1);
+					}
+					System.out.println("max_delivery_id : "+max_delivery_id);
+					System.out.println("max_saled_id : "+max_saled_id);
+					String delivery_id_insert = String.format("UPDATE sales SET delivery_id = %d WHERE sales_id = %d ",
+							max_delivery_id, max_saled_id);
+					System.out.println(delivery_id_insert);
+					PreparedStatement pstmt5 = conn.prepareStatement(delivery_id_insert);
+					pstmt5.executeUpdate();
+					pstmt4.close();
+					pstmt5.close();
+					
+				}
+				
+				
 			}
+			pstmt.close();
 			rs2.close();
 			rs3.close();
 			ds.close();

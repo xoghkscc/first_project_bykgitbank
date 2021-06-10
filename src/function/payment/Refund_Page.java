@@ -1,0 +1,239 @@
+package function.payment;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import com.zaxxer.hikari.HikariDataSource;
+
+import function.model.Products_DB;
+import hikariCP.HikariCP;
+import view.Payment.lowPanel.LowJButton;
+import view.Payment.lowPanel.RoundedButton;
+public class Refund_Page extends JFrame {
+	static final int WIDTH = 800;
+	static final int HEIGHT = 500;
+	static final int X = 300;
+	static final int Y = 150;
+	private static JPanel page;
+	public Refund_Page() {
+		setSize(WIDTH, HEIGHT);
+		setLocation(X, Y);
+		setBackground(new Color(43, 51, 62));
+		setLayout(new BorderLayout());
+		
+		
+		page = new JPanel();
+		page.setLayout(new CardLayout(30, 40));
+		page.setBackground(new Color(43, 51, 62));
+		
+		JPanel search = new SearchPanel();
+		JButton refund = new LowJButtoncardPayment("환불하기");
+		refund.addActionListener(new RufundAction(this));
+		refund.setVisible(false);
+		
+		JTable salesTable = new MiniTable();
+		salesTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int row = ((JTable) e.getSource()).getSelectedRow();
+				int sales_id =Integer.parseInt((String) MiniTable.getMiniModel().getValueAt(row, 0));
+				DetailMiniTable.setSales_id(sales_id);
+				DetailMiniTable.detailMiniTableAddRow();
+				CardLayout card = (CardLayout)page.getLayout();
+				card.next(page);
+				SearchPanel.getSearchText().setVisible(false);
+				refund.setVisible(true);
+			};
+		});
+		
+		JScrollPane miniScrollPane = new JScrollPane(salesTable);
+		
+		JTable detailSalesTable = new DetailMiniTable();
+		
+		JScrollPane detailScrollPane = new JScrollPane(detailSalesTable);
+		JPanel detailPane = new JPanel(new BorderLayout());
+		detailPane.add(detailScrollPane, BorderLayout.CENTER);
+		detailPane.setPreferredSize(new Dimension(400, 200));
+		JButton prev = new LowJButtoncashPayment("<<");
+		prev.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DetailMiniTable.getDetailMiniModel().setNumRows(0);
+				CardLayout card = (CardLayout)page.getLayout();
+				card.next(page);
+				refund.setVisible(false);
+				SearchPanel.getSearchText().setVisible(true);
+			}
+		});
+		JPanel searchNext = new JPanel(new BorderLayout());
+		searchNext.setBackground(new Color(43, 51, 62));
+		searchNext.add(prev, BorderLayout.WEST);
+		searchNext.add(detailPane);
+		searchNext.add(refund, BorderLayout.SOUTH);
+		
+		
+		page.add("main", miniScrollPane);
+		page.add("detail", searchNext);
+		
+		add(search, BorderLayout.NORTH);
+		add(page, BorderLayout.CENTER);
+		
+		page.setVisible(true);
+		
+		setVisible(true);
+	}
+	public static JPanel getPage() {
+		return page;
+	}
+}
+
+class SearchPanel extends JPanel {
+	private static JTextField searchText;
+	public SearchPanel() {
+		searchText = new SearchText();
+		setBackground(new Color(43, 51, 62));
+		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+		add(searchText, BorderLayout.CENTER);
+		setVisible(true);
+	}
+	
+	public static JTextField getSearchText() {
+		return searchText;
+	}
+}
+
+class SearchText extends JTextField {
+	public SearchText() {
+		setBackground(Color.WHITE);
+		setPreferredSize(new Dimension(300, 30));
+	}
+}
+
+class MiniTable extends JTable {
+	private static DefaultTableModel miniModel;
+	HikariCP cp = new HikariCP();
+	HikariDataSource ds = cp.getHikariDataSource();
+	String[] header = {"구매번호", "구매 시간", "총 가격"};
+	public MiniTable() {
+		miniModel = (DefaultTableModel) this.getModel();
+		setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		getTableHeader().setBackground(new Color(218, 222, 227));
+		miniModel.setColumnIdentifiers(header);
+		String sql = "SELECT * FROM simple_sales order by sales_id"; //simple_sales라는 뷰를 만들었음
+		try(
+				Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				) {
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] data = {
+						""+rs.getInt(1),
+						""+rs.getDate(2),
+						""+rs.getInt(3),
+				};
+				miniModel.addRow(data);
+			}
+			rs.close();
+			ds.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static DefaultTableModel getMiniModel() {
+		return miniModel;
+	}
+	
+}
+
+class DetailMiniTable extends JTable{
+	private static DefaultTableModel detailMiniModel;
+	private static int sales_id;
+	String[] header = {"물건 이름", "총 개수 및 무게", "가격"};
+	public DetailMiniTable() {
+		sales_id = 0;
+		detailMiniModel = (DefaultTableModel) this.getModel();
+		setFont(new Font("맑은 고딕", Font.BOLD, 14));
+		getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		getTableHeader().setBackground(new Color(218, 222, 227));
+		detailMiniModel.setColumnIdentifiers(header);
+	}
+	
+	public static void detailMiniTableAddRow() {
+		HikariCP cp = new HikariCP();
+		HikariDataSource ds = cp.getHikariDataSource();
+		String sql = String.format("SELECT product_name, number_of_sales, number_of_sales*product_price  FROM "
+				+ "sales INNER JOIN products USING (product_ID) where sales_id = %d", sales_id);
+		try (
+				Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] data = {
+						""+rs.getString(1),
+						""+rs.getInt(2),
+						""+rs.getInt(3),
+				};
+				detailMiniModel.addRow(data);
+			}
+			rs.close();
+			ds.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static DefaultTableModel getDetailMiniModel() {
+		return detailMiniModel;
+	}
+	public static void setSales_id (int sales_id2) {
+		sales_id = sales_id2;
+	}
+}
+
+
+class LowJButtoncashPayment extends RoundedButton{
+	public LowJButtoncashPayment(String name) {
+		super(name);
+		super.c = new Color(122, 122, 122); 
+		setHorizontalAlignment(JLabel.CENTER);
+		setFont(new Font("맑은 고딕", Font.BOLD, 20));
+	}
+}
+
+class LowJButtoncardPayment extends RoundedButton{
+	public LowJButtoncardPayment(String name) {
+		super(name);
+		super.c = new Color(153, 153, 153); 
+		setHorizontalAlignment(JLabel.CENTER);
+		setFont(new Font("맑은 고딕", Font.BOLD, 20));
+	}
+}
+

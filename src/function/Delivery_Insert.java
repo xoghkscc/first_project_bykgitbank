@@ -35,10 +35,7 @@ public class Delivery_Insert {
 					Integer.parseInt(EastPayPanel.getAmountValue().getText().trim()));
 			
 			PreparedStatement pstmt2 = conn.prepareStatement(insert_sql);
-			System.out.println(insert_sql);
 			pstmt2.executeUpdate();
-			
-			DeliveryButton.resetDeliverycheck();
 			
 			rs.close();
 			ds.close();

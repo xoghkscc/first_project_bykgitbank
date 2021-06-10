@@ -16,8 +16,6 @@ public class Products_update {
 	public Products_update(int product_id, int stocksOrGram ) {
 		//이걸로 재고를 빼거나 추가할 수 있음
 		//추가할 때는 stocksOrGram가 마이너스면 됨
-		
-		
 		String sales_type= null;
 		String sales_type_check = String.format("SELECT sales_type FROM products WHERE product_id = %d",product_id);
 		
