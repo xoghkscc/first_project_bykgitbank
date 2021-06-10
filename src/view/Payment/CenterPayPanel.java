@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import function.payment.Products_Stocks_Modify;
 import view.Payment.lowPanel.LowPanel;
 import view.Payment.middlePanel.MiddlePanel;
 import view.Payment.topPanel.TopTable;
@@ -19,9 +20,9 @@ import view.Payment.topPanel.TopTable;
 
 public class CenterPayPanel extends JPanel{
 	JFrame mainJf;
-	JTable table;
+	private static JTable table;
 	JPanel middle;
-	public JTable getTop() {
+	public static JTable getTop() {
 		return table;
 	}
 	public MiddlePanel getMiddle() {
@@ -31,6 +32,7 @@ public class CenterPayPanel extends JPanel{
 		this.mainJf = mainJf;
 		
 		table = new TopTable();
+		table.addMouseListener(new Products_Stocks_Modify());
 		JScrollPane scrollPane = new JScrollPane(table);
 		middle = new MiddlePanel(table);
 		JPanel low = new LowPanel();

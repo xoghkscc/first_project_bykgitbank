@@ -42,10 +42,10 @@ class PaymentReset {
 		EastPayPanel.getPointValue().setText("0");
 		EastPayPanel.getPaymentValue().setText("0");
 		EastPayPanel.getMoneypaymentValue().setText("0 ");
-		MemberPanel.getMemberNumberValue().setText("회원 번호");
-		MemberPanel.getMemberNumberValue().setText("회원 번호 입력");
+		MemberPanel.getMemberNumberValue().setText("");
 		MemberPanel.getMemberNameValue().setText("");
 		MemberPanel.getMemberPointValue().setText("");
 		MemberPanel.getAccumulateValue().setText("");
+		MemberPanel.getMemberPhoneNumberValue().setText("뒷자리 입력");
 	}
 }

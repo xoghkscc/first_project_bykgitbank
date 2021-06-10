@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import function.payment.DeliveryButton;
 import hikariCP.HikariCP;
 import view.Payment.east.EastPayPanel;
 import view.Payment.east.MemberPanel;
@@ -29,12 +30,15 @@ public class Delivery_Insert {
 			}
 			max_delivery_id += 1;
 			
-			String insert_sql = String.format("INSET INTO DELIVEY VALUES (%d, %d, %d)",
+			String insert_sql = String.format("INSERT INTO DELIVERY VALUES (%d, %d, %d)",
 					max_delivery_id,Integer.parseInt(MemberPanel.getMemberNumberValue().getText().trim()),
-					Integer.parseInt(EastPayPanel.getPaymentValue().getText().trim()));
+					Integer.parseInt(EastPayPanel.getAmountValue().getText().trim()));
 			
 			PreparedStatement pstmt2 = conn.prepareStatement(insert_sql);
+			System.out.println(insert_sql);
 			pstmt2.executeUpdate();
+			
+			DeliveryButton.resetDeliverycheck();
 			
 			rs.close();
 			ds.close();

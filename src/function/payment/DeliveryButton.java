@@ -11,10 +11,11 @@ import view.Payment.east.MemberPanel;
 
 public class DeliveryButton implements ActionListener{
 	
-	private static boolean deliverycheck = false;
+	private static boolean deliverycheck;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		deliverycheck = false;
 		if(!(PaymentInsertTable.getTotal_payment().getText()).trim().equals("0")) {
 			if((Integer.parseInt((EastPayPanel.getAmountValue().getText()))>=30000) &
 				!(MemberPanel.getMemberNameValue().getText().equals(""))) {//금액 3만원, 회원 입력할때만 작동함
@@ -40,6 +41,10 @@ public class DeliveryButton implements ActionListener{
 	
 	public static boolean getDeliverycheck() {
 		return deliverycheck;
+	}
+	
+	public static void resetDeliverycheck() {
+		deliverycheck = false;
 	}
 
 }

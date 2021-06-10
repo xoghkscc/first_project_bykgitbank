@@ -19,7 +19,6 @@ public class PayTableReset implements ActionListener{
 		TopTable.getDefaultModel().setNumRows(0);//테이블 초기화
 		
 		PaymentInsertTable.getTotal_payment().setText("0");//계산용 합계 초기화
-		
 		TotalPaymentPanel.get_money_total_payment().setText("0 ");//보여주기용 합계 초기화
 		
 		
@@ -33,11 +32,12 @@ public class PayTableReset implements ActionListener{
 		
 		EastPayPanel.getPaymentValue().setText("0");//최종 결제금액 초기화
 		EastPayPanel.getMoneypaymentValue().setText("0 ");//우측 하단 보여주기용 최종 결제금액 초기화
-		MemberPanel.getMemberNumberValue().setText("회원 번호");
-		MemberPanel.getMemberNumberValue().setText("회원 번호 입력");
+	
+		MemberPanel.getMemberNumberValue().setText("");
 		MemberPanel.getMemberNameValue().setText("");
 		MemberPanel.getMemberPointValue().setText("");
 		MemberPanel.getAccumulateValue().setText("");
+		MemberPanel.getMemberPhoneNumberValue().setText("뒷자리 입력");
 	}
 
 }
