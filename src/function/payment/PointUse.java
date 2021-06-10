@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import exam.Point_Update;
 import view.Payment.east.EastPayPanel;
 import view.Payment.east.MemberPanel;
 import view.Payment.middlePanel.TotalPaymentPanel;
@@ -24,7 +23,7 @@ public class PointUse implements ActionListener{
 		((JTextField) e.getSource()).setForeground(Color.BLACK);
 		String pointValue = ((JTextField) e.getSource()).getText().trim();
 		
-		((JTextField) e.getSource()).setText(formatPoint.format(Integer.parseInt(pointValue)));
+		((JTextField) e.getSource()).setText(formatPoint.format(Integer.parseInt(pointValue)).trim());
 		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		
