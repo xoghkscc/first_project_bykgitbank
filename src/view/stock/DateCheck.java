@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
@@ -27,22 +28,21 @@ public class DateCheck {
 		JDatePickerImpl datePickerStart = new JDatePickerImpl(datePanelStart);
 		JDatePickerImpl datePickerEnd = new JDatePickerImpl(datePanelEnd);
 		
-//		this.jf = jf;
+		//데이트 피커 안의 글자 
+		datePickerStart.getJFormattedTextField().setText("  처음날짜를 선택하세요");
+		datePickerStart.getJFormattedTextField().setForeground(new Color(145,145,145));
+		datePickerEnd.getJFormattedTextField().setText("  마지막날짜를 선택하세요");
+		datePickerEnd.getJFormattedTextField().setForeground(new Color(145,145,145));
+		
+
 		indexes = new JPanel();
 		
 		JPanel datePanel = new JPanel();
-//		JTable productTable = new JTable(3, 4);
-
 
 		datePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
 		datePickerStart.setPreferredSize(new Dimension(203,28)); //Layout 이 있을때 크기조절
-//		datePickerStart.setSize(203,28);//null일때 크기조절
 		datePickerEnd.setPreferredSize(new Dimension(203,28));
-//		datePickerEnd.setSize(203,28);
-//		datePickerStart.setLocation(50, 20); //null일때 크기조절
-//		datePickerEnd.setLocation(280,20);
-//		datePickerStart.setVisible(true);
-//		datePickerEnd.setVisible(true);
+
 		
 		//datePanel에 datePickerStart, datePickerEnd 추가 (날짜선택화면두개)
 		indexes.setSize(1000,733);
@@ -69,11 +69,13 @@ public class DateCheck {
 //		
 		indexes.add(datePanel, BorderLayout.NORTH);
 		
-		indexes.add(new Table_make(), FlowLayout.CENTER);
+		JPanel table_panel = new Table_make("SELECT * FROM PRODUCTS");
+		table_panel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+		table_panel.setBackground(new Color(43,51,62));
+		indexes.add(table_panel, FlowLayout.CENTER);
 		
-//		productTable.setVisible(true);
+
 		datePanel.setVisible(true);
-//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		indexes.setVisible(true);
 		
 	}

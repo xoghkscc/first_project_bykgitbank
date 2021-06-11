@@ -22,15 +22,15 @@ import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import view.stock.Button_round_search;
 
-public class Product_update extends JFrame{
+public class Product_order extends JFrame{
 	
 	JFrame jf;
 	
-	public Product_update(JFrame jf) {
-		
+	public Product_order(JFrame jf) {
+
 		this.jf = jf;
 		
-		setTitle("물품수정");
+		setTitle("물품주문");
 		
 		JPanel top = new JPanel();
 		JPanel center = new JPanel();
@@ -47,6 +47,7 @@ public class Product_update extends JFrame{
 		top.setVisible(true);
 		
 
+//		center.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		center.setLayout(null);
 		center.setSize(new Dimension(400,300));
 		center.setLocation(20, 20);
@@ -66,16 +67,9 @@ public class Product_update extends JFrame{
 		JDatePanelImpl datePanelStart = new JDatePanelImpl(modelStart);	
 		JDatePickerImpl datePickerStart = new JDatePickerImpl(datePanelStart);
 		
-		ArrayList<String> typeArr = new ArrayList<>();
-		ConnectDBgetData cdd = new ConnectDBgetData("PRODUCT_TYPE");
-		typeArr = cdd.getColumnArr();
-		
-		ArrayList<String> eventArr = new ArrayList<>();
-		ConnectDBgetData cdd2 = new ConnectDBgetData("DISCOUNT_TYPE");
-		eventArr = cdd2.getColumnArr();
-		
-		
-		
+		ArrayList<String> typeArr = new ConnectDBgetData("PRODUCT_TYPE").getColumnArr();
+		ArrayList<String> eventArr = new ConnectDBgetData("DISCOUNT_TYPE").getColumnArr();
+
 		String[] types = new String[typeArr.size()]; //콤보박스에 넣을 스트링배열생성
 		String[] event = new String[eventArr.size()]; 
 		for(int i = 0; i < typeArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
@@ -90,7 +84,7 @@ public class Product_update extends JFrame{
 		JComboBox<String> jComboBoxProductType = new JComboBox<String>(types); 
 		JComboBox<String> jComboBoxEvent = new JComboBox<String>(event); 
 		JComboBox<String> jComboBoxSalesType = new JComboBox<String>(new String[] {"무게", "개수"}); 
-		JButton jButton = new Button_round_search("수정");
+		JButton jButton = new Button_round_search("주문");
 		
 		//위치조정
 		//품목이름과 필드
@@ -202,14 +196,13 @@ public class Product_update extends JFrame{
 		center.add(jButton);
 		
 		//판넬 색상
-		center.setBackground(new Color(255,204,204));
-		border1.setBackground(new Color(255,164,164));
-		border1.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		border2.setBackground(new Color(255,164,164));
-		border2.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		border3.setBackground(new Color(255,164,164));
-		border3.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		
+		center.setBackground(new Color(43,51,62));
+		border1.setBackground(new Color(193,201,212));
+		border1.setBorder(new TitledBorder(new LineBorder(new Color(255,255,100),2)));
+		border2.setBackground(new Color(193,201,212));
+		border2.setBorder(new TitledBorder(new LineBorder(new Color(255,255,100),2)));
+		border3.setBackground(new Color(193,201,212));
+		border3.setBorder(new TitledBorder(new LineBorder(new Color(255,255,100),2)));
 		
 		//판넬 2개 프레임에 추가
 		add(top, BorderLayout.NORTH);

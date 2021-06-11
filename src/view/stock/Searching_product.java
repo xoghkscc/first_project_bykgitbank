@@ -22,28 +22,11 @@ public class Searching_product {
 		
 		JButton jButton = new JButton("검색");
 		
-		JComboBox<String> jComboBox = new JComboBox<String>(new String[] {"ID", "품목이름", "유통기한","전체검색"}); 
-		
-		JMenuBar menuBar = new JMenuBar();
-		JMenu adminMenu = new JMenu("메뉴");
-		
-//		JPanel jPanel = new JPanel(new FlowLayout());
-		adminMenu.add(new JMenuItem("1"));
-		adminMenu.add(new JMenuItem("2"));
-		adminMenu.add(new JMenuItem("3"));
-		adminMenu.addSeparator(); 
-		adminMenu.add(new JMenuItem("4"));
-		
-		menuBar.add(adminMenu);
-
-//		jFrame.setJMenuBar(menuBar); //메뉴바는 인덱스에 넣지 못함
+		JComboBox<String> jComboBox = new JComboBox<String>(new String[] {"번호", "품목이름", "유통기한","전체검색"}); 
 
 		index.setBackground(new Color(71,81,101));
 		
-//		jTextField.setSize(100, 100);
-//		jTextField.setLocation(100, 200);
-//		jButton.setLocation(200,300);
-//		jButton.setSize(100,100);
+
 		jButton.setBackground(new Color(122,122,122));
 		jButton.setForeground(new Color(255,255,255));
 		

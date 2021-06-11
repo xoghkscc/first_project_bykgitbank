@@ -47,10 +47,16 @@ public class ConnectDB {
 					rs.getString("PRUDUCT_ORIGIN"),
 					rs.getInt("STOCKS"),
 					rs.getInt("GRAM"),
-					rs.getString("SALES_TYPE")
+					rs.getString("SALES_TYPE"),
+					rs.getString("COST")
 				 });
+				 
 				
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			ds.close();	//커넥션풀을 꼭닫아주세요
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

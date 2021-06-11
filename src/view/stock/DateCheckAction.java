@@ -14,7 +14,7 @@ public class DateCheckAction implements ActionListener{
 	
 	
 	public DateCheckAction(UtilDateModel model) {
-		// TODO Auto-generated constructor stub
+	
 		this.model = model;
 	}
 	

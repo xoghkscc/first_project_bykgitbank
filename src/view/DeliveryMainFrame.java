@@ -1,17 +1,21 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import function.topBar.*;
+import function.topBar.ClickMain;
+import function.topBar.ClickMainDesign;
+import function.topBar.TopBar;
 
 public class DeliveryMainFrame extends JFrame{
-	JFrame jf;
+
 	public DeliveryMainFrame(JFrame jf) {
-		this.jf = jf;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		setSize(jf.getWidth(), jf.getHeight());
@@ -27,11 +31,32 @@ public class DeliveryMainFrame extends JFrame{
 		JButton test2 = new ClickMainDesign();
 		test2.addActionListener(new ClickMain(jf, this));
 
-		add(test2);
 		
 		JPanel topBar = new TopBar();
-		add(topBar, BorderLayout.NORTH);
+		JPanel center = new TopBar();
+		JPanel left = new TopBar();
+		JPanel right = new TopBar();
+		topBar.add(test2);
 		
+		left.setBackground(Color.BLUE);
+		left.setBackground(Color.RED);
+		
+		
+		center.setSize(600,600);
+		center.setLocation(10, 10);
+		center.setVisible(true);
+		center.setLayout(new GridLayout(1,2));
+		
+		
+		center.add(left);
+		center.add(right);
+		
+		add(topBar, BorderLayout.NORTH);
+		add(center, BorderLayout.CENTER);
+		
+		setLayout(null);
+		setSize(1000,1000);
 		setVisible(true);
 	}
+
 }

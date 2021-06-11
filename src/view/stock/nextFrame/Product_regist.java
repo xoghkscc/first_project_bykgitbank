@@ -2,6 +2,7 @@ package view.stock.nextFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,16 +22,30 @@ import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import view.stock.Button_round_search;
+import view.stock.DateCheckAction;
 
-public class Product_update extends JFrame{
+public class Product_regist extends JFrame{
 	
 	JFrame jf;
+	JTextField jTextField;
+	JTextField jTextField2;
 	
-	public Product_update(JFrame jf) {
-		
+	UtilDateModel modelStart ;
+	JDatePanelImpl datePanelStart;	
+	JDatePickerImpl datePickerStart;
+	
+	JComboBox<String> jComboBoxProductType; 
+	JComboBox<String> jComboBoxEvent; 
+	JComboBox<String> jComboBoxSalesType;
+	
+	String date;
+	
+	ArrayList<Component> comArr;
+	public Product_regist(JFrame jf) {
+		// TODO Auto-generated constructor stub
 		this.jf = jf;
 		
-		setTitle("물품수정");
+		setTitle("물품등록");
 		
 		JPanel top = new JPanel();
 		JPanel center = new JPanel();
@@ -47,6 +62,7 @@ public class Product_update extends JFrame{
 		top.setVisible(true);
 		
 
+//		center.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		center.setLayout(null);
 		center.setSize(new Dimension(400,300));
 		center.setLocation(20, 20);
@@ -59,22 +75,18 @@ public class Product_update extends JFrame{
 		JLabel jLabel5 = new JLabel("행사유형");	//행사 유형 고르면 할인율 자동적용
 		JLabel jLabel6 = new JLabel("판매유형"); //GRAM or STOCKS 로 나뉨
 		
-		JTextField jTextField = new JTextField(20);
-		JTextField jTextField2 = new JTextField(20);
+		jTextField = new JTextField(20);
+		jTextField2 = new JTextField(20);
 		
-		UtilDateModel modelStart = new UtilDateModel();
-		JDatePanelImpl datePanelStart = new JDatePanelImpl(modelStart);	
-		JDatePickerImpl datePickerStart = new JDatePickerImpl(datePanelStart);
-		
-		ArrayList<String> typeArr = new ArrayList<>();
-		ConnectDBgetData cdd = new ConnectDBgetData("PRODUCT_TYPE");
-		typeArr = cdd.getColumnArr();
-		
-		ArrayList<String> eventArr = new ArrayList<>();
-		ConnectDBgetData cdd2 = new ConnectDBgetData("DISCOUNT_TYPE");
-		eventArr = cdd2.getColumnArr();
+		modelStart = new UtilDateModel();
+		datePanelStart = new JDatePanelImpl(modelStart);	
+		datePickerStart = new JDatePickerImpl(datePanelStart);
 		
 		
+		//콤보박스에 타입내용 확정을 위한 메소드
+		
+		ArrayList<String> typeArr = new ConnectDBgetData("PRODUCT_TYPE").getColumnArr();
+		ArrayList<String> eventArr = new ConnectDBgetData("DISCOUNT_TYPE").getColumnArr();
 		
 		String[] types = new String[typeArr.size()]; //콤보박스에 넣을 스트링배열생성
 		String[] event = new String[eventArr.size()]; 
@@ -87,10 +99,29 @@ public class Product_update extends JFrame{
 		System.out.println("types배열 : " + Arrays.toString(types));
 		System.out.println("eventArr배열 : " + Arrays.toString(event));
 		
-		JComboBox<String> jComboBoxProductType = new JComboBox<String>(types); 
-		JComboBox<String> jComboBoxEvent = new JComboBox<String>(event); 
-		JComboBox<String> jComboBoxSalesType = new JComboBox<String>(new String[] {"무게", "개수"}); 
-		JButton jButton = new Button_round_search("수정");
+		jComboBoxProductType = new JComboBox<String>(types); 
+		jComboBoxEvent = new JComboBox<String>(event); 
+		jComboBoxSalesType = new JComboBox<String>(new String[] {"무게", "개수"});
+		
+		JRadioButton radioBtn1 = new JRadioButton("개수");
+		JRadioButton radioBtn2 = new JRadioButton("무게");
+		
+		JButton jButton = new Button_round_search("등록");
+		
+		datePickerStart.addActionListener(new DateCheckAction(modelStart));
+		
+		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType));
+		
+		date = new DateCheckAction(modelStart).getExpiryDate();
+		JTextField jTextFieldDate = new JTextField(date);
+		
+		comArr = new ArrayList<>();
+		comArr.add(jTextField);
+		comArr.add(jTextField2);
+		comArr.add(jTextFieldDate);
+		comArr.add(jComboBoxProductType);
+		comArr.add(jComboBoxEvent);
+		comArr.add(jComboBoxSalesType);
 		
 		//위치조정
 		//품목이름과 필드
@@ -156,8 +187,7 @@ public class Product_update extends JFrame{
 		radioBorder.setVisible(true);
 		
 		ButtonGroup radioGroup = new ButtonGroup();
-		JRadioButton radioBtn1 = new JRadioButton("개수");
-		JRadioButton radioBtn2 = new JRadioButton("무게");
+		
 		radioBtn1.setForeground(Color.BLACK);
 		radioBtn2.setForeground(Color.BLACK);
 		
@@ -182,6 +212,8 @@ public class Product_update extends JFrame{
 		jButton.setSize(100, 35);
 		jButton.setVisible(true);
 		
+//		jButton.addActionListener(new SearchAction(jButton, comArr));
+		
 		border1.add(jLabel);
 		border1.add(jTextField);
 		
@@ -202,17 +234,17 @@ public class Product_update extends JFrame{
 		center.add(jButton);
 		
 		//판넬 색상
-		center.setBackground(new Color(255,204,204));
-		border1.setBackground(new Color(255,164,164));
-		border1.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		border2.setBackground(new Color(255,164,164));
-		border2.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		border3.setBackground(new Color(255,164,164));
-		border3.setBorder(new TitledBorder(new LineBorder(new Color(255,0,0),2)));
-		
+		center.setBackground(new Color(255,255,204));
+		border1.setBackground(new Color(255,255,164));
+		border1.setBorder(new TitledBorder(new LineBorder(new Color(255,255,0),2)));
+		border2.setBackground(new Color(255,255,164));
+		border2.setBorder(new TitledBorder(new LineBorder(new Color(255,255,0),2)));
+		border3.setBackground(new Color(255,255,164));
+		border3.setBorder(new TitledBorder(new LineBorder(new Color(255,255,0),2)));
 		
 		//판넬 2개 프레임에 추가
 		add(top, BorderLayout.NORTH);
+//		add(center, BorderLayout.CENTER);
 		add(center);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -221,5 +253,8 @@ public class Product_update extends JFrame{
 		setLocation(200,100);
 		setVisible(true);
 	}
+//	public static void main(String[] args) {
+//		new Product_regist();
+//	}
 
 }
