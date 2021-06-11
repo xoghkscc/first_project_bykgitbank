@@ -1,10 +1,7 @@
-import java.awt.Point;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import function.*;
-import function.viewToGo.ClickDelivery;
+import function.delivery.DeliveryFunctionMain;
 import function.viewToGo.ClickMember;
 import function.viewToGo.ClickPayment;
 import function.viewToGo.ClickStock;
@@ -48,7 +45,7 @@ public class MainFrame extends JFrame{
 		store_btn.addActionListener(new ClickStore(this));
 		                                       
 		JButton delivery_btn = new FrameMoveButton(933, 200, "배달 관리");
-//		delivery_btn.addActionListener(new ClickDelivery(this));
+		delivery_btn.addActionListener(new DeliveryFunctionMain(this));
 		
 		add(payment_btn);
 		add(member_btn);
