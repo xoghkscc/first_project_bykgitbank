@@ -26,7 +26,7 @@ public class StockMainFrame extends JFrame{
 		JButton test2 = new ClickMainDesign();
 		test2.addActionListener(new ClickMain(jf, this));
 
-		
+		System.out.println();
 		add(test2);
 
 		//탑바 고정 판넬
