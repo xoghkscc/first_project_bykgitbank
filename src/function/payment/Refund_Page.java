@@ -110,7 +110,7 @@ public class Refund_Page extends JFrame {
 class SearchPanel extends JPanel {
 	private static JTextField searchText;
 	public SearchPanel() {
-		searchText = new SearchText();
+		searchText = new SearchText("판매번호 입력");
 		setBackground(new Color(43, 51, 62));
 		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		add(searchText, BorderLayout.CENTER);
@@ -123,24 +123,44 @@ class SearchPanel extends JPanel {
 }
 
 class SearchText extends JTextField {
-	public SearchText() {
+	public SearchText(String name) {
+		super(name);
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(300, 30));
+		setForeground(Color.gray);
+		
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				((JTextField) e.getSource()).setText("");
+			}
+		});
+		
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+			
+			((JTextField) e.getSource()).setText(name);
+			
+
+			}
+		});
 	}
 }
+
 
 class MiniTable extends JTable {
 	private static DefaultTableModel miniModel;
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();
-	String[] header = {"구매번호", "구매 시간", "총 가격"};
+	String[] header = {"구매번호","회원 번호", "포인트" ,"구매 시간", "배달",  "총 가격"};
 	public MiniTable() {
 		miniModel = (DefaultTableModel) this.getModel();
 		setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		getTableHeader().setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		getTableHeader().setBackground(new Color(218, 222, 227));
 		miniModel.setColumnIdentifiers(header);
-		String sql = "SELECT * FROM simple_sales order by sales_id"; //simple_sales라는 뷰를 만들었음
+		String sql = "SELECT * FROM sales_simple order by sales_id"; //simple_sales라는 뷰를 만들었음
 		try(
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -150,8 +170,11 @@ class MiniTable extends JTable {
 			while(rs.next()) {
 				String[] data = {
 						""+rs.getInt(1),
-						""+rs.getDate(2),
+						""+rs.getInt(2),
 						""+rs.getInt(3),
+						""+rs.getDate(4),
+						""+rs.getInt(5),
+						""+rs.getInt(6),
 				};
 				miniModel.addRow(data);
 			}
