@@ -1,23 +1,16 @@
 package view.Members;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.util.ArrayList;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,13 +21,19 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import function.topBar.ClickMain;
 import view.Payment.lowPanel.RoundedButton;
 
 
 public class MemberSearchFrame extends JFrame{
 	
-	public MemberSearchFrame () {
-		super ("회원 정보 검색");
+	JFrame jf;
+	
+	public MemberSearchFrame (JFrame jf) {
+		
+		this.jf = jf;
+		
+//		 ("회원 정보 검색");
 			
 		Container content_panel = getContentPane();
 		Container content_panel2 = getContentPane();
@@ -66,7 +65,11 @@ public class MemberSearchFrame extends JFrame{
 		
 		panel.setBackground(new Color (43,51,62));
 		add(new TopBar());
-		add(new ClickManager());
+		ClickManager cm = new ClickManager();
+		cm.addActionListener(new BackToMemberSearchMain(jf, this));
+		add(cm);
+//		add(new ClickManager());
+		
 		
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(null);
@@ -146,19 +149,20 @@ public class MemberSearchFrame extends JFrame{
 		});
 		
 		
+		setSize(jf.getWidth(), jf.getHeight());
+		setLocation(jf.getX(), jf.getY());
 		
-		
-		setBounds(500, 50, 1280, 720);
+//		setBounds(500, 50, 1280, 720);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
 		
-	public static void main(String[] args) {
-		new MemberSearchFrame();
-		
-	
-	}
+//	public static void main(String[] args) {
+//		new MemberSearchFrame();
+//		
+//	
+//	}
 }
 
 class Search extends RoundedButton{

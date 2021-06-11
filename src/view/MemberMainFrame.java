@@ -6,7 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import function.topBar.*;
+import function.topBar.ClickMain;
+import function.topBar.ClickMainDesign;
+import function.topBar.TopBar;
+import view.Members.MemberSearchFrame;
 
 public class MemberMainFrame extends JFrame{
 	JFrame jf;
@@ -31,7 +34,9 @@ public class MemberMainFrame extends JFrame{
 		JPanel topBar = new TopBar();
 		add(topBar, BorderLayout.NORTH);
 		
+		new MemberSearchFrame(jf);
 		
+		setVisible(false);
 		setLayout(null);
 	}
 }
