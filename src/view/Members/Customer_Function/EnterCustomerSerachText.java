@@ -10,6 +10,10 @@ public class EnterCustomerSerachText implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		while(MemberSearchFrame.getModel().getRowCount() > 0) {
+			MemberSearchFrame.getModel().removeRow(0);
+		}
+		
 		new CustomerSearch(Integer.parseInt(MemberSearchFrame.getCustomerPhoneNumber().getText().trim()));
 		
 	}

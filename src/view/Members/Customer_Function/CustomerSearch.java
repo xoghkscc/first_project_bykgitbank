@@ -27,9 +27,7 @@ String sql = "SELECT * FROM member_informations WHERE members_phonenumber LIKE ?
 			pstmt.setString(1, "%" + CustomerNumber);
 			ResultSet rs = pstmt.executeQuery();
 			
-			if(MemberSearchFrame.getModel().getColumnCount() > 0) {
-				MemberSearchFrame.getModel().removeRow(0);
-			}
+		
 			
 			while (rs.next()) {
 			
