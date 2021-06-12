@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.members_list_DB;
+import function.payment.PaymentInsertTable;
 import hikariCP.HikariCP;
 import view.Payment.east.MemberPanel;
 
@@ -59,6 +60,14 @@ public class CustomerListFrame extends JFrame {
 					MemberPanel.getMemberNumberValue().setText("" + member_id);
 					MemberPanel.getMemberNameValue().setText(member_name);
 					MemberPanel.getMemberPointValue().setText("" + member_point);
+					
+					int total_payment = Integer.parseInt(PaymentInsertTable.getTotal_payment().getText().trim());
+					
+					int reserved_point = (int)(total_payment * 0.01);
+					
+					if(!MemberPanel.getMemberNameValue().getText().trim().equals("")) {
+						MemberPanel.getAccumulateValue().setText("" + reserved_point);
+					}
 					
 					setVisible(false);
 					
