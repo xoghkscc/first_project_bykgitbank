@@ -77,6 +77,7 @@ public class Customer_Search {
 	public static Member_Informations_DB getMember_Informations_DB() {
 		return member_informations_DB;
 	}
+	
 	public ArrayList<Member_Informations_DB> getMember_Informations_DB_list() {
 		return Member_Informations_DB_list;
 	}
