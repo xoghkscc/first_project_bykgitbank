@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import function.payment.Payment_Custormer_infor;
+import view.Payment.east.Coustomer_List.Customer_List;
 
 
 public class MemberPanel extends JPanel{
@@ -24,7 +24,7 @@ public class MemberPanel extends JPanel{
 		setBackground(new Color(43, 51, 62));
 		JLabel MemberPhoneNumber = new EastLabel("전화 번호");
 		memberPhoneNumberValue = new EastJText3("뒷자리 입력");
-		memberPhoneNumberValue.addActionListener(new Payment_Custormer_infor());	
+		memberPhoneNumberValue.addActionListener(new Customer_List());	
 		JLabel memberNumber = new EastLabel("회원 번호");
 		memberNumberValue = new EastLabel2("");
 		JLabel memberName = new EastLabel("회원 이름");
