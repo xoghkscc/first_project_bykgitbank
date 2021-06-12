@@ -158,6 +158,14 @@ public class MemberSearchFrame extends JFrame{
 			}
 		});
 		
+		remove.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Customer_Delete();
+				
+			}
+		});
+		
 		
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
@@ -167,12 +175,6 @@ public class MemberSearchFrame extends JFrame{
 		setVisible(true);
 		
 	}
-		
-//	public static void main(String[] args) {
-//		new MemberSearchFrame();
-//		
-//	
-//	}
 	
 	public static JTextField getCustomerPhoneNumber() {
 		return CustomerPhoneNumber;

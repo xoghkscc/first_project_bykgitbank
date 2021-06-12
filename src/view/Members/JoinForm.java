@@ -169,7 +169,7 @@ public class JoinForm extends JPanel{
 		
    }
    
-//  public static void main(String[] args) {
-//	new JoinForm();
-//}
+  public static void main(String[] args) {
+	new JoinForm();
+}
 }
