@@ -14,11 +14,7 @@ public class PushCustomerDelete implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	
 			new Delete_Customer_list(Customer_Delete.getCustomerName().getText().trim());
-
-		
-		
 		
 	}
 }

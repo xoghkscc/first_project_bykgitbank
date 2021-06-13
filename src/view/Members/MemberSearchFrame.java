@@ -5,7 +5,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,9 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import function.model.Member_Informations_DB;
-import function.topBar.ClickMain;
 import view.Members.Customer_Function.EnterCustomerSerachText;
+import view.Members.Customer_Function.PushCustomerUpdateButton;
 import view.Payment.lowPanel.RoundedButton;
 
 
@@ -32,6 +30,7 @@ public class MemberSearchFrame extends JFrame{
 	
 	private static DefaultTableModel model;
 	private static JTextField CustomerPhoneNumber;
+	private static JTable table;
 	JFrame jf;
 	
 	public MemberSearchFrame (JFrame jf) {
@@ -86,7 +85,7 @@ public class MemberSearchFrame extends JFrame{
 		
 		model = new DefaultTableModel(header, 0);
 		
-		JTable table = new JTable(model);
+		table = new JTable(model);
 		table.setRowHeight(30);
 		
 		JTableHeader header1 = table.getTableHeader();
@@ -108,6 +107,7 @@ public class MemberSearchFrame extends JFrame{
 		modify.setLocation(480, 500);
 		modify.setSize(300,100);
 		modify.setForeground(new Color(153, 255, 153));
+		modify.addActionListener(new PushCustomerUpdateButton());
 		
 		JButton remove = new MemberRemove("회원 삭제");
 		remove.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
@@ -183,6 +183,10 @@ public class MemberSearchFrame extends JFrame{
 	public static DefaultTableModel getModel() {
 		return model;
 	}
+	
+	public static JTable getTable() {
+		return table;
+	}
 }
 
 class Search extends RoundedButton{
@@ -220,3 +224,4 @@ class MemberRemove extends RoundedButton{
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
 }
+
