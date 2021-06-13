@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import function.model.Member_Informations_DB;
 import function.model.members_list_DB;
 import function.payment.PaymentInsertTable;
 import hikariCP.HikariCP;
@@ -27,6 +28,7 @@ import view.Payment.east.MemberPanel;
 public class CustomerListFrame extends JFrame {
 	members_list_DB members_list_DB;
 	DefaultTableModel model;
+	
 	
 		static final int WIDTH = 600;
 		static final int HEIGHT = 600;
@@ -92,6 +94,7 @@ public class CustomerListFrame extends JFrame {
 			
 	}
 		class MiniTable extends JTable {
+			Member_Informations_DB member_informations_DB;
 			private static DefaultTableModel miniModel;
 			HikariCP cp = new HikariCP();
 			HikariDataSource ds = cp.getHikariDataSource();
@@ -110,6 +113,7 @@ public class CustomerListFrame extends JFrame {
 					
 					pstmt.setString(1, "%" + customer_phone_num);
 					ResultSet rs = pstmt.executeQuery();
+					
 					while(rs.next()) {
 						String[] data = {
 								""+rs.getInt(1),
@@ -118,6 +122,9 @@ public class CustomerListFrame extends JFrame {
 								""+rs.getInt(4),
 		
 						};
+						
+						
+						
 						miniModel.addRow(data);
 					}
 					rs.close();

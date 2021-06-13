@@ -30,7 +30,7 @@ public class Customer_Search {
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 		){
-			pstmt.setString(1, "%" + Customer_num + "%");
+			pstmt.setString(1, "%" + Customer_num);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {

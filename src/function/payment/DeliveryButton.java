@@ -6,13 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import function.Customer_Search;
+import function.model.Member_Informations_DB;
 import view.Payment.east.EastPayPanel;
 import view.Payment.east.MemberPanel;
+import view.Payment.east.Coustomer_List.CustomerListFrame;
 
 public class DeliveryButton implements ActionListener{
 	
 	private static boolean deliverycheck;
-
+	Member_Informations_DB member_informations_DB;
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		deliverycheck = false;
