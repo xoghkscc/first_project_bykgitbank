@@ -3,6 +3,7 @@ package view.Members.Customer_Function;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +23,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Member_Informations_DB;
 import hikariCP.HikariCP;
+import view.Members.Customer_Delete;
 
 public class Delete_Customer_list extends JFrame {
 
@@ -51,12 +54,27 @@ public class Delete_Customer_list extends JFrame {
 			
 			salesTable.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
-				
+					
 				int row = ((JTable) e.getSource()).getSelectedRow();
 				int member_id =Integer.parseInt((String) MiniTable.getMiniModel().getValueAt(row, 0));
 				
-				new Delete_Customer(member_id);
+				((Component) MiniTable.getMiniModel().getValueAt(row, 0)).addMouseListener(new MouseAdapter() { 
 					
+					public void mouseClicked(MouseEvent e) {
+						System.out.println("실험");
+					}
+					
+				});
+				
+				int choice = JOptionPane.showConfirmDialog(null, "회원을 삭제하시겠습니까?", "회원 삭제", JOptionPane.YES_NO_OPTION);
+				
+				if (choice == 0 ) {
+					new Delete_Customer(member_id);
+					JOptionPane.showMessageDialog(null, "삭제하셨습니다");
+				} 
+				else {
+					JOptionPane.showMessageDialog(null, "취소하셨습니다");
+				}
 					setVisible(false);
 					
 				};
