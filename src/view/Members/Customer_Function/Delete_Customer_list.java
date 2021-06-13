@@ -57,14 +57,7 @@ public class Delete_Customer_list extends JFrame {
 					
 				int row = ((JTable) e.getSource()).getSelectedRow();
 				int member_id =Integer.parseInt((String) MiniTable.getMiniModel().getValueAt(row, 0));
-				
-				((Component) MiniTable.getMiniModel().getValueAt(row, 0)).addMouseListener(new MouseAdapter() { 
-					
-					public void mouseClicked(MouseEvent e) {
-						System.out.println("실험");
-					}
-					
-				});
+			
 				
 				int choice = JOptionPane.showConfirmDialog(null, "회원을 삭제하시겠습니까?", "회원 삭제", JOptionPane.YES_NO_OPTION);
 				
