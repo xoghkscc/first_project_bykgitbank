@@ -19,6 +19,10 @@ public class DeliveryButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		deliverycheck = false;
+		
+		//새로운 배달 공식
+		new Customer_Search(Integer.parseInt(MemberPanel.getMemberNumberValue().getText().trim()));
+		
 		if(!(PaymentInsertTable.getTotal_payment().getText()).trim().equals("0")) {
 			if((Integer.parseInt((EastPayPanel.getAmountValue().getText()))>=30000) &
 				!(MemberPanel.getMemberNameValue().getText().equals(""))) {//금액 3만원, 회원 입력할때만 작동함

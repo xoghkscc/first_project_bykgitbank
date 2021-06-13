@@ -140,4 +140,6 @@ public class CustomerListFrame extends JFrame {
 				return miniModel;
 			}
 			
+		
+			
 		}	
