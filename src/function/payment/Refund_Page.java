@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -44,6 +45,8 @@ public class Refund_Page extends JFrame {
 	private static JPanel page;
 	private static int clickRow;
 	private static JTable salesTable;
+	JButton refund;
+//	JButton refund = new LowJButtoncardPayment("환불하기");
 	public Refund_Page() {
 		setSize(WIDTH, HEIGHT);
 		setLocation(X, Y);
@@ -52,7 +55,7 @@ public class Refund_Page extends JFrame {
 		page = new JPanel();
 		page.setLayout(new CardLayout(30, 40));
 		page.setBackground(new Color(43, 51, 62));
-		JButton refund = new LowJButtoncardPayment("환불하기");
+		refund = new LowJButtoncardPayment("환불하기");
 		refund.addActionListener(new RefundAction(this));
 		refund.setVisible(false);
 		
@@ -86,7 +89,7 @@ public class Refund_Page extends JFrame {
 				refund.setVisible(false);
 				SearchPanel.getSearchText().setVisible(true);
 				SearchPanel.getSearchText().setText("판매번호 입력");
-				
+				new MiniTableSearch("");
 			}
 		});
 		JPanel search = new SearchPanel();
@@ -114,6 +117,14 @@ public class Refund_Page extends JFrame {
 	}
 	public static JTable getSalesTable() {
 		return salesTable;
+	}
+	
+	public void setRfundaction(JButton receiptBtn) {
+		this.refund = receiptBtn;
+	}
+	
+	public JButton getRefundBtn() {
+		return this.refund;
 	}
 }
 
@@ -197,7 +208,9 @@ class MiniTable extends JTable {
 						""+rs.getInt(5),
 						""+rs.getInt(6),
 				};
-				miniModel.addRow(data);
+				if(rs.getInt(6) > 0) {
+					miniModel.addRow(data);
+				}
 			}
 			rs.close();
 			ds.close();

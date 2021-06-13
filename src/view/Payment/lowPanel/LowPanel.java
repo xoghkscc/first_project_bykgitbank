@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import function.payment.DeliveryButton;
 import function.payment.FinalPayment;
 import function.payment.PayTableReset;
+import function.payment.ReceiptButton;
 import function.payment.RefundButton;
 
 public class LowPanel extends JPanel{
@@ -21,6 +22,7 @@ public class LowPanel extends JPanel{
 		reset.addActionListener(new PayTableReset());
 		
 		JButton receipt = new LowJButton("영수증출력");
+		receipt.addActionListener(new ReceiptButton());
 		JButton cancelPayment = new LowJButtonCancel("배달");
 		cancelPayment.addActionListener(new DeliveryButton());
 		JButton refund = new LowJButton("환불");

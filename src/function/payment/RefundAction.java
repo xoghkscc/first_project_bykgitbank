@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -37,6 +38,7 @@ public class RefundAction implements ActionListener{
 		int point_score =Integer.parseInt((String) miniModel.getValueAt(clickRow, 2));
 		int delivery_id =Integer.parseInt((String) miniModel.getValueAt(clickRow, 4));
 		new RefundDB(sales_id, members_id, point_score, delivery_id, detailMiniModel);
+		JOptionPane.showMessageDialog(null, "환불 완료.");
 		refundJf.dispose();
 	}
 
