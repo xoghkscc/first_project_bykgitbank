@@ -65,6 +65,8 @@ public class Customer_Search {
 				
 			}	
 			
+			
+			
 			rs.close();
 			ds.close();
 		} catch (SQLException e) {
@@ -72,6 +74,7 @@ public class Customer_Search {
 		}
 		
 	}
+	
 	
 
 	public static Member_Informations_DB getMember_Informations_DB() {
