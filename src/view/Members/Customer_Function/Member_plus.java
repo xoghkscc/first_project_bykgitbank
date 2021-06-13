@@ -13,15 +13,8 @@ public class Member_plus implements ActionListener  {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
-//	Object[] options = { "추가한다", "추가하지않는다" };
-//	JOptionPane.showOptionDialog(null, "추가하시겠습니까?", "",
-//		JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-//		null, options, options[0]);
-//	
-	int choice;
-	choice = JOptionPane.showConfirmDialog(null, "추가하시겠습니까?", "회원 추가", JOptionPane.YES_NO_OPTION);
-	
-	
+
+	int choice = JOptionPane.showConfirmDialog(null, "추가하시겠습니까?", "회원 추가", JOptionPane.YES_NO_OPTION);
 	
 	if (choice == 0 ) {
 		new Inster_members(Join.getMemberName().getText().trim(), Join.getMemberAddress().getText().trim(), Join.getMemberPhoneNumber().getText().trim());
