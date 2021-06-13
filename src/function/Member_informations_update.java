@@ -18,7 +18,6 @@ public class Member_informations_update {
 		String update_members_point = String.format("UPDATE MEMBER_INFORMATIONS SET members_point = members_point + (%d) WHERE members_id = %d ",
 				accumulate_point, members_id);
 		
-		System.out.println(update_members_point);
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(update_members_point);
