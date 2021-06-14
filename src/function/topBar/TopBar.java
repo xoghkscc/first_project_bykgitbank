@@ -3,7 +3,6 @@ package function.topBar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,16 +13,25 @@ import javax.swing.JTextField;
 public class TopBar extends JPanel{
 	JFrame mainjf;
 	JFrame paymentjf;
+	
 	public TopBar(JFrame mainjf, JFrame paymentjf) {
 		this.mainjf = mainjf;
 		this.paymentjf = paymentjf;
 		
-		JButton text = new JButton();
+		JTextField text = new JTextField();
 		setSize(1280, 50);
 		setLocation(0, 0);
+		text.setBackground(new Color(43, 51, 62));
+		text.setBorder(null);
 		
+		JButton btn1 = new JButton();
+		btn1.setBackground(new Color(43, 51, 62));
+		btn1.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/supermarker.png"));
+		btn1.setSize(400, 35);
+		btn1.setLocation(475, 15);
+		btn1.setBorder(null);
+		add(btn1);
 		
-
 		setLayout(new BorderLayout());
 		add(text);
 		JButton test2 = new ClickMainDesign();
@@ -34,12 +42,21 @@ public class TopBar extends JPanel{
 	}
 	
 	public TopBar() {
-		JTextField text = new JTextField("공통 상단바");
+		JTextField text = new JTextField();
 		setSize(1280, 50);
 		setLocation(0, 0);
-		text.setBackground(new Color(0, 36, 62));
+		text.setBackground(new Color(43, 51, 62));
 		setLayout(new BorderLayout());
+		
+		
 		add(text);
+		JButton btn1 = new JButton();
+		btn1.setBackground(new Color(43, 51, 62));
+		btn1.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/supermarker.PNG"));
+		btn1.setSize(300, 30);
+		btn1.setBorder(null);
+		btn1.setLocation(475, 15);
+		add(btn1);
 		
 		JButton test2 = new ClickMainDesign();
 		test2.addActionListener(new ClickMain(mainjf, paymentjf));
