@@ -10,8 +10,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import hikariCP.HikariCP;
 
 public class Products_update {
-	HikariCP cp = new HikariCP();
-	HikariDataSource ds = cp.getHikariDataSource();
+	HikariCP cp2 = new HikariCP();
+	HikariDataSource ds2 = cp2.getHikariDataSource();
 	
 	public Products_update(int product_id, int stocksOrGram ) {
 		//이걸로 재고를 빼거나 추가할 수 있음
@@ -20,7 +20,7 @@ public class Products_update {
 		String sales_type_check = String.format("SELECT sales_type FROM products WHERE product_id = %d",product_id);
 		
 		try (
-				Connection conn = ds.getConnection();
+				Connection conn = ds2.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sales_type_check);
 				){
 			
@@ -46,13 +46,13 @@ public class Products_update {
 		}
 		
 		try (
-				Connection conn = ds.getConnection();
+				Connection conn = ds2.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(update_product);
 				){
 			
 			pstmt.executeUpdate();
 			
-			ds.close();
+			ds2.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
