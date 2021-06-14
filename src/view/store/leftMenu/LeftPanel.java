@@ -38,10 +38,9 @@ public class LeftPanel extends JPanel{
 		sales = new MainLabel(" 매출 관리");
 		sales.addMouseListener(new ClickAction(sales));
 		
-		JLabel employee_enrollment = new SubLabel("직원 등록");
-		employee_enrollment.addMouseListener(new SubClickAction(new Employee_enrollment()) {
-		});
 		JLabel employee_lookup = new SubLabel("직원 관리");
+		employee_lookup.addMouseListener(new SubClickAction(new Employee_enrollment()) {
+		});
 		
 		JLabel date_sales = new SubLabel("날짜별 매출 조회");
 		
@@ -53,10 +52,8 @@ public class LeftPanel extends JPanel{
 		employee.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				LeftPanel.getLeftPanel().remove(sales);
-				if(employee_enrollment.isVisible()) {
-					LeftPanel.getLeftPanel().remove(employee_enrollment);
+				if(employee_lookup.isVisible()) {
 					LeftPanel.getLeftPanel().remove(employee_lookup);
-					employee_enrollment.setVisible(false);
 					employee_lookup.setVisible(false);
 					LeftPanel.getEmployee().setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 				}else {
@@ -66,9 +63,7 @@ public class LeftPanel extends JPanel{
 					date_sales.setVisible(false);
 					item_search.setVisible(false);
 					inquiry_search.setVisible(false);
-					LeftPanel.getLeftPanel().add(employee_enrollment);
 					LeftPanel.getLeftPanel().add(employee_lookup);
-					employee_enrollment.setVisible(true);
 					employee_lookup.setVisible(true);
 				}
 				LeftPanel.getLeftPanel().add(sales);
@@ -87,9 +82,7 @@ public class LeftPanel extends JPanel{
 					inquiry_search.setVisible(false);
 					LeftPanel.getSales().setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 				}else {
-					LeftPanel.getLeftPanel().remove(employee_enrollment);
 					LeftPanel.getLeftPanel().remove(employee_lookup);
-					employee_enrollment.setVisible(false);
 					employee_lookup.setVisible(false);
 					LeftPanel.getLeftPanel().add(date_sales);
 					LeftPanel.getLeftPanel().add(item_search);

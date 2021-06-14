@@ -28,8 +28,6 @@ import view.Payment.east.MemberPanel;
 public class CustomerListFrame extends JFrame {
 	members_list_DB members_list_DB;
 	DefaultTableModel model;
-	
-	
 		static final int WIDTH = 600;
 		static final int HEIGHT = 600;
 		static final int X = 200;
