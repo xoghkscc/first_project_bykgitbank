@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import function.topBar.*;
+import view.store.leftMenu.LeftPanel;
 public class StoreMainFrame extends JFrame{
 	JFrame jf;
 	public StoreMainFrame(JFrame jf) {
@@ -13,20 +14,15 @@ public class StoreMainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
-		setLayout(null);
-		
-		JButton test = new JButton("여긴 매장 관리 화면을 구현하면 됩니다");//JButton test는 지워도 됩니다.
-		test.setLocation(500, 200);
-		test.setSize(150, 150);
-		add(test);
-		
-		JButton test2 = new ClickMainDesign();
-		test2.addActionListener(new ClickMain(jf, this));
-		add(test2);
+		setLayout(new BorderLayout());
 		
 
-		JPanel topBar = new TopBar();
+		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
+		
+		
+		JPanel leftPanle = new LeftPanel(this);
+		add(leftPanle, BorderLayout.WEST);
 		
 		setVisible(true);
 	}
