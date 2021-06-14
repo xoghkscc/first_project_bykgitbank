@@ -9,7 +9,7 @@ import view.Payment.lowPanel.RoundedButton;
 public class MainButton extends RoundedButton {
 	public MainButton(int x, int y, String name) {
 		super(name);
-		super.o = new Color(0, 0, 0);
+		super.o = new Color(100, 100, 100);
 		super.c = new Color(255, 255, 240); 
 		setSize(150, 150);
 		setLocation(new Point(x, y));

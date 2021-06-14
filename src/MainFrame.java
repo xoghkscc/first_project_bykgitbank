@@ -42,45 +42,43 @@ public class MainFrame extends JFrame{
 		 
 		JButton logo = new JButton();
 		logo.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/logo6.png"));
-		logo.setBounds(440, 50, 338, 338);
+		logo.setBounds(447, 50, 338, 338);
 		logo.setBorderPainted(false);
 		add(logo);
-				
+		
+		
 		JButton payment_btn = new MainButton(135, 400, "계산");
 		payment_btn.addActionListener(new ClickPayment(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
-		payment_btn.setFont(new Font("바탕체", Font.PLAIN, 35));
+		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 	
 				 
 		
 		JButton member_btn = new MainButton(340, 400, "회원 관리");
 		member_btn.addActionListener(new ClickMember(this));
-		member_btn.setFont(new Font("바탕체", Font.PLAIN, 30));
+		member_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 
 		
 	
 		JButton stock_btn = new MainButton(544, 400, "재고 관리");
 		stock_btn.addActionListener(new ClickStock(this));
-		stock_btn.setFont(new Font("바탕체", Font.PLAIN, 30));
+		stock_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 		
 		
 		
 		JButton store_btn = new MainButton(749, 400, "매장 관리");
 		store_btn.addActionListener(new ClickStore(this));
-		store_btn.setFont(new Font("바탕체", Font.PLAIN, 30));
+		store_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 
 		
 		                                       
 		JButton delivery_btn = new MainButton(953, 400, "배달 관리");
 		delivery_btn.addActionListener(new DeliveryFunctionMain(this));
-		delivery_btn.setFont(new Font("바탕체", Font.PLAIN, 30));
+		delivery_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 	
-		
-		
-		
 		add(payment_btn);
 		add(member_btn);
 		add(stock_btn);
