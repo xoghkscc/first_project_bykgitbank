@@ -8,9 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import view.Members.Customer_Function.Member_plus;
-import view.Members.Customer_Function.PushCustomerDelete;
-import view.Members.Design.RoundButtonDesign;
+import function.member.PushCustomerDelete;
+import function.member.design.RoundButtonDesign;
+
+
 
 public class Customer_Delete extends JFrame  {
 	

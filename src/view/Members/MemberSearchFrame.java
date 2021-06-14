@@ -21,8 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import view.Members.Customer_Function.EnterCustomerSerachText;
-import view.Members.Customer_Function.PushCustomerUpdateButton;
+import function.member.EnterCustomerSerachText;
+import function.member.PushCustomerUpdateButton;
 import view.Payment.lowPanel.RoundedButton;
 
 

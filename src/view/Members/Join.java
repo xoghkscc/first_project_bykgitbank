@@ -8,8 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import view.Members.Customer_Function.Member_plus;
-import view.Members.Design.RoundButtonDesign;
+import function.member.Member_plus;
+import function.member.design.RoundButtonDesign;
+
 
 
 
