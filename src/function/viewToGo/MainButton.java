@@ -6,10 +6,11 @@ import javax.swing.JButton;
 
 import view.Payment.lowPanel.RoundedButton;
 
-public class FrameMoveButton extends RoundedButton {
-	public FrameMoveButton(int x, int y, String name) {
+public class MainButton extends RoundedButton {
+	public MainButton(int x, int y, String name) {
 		super(name);
-		super.c = new Color(102, 102, 255); 
+		super.o = new Color(0, 0, 0);
+		super.c = new Color(255, 255, 240); 
 		setSize(150, 150);
 		setLocation(new Point(x, y));
 	}
