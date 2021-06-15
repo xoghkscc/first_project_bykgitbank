@@ -44,6 +44,7 @@ public class Check_Job_Id {
 		
 			if(count == 0) {
 				JOptionPane.showMessageDialog(null, "아이디 혹은 비밀번호가 틀렸습니다");
+				Privilege_Mode_Login.getMember_password().setText("");
 			} else if(employee_DB.getJob_id().equals("manager") || employee_DB.getJob_id().equals("store-owner")) {			
 				new MainFramePrivilegeMode(jf1);
 				jf.setVisible(false);
