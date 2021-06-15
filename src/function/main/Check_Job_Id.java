@@ -14,7 +14,7 @@ import function.model.Employee_DB;
 import hikariCP.HikariCP;
 import main.MainFramePrivilegeMode;
 
-public class Check_manger {
+public class Check_Job_Id {
 	
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();		
@@ -23,7 +23,7 @@ public class Check_manger {
 	JFrame jf;
 	JFrame jf1;
 
-	public Check_manger(String manager_id, String manager_password, JFrame jf, JFrame jf1) {
+	public Check_Job_Id(String manager_id, String manager_password, JFrame jf, JFrame jf1) {
 		String sql = "SELECT job_id FROM employee WHERE login_id = ? AND login_password = ? ";
 		int count = 0;
 		try (
@@ -44,7 +44,7 @@ public class Check_manger {
 		
 			if(count == 0) {
 				JOptionPane.showMessageDialog(null, "아이디 혹은 비밀번호가 틀렸습니다");
-			} else if(employee_DB.getJob_id().equals("manager")) {			
+			} else if(employee_DB.getJob_id().equals("manager") || employee_DB.getJob_id().equals("store-owner")) {			
 				new MainFramePrivilegeMode(jf1);
 				jf.setVisible(false);
 				jf1.setVisible(false);

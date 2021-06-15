@@ -23,7 +23,7 @@ public class push_login implements ActionListener {
 		
 		
 		
-		new Check_manger(Privilege_Mode_Login.getMember_id().getText().trim(),
+		new Check_Job_Id(Privilege_Mode_Login.getMember_id().getText().trim(),
 				Privilege_Mode_Login.getMember_password().getText().trim(), jf, jf1);
 		
 		

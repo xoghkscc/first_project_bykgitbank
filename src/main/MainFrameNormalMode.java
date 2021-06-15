@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import function.delivery.DeliveryFunctionMain;
 import function.topBar.TopBar;
+import function.topBar.TorBar_Main;
 import function.viewToGo.ClickMember;
 import function.viewToGo.ClickPayment;
 import function.viewToGo.ClickStock;
@@ -45,7 +46,7 @@ public class MainFrameNormalMode extends JFrame{
 		
 		getContentPane().setBackground(new Color(0, 36, 62));
 		
-		JPanel topBar = new TopBar(log_jf, this);
+		JPanel topBar = new TorBar_Main(log_jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
 		JButton logo = new JButton();
