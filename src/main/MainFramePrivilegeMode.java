@@ -1,3 +1,4 @@
+package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,7 +17,7 @@ import function.viewToGo.ClickStock;
 import function.viewToGo.ClickStore;
 import function.viewToGo.MainButton;
 
-public class MainFrame extends JFrame{
+public class MainFramePrivilegeMode extends JFrame{
 	static final int WIDTH = 1280; 
 	static final int HEIGHT = 720; //topbar는 50
 	static final int X = 50; 
@@ -36,7 +37,7 @@ public class MainFrame extends JFrame{
 	}
 
 	
-	public MainFrame() {
+	public MainFramePrivilegeMode() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
 		setLocation(50, 50);
@@ -45,7 +46,7 @@ public class MainFrame extends JFrame{
 		getContentPane().setBackground(new Color(0, 36, 62));
 		 
 		JButton logo = new JButton();
-		logo.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/logo6.png"));
+		logo.setIcon(new ImageIcon("./files/logo6.png"));
 		logo.setBounds(447, 50, 338, 338);
 		logo.setBorderPainted(false);
 		add(logo);

@@ -28,12 +28,12 @@ public class DeliveryMainFrame extends JFrame {
 	
 //		setLayout(null);
 		
-		JButton test2 = new ClickMainDesign();
-		test2.addActionListener(new ClickMain(jf, this));
-
-		add(test2);
+//		JButton test2 = new ClickMainDesign();
+//		test2.addActionListener(new ClickMain(jf, this));
+//
+//		add(test2);
 		
-		JPanel topBar = new TopBar();
+		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
 		JPanel center = new JPanel();

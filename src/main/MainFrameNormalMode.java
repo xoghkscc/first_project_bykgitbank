@@ -1,3 +1,4 @@
+package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,7 +17,7 @@ import function.viewToGo.ClickStock;
 import function.viewToGo.ClickStore;
 import function.viewToGo.MainButton;
 
-public class MainFrame extends JFrame{
+public class MainFrameNormalMode extends JFrame{
 	static final int WIDTH = 1280; 
 	static final int HEIGHT = 720; //topbar는 50
 	static final int X = 50; 
@@ -36,7 +37,7 @@ public class MainFrame extends JFrame{
 	}
 
 	
-	public MainFrame() {
+	public MainFrameNormalMode() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
 		setLocation(50, 50);
@@ -45,7 +46,7 @@ public class MainFrame extends JFrame{
 		getContentPane().setBackground(new Color(0, 36, 62));
 		 
 		JButton logo = new JButton();
-		logo.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/logo6.png"));
+		logo.setIcon(new ImageIcon("./files/logo6.png"));
 		logo.setBounds(447, 50, 338, 338);
 		logo.setBorderPainted(false);
 		add(logo);
@@ -56,19 +57,15 @@ public class MainFrame extends JFrame{
 		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 		JButton member_btn = new MainButton(340, 400, "회원 관리");
-		member_btn.addActionListener(new ClickMember(this));
 		member_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 		JButton stock_btn = new MainButton(544, 400, "재고 관리");
-		stock_btn.addActionListener(new ClickStock(this));
 		stock_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		
 		JButton store_btn = new MainButton(749, 400, "매장 관리");
-		store_btn.addActionListener(new ClickStore(this));
 		store_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 		                                 
 		JButton delivery_btn = new MainButton(953, 400, "배달 관리");
-		delivery_btn.addActionListener(new DeliveryFunctionMain(this));
 		delivery_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
 	
 		add(payment_btn);
