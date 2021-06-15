@@ -41,7 +41,7 @@ public class Login_Frame extends JFrame {
 		getContentPane().setBackground(new Color(0, 36, 62));
 		 
 		JButton logo = new JButton();
-		logo.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/logo6.png"));
+		logo.setIcon(new ImageIcon("./files/logo6.png"));
 		logo.setBounds(170, 50, 338, 338);
 		logo.setBorderPainted(false);
 		add(logo);
