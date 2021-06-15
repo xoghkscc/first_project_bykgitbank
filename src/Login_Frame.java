@@ -5,9 +5,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import function.main.NormalModePush;
 import function.main.PushPrivilegeMode;
 import function.viewToGo.ClickPayment;
 import function.viewToGo.MainButton;
+import main.MainFrameNormalMode;
 
 public class Login_Frame extends JFrame {
 	
@@ -46,7 +48,7 @@ public class Login_Frame extends JFrame {
 		
 		
 		JButton payment_btn = new MainButton(135, 400, "일반 모드");
-		payment_btn.addActionListener(new ClickPayment(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
+		payment_btn.addActionListener(new NormalModePush(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
 		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
 		
 		add(payment_btn);
