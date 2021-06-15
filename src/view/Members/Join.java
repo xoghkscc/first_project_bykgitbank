@@ -63,7 +63,7 @@ public class Join extends JFrame {
 		
 		memberName.setBounds(180, 230, 200, 30);
 		memberName.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-		memberName.setForeground(new Color(255, 255, 255));
+	
 		
 		label2.setBounds(80, 280, 200, 30);
 		label2.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
@@ -71,7 +71,7 @@ public class Join extends JFrame {
 		
 		memberAddress.setBounds(180, 280, 200, 30);
 		memberAddress.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-		memberAddress.setForeground(new Color(255, 255, 255));
+	
 		
 		label3.setBounds(80, 330, 100, 30);
 		label3.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
@@ -79,9 +79,8 @@ public class Join extends JFrame {
 		
 		memberPhoneNumber.setBounds(180, 330, 200, 30);
 		memberPhoneNumber.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-		memberPhoneNumber.setForeground(new Color(255, 255, 255));
 		
-		btn.setBounds(140,390,200,50);
+		btn.setBounds(150,390,200,50);
 		btn.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
 		btn.setForeground(new Color(102, 255, 102));
 		btn.addActionListener(new Member_plus());

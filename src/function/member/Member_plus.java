@@ -16,11 +16,12 @@ public class Member_plus implements ActionListener  {
 
 	int choice = JOptionPane.showConfirmDialog(null, "추가하시겠습니까?", "회원 추가", JOptionPane.YES_NO_OPTION);
 	
-	if (choice == 0 ) {
+	if(Join.getMemberName().getText().trim().equals("") || Join.getMemberAddress().getText().trim().equals("") || Join.getMemberPhoneNumber().getText().trim().equals("")) {
+		JOptionPane.showMessageDialog(null, "모든 정보를 입력해주세요");
+	} else if (choice == 0 ) {
 		new Inster_members(Join.getMemberName().getText().trim(), Join.getMemberAddress().getText().trim(), Join.getMemberPhoneNumber().getText().trim());
 		JOptionPane.showMessageDialog(null, "추가하셨습니다");
-	} 
-	else {
+	} else {
 		JOptionPane.showMessageDialog(null, "취소하셨습니다");
 	}
 	
