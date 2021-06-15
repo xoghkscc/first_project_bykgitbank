@@ -91,7 +91,7 @@ public class Product_type_search extends JFrame{
 				
 					String type = jb.getText();
 //					jf.setVisible(false);
-					new type_search_buttons(jf, type, null);	
+					new type_search_buttons(jf, type, null,null);	
 				}
 				
 			});

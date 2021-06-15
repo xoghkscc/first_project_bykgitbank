@@ -124,7 +124,7 @@ public class Product_expiry_search extends JFrame{
 		System.out.println(expiryDatePeriod);
 		System.out.println(number);
 		
-		tablePanel.add(new Table_make("SELECT * FROM PRODUCTS WHERE EXPIRATION_DATE BETWEEN SYSDATE AND SYSDATE + " + number)); //컴보박스에서 나오는 날짜 입력
+		tablePanel.add(new Table_make("SELECT * FROM PRODUCTS WHERE EXPIRATION_DATE BETWEEN SYSDATE AND SYSDATE + " + number,null,null)); //컴보박스에서 나오는 날짜 입력
 		tablePanel.setVisible(true);
 		
 		centerPanel.setBorder(new TitledBorder(new LineBorder(new Color(255,255,100),5)));

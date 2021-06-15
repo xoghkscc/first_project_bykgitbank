@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -16,6 +14,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
+
+import function.stock.MouseListener_getDataFromTable;
 
 public class Table_make extends JPanel{
 	
@@ -40,18 +40,52 @@ public class Table_make extends JPanel{
 		"SALES_TYPE",
 		"COST"
 	};
-	
-	private DefaultTableModel model = new DefaultTableModel(colNames, 0);
-	
-	private String sql;
-	
-	public Table_make(String sql) {
+	private String colNames2[] = { 
+			"PRODUCT_ID",    
+			"PRODUCT_NAME", 
+			"PRODUCT_TYPE", 
+			"PRODUCT_PRICE",   
+			"EXPIRATION_DATE",         
+			"DISCOUNT_TYPE", 
+			"DISCOUNT_RATE",  
+			"PRUDUCT_ORIGIN", 
+			"STOCKS",   
+			"GRAM",    
+			"SALES_TYPE",
+			"COST",
+			"순이익"
+		};
+	private DefaultTableModel model;
+
+	String update = null;
+	String sql;
+	String doit;
+	public Table_make(String sql,String update, String doit) {
 //		setLayout(null);
+		this.update = update;
+		this.doit = doit;
 		this.sql = sql;
+		
+		if(sql.equals("SELECT * FROM PRODUCTS INNER JOIN "
+				+ "(SELECT product_id,(product_price - COST) AS 순이익 FROM PRODUCTS) USING(product_id)")){
+			model = new DefaultTableModel(colNames2, 0);
+		}else {
+			
+			model = new DefaultTableModel(colNames, 0);
+		}
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
 		table = new JTable(model);	//테이블 생성
-		table.addMouseListener(new JTableMouseListener()); //테이블에 마우스리스너 감지하는 클래스를 추가
+		
+		//중요 리스너!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		if(doit != null) {
+			
+			if(doit.equals("registEvent")) {
+				
+				table.addMouseListener(new MouseListener_getDataFromTable(table, "regist")); //테이블에 마우스리스너 감지하는 클래스를 추가
+			}
+		}
+		
 		table.setRowHeight(40);	//테이블의 셀 높이 조정
 		table.getColumn("PRODUCT_ID").setPreferredWidth(50); //테이블의 컬럼 셀 넓이 조정
 		table.getColumn("PRODUCT_NAME").setPreferredWidth(150); 
@@ -60,6 +94,10 @@ public class Table_make extends JPanel{
 		table.getColumn("DISCOUNT_RATE").setPreferredWidth(50);
 		table.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		
+		if(sql.equals("SELECT * FROM PRODUCTS INNER JOIN "
+				+ "(SELECT product_id,(product_price - COST) AS 순이익 FROM PRODUCTS) USING(product_id)")){
+			table.getColumn("순이익").setPreferredWidth(150);
+		}
 		
 		//컬럼헤더 크기바꾸기
 		JTableHeader header = table.getTableHeader();
@@ -85,12 +123,11 @@ public class Table_make extends JPanel{
 		dtcr.setHorizontalAlignment(SwingConstants.CENTER);
 		TableColumnModel tcm = table.getColumnModel();
 		
-			
+		System.out.println(tcm.getColumnCount());
 		for(int i = 0; i < tcm.getColumnCount(); i++) {
 			tcm.getColumn(i).setCellRenderer(dtcr);
 		}
-		
-		
+
 		dtcr.setBackground(new Color(255,255,255));
 		
 		scrollPane = new JScrollPane(table);
@@ -98,35 +135,16 @@ public class Table_make extends JPanel{
 		scrollPane.setLocation(100, 100);
 		
 		add(scrollPane);
-	
+
 //		initialize();
 		select(sql);
 
 	}
-	private class JTableMouseListener implements MouseListener{	
-		
-		public void mouseClicked(MouseEvent e) {	//마우스클릭했을때의 액션
-			
-			JTable jtable = (JTable)e.getSource();
-			int row = jtable.getSelectedRow();	//행값 넣기
-			int col = jtable.getSelectedColumn();	//컬럼값 넣기
-			
-			System.out.println(model.getValueAt(row, col));
-		}
-
-	@Override
-	public void mousePressed(MouseEvent e) {}
-	@Override
-	public void mouseReleased(MouseEvent e) {}
-	@Override
-	public void mouseEntered(MouseEvent e) {}
-	@Override
-	public void mouseExited(MouseEvent e) {}
-	}
 	
 	private void select(String sql) {	
+
 		ConnectDB cdb = new ConnectDB(sql);
-		
+
 		ArrayList<Object[]> arr = new ArrayList<>();
 		
 		arr = cdb.getSelect();

@@ -3,6 +3,8 @@ package view.stock.nextFrame;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import view.stock.nextFrame.type_search.type_search_buttons;
+
 public class Product_profit_rate extends JFrame{
 	
 	JFrame jf;
@@ -11,15 +13,8 @@ public class Product_profit_rate extends JFrame{
 		// TODO Auto-generated constructor stub
 		this.jf = jf;
 		
-		setLayout(null);
+		String profitRate = "원가 및 마진율";
 		
-		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		add(backButton);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(jf.getWidth(), jf.getHeight());
-		setLocation(jf.getX(), jf.getY());
-		setVisible(true);
+		new type_search_buttons(jf,profitRate, null,null);
 	}
 }

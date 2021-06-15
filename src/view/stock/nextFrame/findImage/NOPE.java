@@ -12,16 +12,20 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.Payment.lowPanel.RoundedButton;
 import view.stock.nextFrame.BackButton;
 import view.stock.nextFrame.BackToStock;
+import view.stock.nextFrame.productEvent.UpdateEvent;
 import view.stock.nextFrame.type_search.type_search_buttons;
 
 public class NOPE extends JFrame{
 
 	JFrame jf;
+	public static String eventName;
+	public static String rate;
 	
 	public NOPE(JFrame jf) {
 		// TODO Auto-generated constructor stub
@@ -80,6 +84,54 @@ public class NOPE extends JFrame{
 		updateButton.addMouseListener(new Actions(updateButton));
 		searchButton.addMouseListener(new Actions(searchButton));
 		
+		
+		registButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			
+				eventName = JOptionPane.showInputDialog("이벤트 이름을 입력하세요");
+				
+				String cofirmStr;
+				int confirm = -5;
+				
+				if(eventName != null) {
+					
+					rate = JOptionPane.showInputDialog(eventName + "의 할인율을 입력하세요");
+				}
+				if(eventName != null && rate != null) {
+					cofirmStr = "이벤트 이름 : " + eventName + "\n할인율 : " + rate + "\n  등록하시겠습니까?";
+					
+					confirm = JOptionPane.showConfirmDialog(null,cofirmStr,"이벤트 등록", JOptionPane.YES_NO_OPTION);
+					if(confirm == JOptionPane.YES_OPTION) {
+						
+						String fullsql = "SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NULL";
+						
+						
+						new type_search_buttons(jf,null,fullsql, "registEvent");
+					}
+				}
+				
+
+//				new type_search_buttons
+			}
+			
+		});
+		
+		updateButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				new UpdateEvent();
+			}
+			
+		});
+		
+		
 		searchButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -89,7 +141,7 @@ public class NOPE extends JFrame{
 				String fullsql = "SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NOT NULL";
 				
 				
-				new type_search_buttons(jf,null,fullsql);
+				new type_search_buttons(jf,null,fullsql,null);
 			}
 			
 		});
@@ -100,15 +152,12 @@ public class NOPE extends JFrame{
 		
 		add(backButtonPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
-		
-		
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 //		setSize(jf.getWidth(), jf.getHeight());
 //		setLocation(jf.getX(), jf.getY());
 		setSize(560,610);
 		setLocation(50, 50);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 //	public static void main(String[] args) {

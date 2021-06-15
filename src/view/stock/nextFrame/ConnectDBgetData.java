@@ -15,11 +15,12 @@ public class ConnectDBgetData {
 
 	private ArrayList<String> columnArr;
 	String column;
+	String update;
 	
-	public ConnectDBgetData(String column) {
+	public ConnectDBgetData(String column, String update) {
 		// TODO Auto-generated constructor stub
 		this.column = column;
-		
+		this.update = update;
 		columnArr = new ArrayList<>();
 		
 		HikariDataSource ds = new HikariCP().getHikariDataSource();
@@ -34,8 +35,9 @@ public class ConnectDBgetData {
 			while(rs.next()) {
 				columnArr.add(rs.getString(column));
 			}
-//			rs.close();
-//			pstmt.close();
+			rs.close();
+			pstmt.close();
+			conn.close();
 			ds.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

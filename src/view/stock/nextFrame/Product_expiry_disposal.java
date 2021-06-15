@@ -14,7 +14,7 @@ public class Product_expiry_disposal extends JFrame{
 		
 		String disposal = "유통기한초과물품";
 		
-		new type_search_buttons(jf,disposal, null);
+		new type_search_buttons(jf,disposal, null,null);
 		
 
 	}

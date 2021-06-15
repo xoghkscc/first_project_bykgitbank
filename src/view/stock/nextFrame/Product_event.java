@@ -60,7 +60,8 @@ public class Product_event extends JFrame{
 		registButton.setSize(210, 200);		
 		registButton.setBorderPainted(false);
 		registButton .setHorizontalTextPosition(JButton.CENTER);
-	
+		
+		
 		
 		JButton updateButton = new JButton("행사수정", 
 				new GetImage("./files/buttons/Waterbutton.jpg",
@@ -95,7 +96,7 @@ public class Product_event extends JFrame{
 				String fullsql = "SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NOT NULL";
 				
 				
-				new type_search_buttons(jf,null,fullsql);
+				new type_search_buttons(jf,null,fullsql,null);
 			}
 			
 		});
@@ -113,12 +114,11 @@ public class Product_event extends JFrame{
 		
 		
 		setBackground(new Color(62,154,229));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		setSize(jf.getWidth(), jf.getHeight());
 //		setLocation(jf.getX(), jf.getY());
 		setSize(530,600);
 		setLocation(50, 50);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 //	public static void main(String[] args) {
