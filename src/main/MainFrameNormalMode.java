@@ -37,14 +37,17 @@ public class MainFrameNormalMode extends JFrame{
 	}
 
 	
-	public MainFrameNormalMode() {
+	public MainFrameNormalMode(JFrame log_jf) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
 		setLocation(50, 50);
 		setLayout(null);
 		
 		getContentPane().setBackground(new Color(0, 36, 62));
-		 
+		
+		JPanel topBar = new TopBar(log_jf, this);
+		add(topBar, BorderLayout.NORTH);
+		
 		JButton logo = new JButton();
 		logo.setIcon(new ImageIcon("./files/logo6.png"));
 		logo.setBounds(447, 50, 338, 338);

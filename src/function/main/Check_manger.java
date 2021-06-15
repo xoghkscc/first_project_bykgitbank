@@ -45,7 +45,7 @@ public class Check_manger {
 			if(count == 0) {
 				JOptionPane.showMessageDialog(null, "아이디 혹은 비밀번호가 틀렸습니다");
 			} else if(employee_DB.getJob_id().equals("manager")) {			
-				new MainFramePrivilegeMode();
+				new MainFramePrivilegeMode(jf1);
 				jf.setVisible(false);
 				jf1.setVisible(false);
 			};

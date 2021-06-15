@@ -19,7 +19,7 @@ public class NormalModePush implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		jf.setVisible(false);
 		
-		new MainFrameNormalMode();
+		new MainFrameNormalMode(jf);
 		
 	}
 	

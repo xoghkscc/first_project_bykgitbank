@@ -44,12 +44,12 @@ public class TopBar extends JPanel{
 	
 	public TopBar() {
 		
-//		JTextField text = new JTextField();
-//		setSize(1280, 50);
-//		setLocation(0, 0);
-//		text.setBackground(new Color(43, 51, 62));
-//		setLayout(new BorderLayout());
-//		add(text);
+		JTextField text = new JTextField();
+		setSize(1280, 50);
+		setLocation(0, 0);
+		text.setBackground(new Color(43, 51, 62));
+		setLayout(new BorderLayout());
+		add(text);
 		
 		JLabel btn2 = new JLabel();
 		btn2.setBackground(new Color(43, 51, 62));
