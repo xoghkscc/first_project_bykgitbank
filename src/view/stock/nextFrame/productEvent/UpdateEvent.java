@@ -2,6 +2,8 @@ package view.stock.nextFrame.productEvent;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,6 +36,12 @@ public class UpdateEvent extends JFrame{
 		JComboBox<String> jComboBoxEvent = new JComboBox<String>(event); 
 		jComboBoxEvent.setBounds(320, 370, 150, 45);
 		jComboBoxEvent.setVisible(true);
+		
+		JButton logo = new JButton();
+		logo.setIcon(new ImageIcon("./files/logo6.png"));
+		logo.setBounds(447, 50, 238, 238);
+		logo.setBorderPainted(false);
+		add(logo);
 		
 		JLabel jl = new JLabel("수정할 행사를 고르세요.");
 		jl.setBounds(20, 20, 200, 30);
