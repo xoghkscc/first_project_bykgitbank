@@ -27,6 +27,7 @@ public class push_login implements ActionListener {
 				Privilege_Mode_Login.getMember_password().getText().trim(), jf, jf1);
 		
 		
+		
 		}
 	
 		

@@ -2,7 +2,9 @@ package function.payment.Customer_List;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import function.model.Member_Informations_DB;
@@ -16,7 +18,11 @@ public class Customer_List implements ActionListener  {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
-	new CustomerListFrame(Integer.parseInt(MemberPanel.getMemberPhoneNumberValue().getText().trim()));
+	if(!(Pattern.matches("[0-9]{4}", MemberPanel.getMemberPhoneNumberValue().getText().trim()))) {
+		JOptionPane.showMessageDialog(null, "전화번호 숫자4자리를 입력해주세요");
+	} else {
+		new CustomerListFrame(Integer.parseInt(MemberPanel.getMemberPhoneNumberValue().getText().trim()));
+	}
 	
 	}
 }

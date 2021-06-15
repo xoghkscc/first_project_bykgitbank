@@ -17,9 +17,9 @@ public class PointReset extends MouseAdapter{
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		String pointValue = ((JTextField) e.getSource()).getText().trim();
 		
-		if(Integer.parseInt(pointValue) == 0) {
+		if(Integer.parseInt(pointValue) == 0 ) {
 			((JTextField) e.getSource()).setText("");
-			}else {
+			} else {	
 				((JTextField) e.getSource()).setText("0");
 				int pointReset = Integer.parseInt(finalPrice) + Integer.parseInt(pointValue);
 				
@@ -29,7 +29,7 @@ public class PointReset extends MouseAdapter{
 				PaymentInsertTable.getTotal_payment().setText(Integer.toString(pointReset));
 				TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(PaymentInsertTable.getTotal_payment().getText())));//최종 금액을 화폐단위로 출력
 				
-				((JTextField) e.getSource()).setText("");
+				//((JTextField) e.getSource()).setText("");
 			}
 	}
 }
