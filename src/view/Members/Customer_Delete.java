@@ -3,6 +3,7 @@ package view.Members;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,45 +27,56 @@ public class Customer_Delete extends JFrame  {
 		
 		setLayout(null);
 				
-		JLabel join = new JLabel("#회원 삭제#");
+//		JLabel join = new JLabel("#회원 삭제#");
 		JLabel label1 = new JLabel("이름 : ");
 		customerName = new JTextField();
 	
 		JButton btn = new RoundButtonDesign("회원 삭제");
 		
-		add(join);
+		JButton logo = new JButton();
+		logo.setIcon(new ImageIcon("./files/logo7.png"));
+		logo.setBounds(75, 20, 337, 212);
+		logo.setBorderPainted(false);
+		add(logo);
+		
+//		add(join);
 		add(label1);
 		add(customerName);
 		add(btn);
 		
-		join.setBounds(140,30, 1000,40);
-		join.setFont(new Font("맑은 고딕", Font.PLAIN, 35));
+//		join.setBounds(140, 230, 1000,40);
+//		join.setFont(new Font("맑은 고딕", Font.PLAIN, 35));
+//		join.setForeground(new Color(255, 255, 255));
 		
-		label1.setBounds(80, 100, 100, 30);
+		label1.setBounds(80, 290, 100, 30);
 		label1.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		label1.setForeground(new Color(255, 255, 255));
 		
-		customerName.setBounds(180, 100, 200, 40);
+		customerName.setBounds(150, 290, 200, 30);
 		customerName.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		customerName.setBackground(new Color(255, 255, 255));
 		
 		
-		btn.setBounds(140,350,200,50);
+		btn.setBounds(150,370,200,50);
 		btn.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
-		btn.setForeground(new Color(102, 255, 102));
+		btn.setForeground(new Color(100, 100, 100));
 		btn.addActionListener(new PushCustomerDelete());
 		
 		setBounds(500, 50, 500, 500);
-		setBackground(new Color(43,51,62));
+		getContentPane().setBackground(new Color(0,36,62));
 		setVisible(true);
 		
 	}
 	
-//	public static void main(String[] args) {
-//		new Join();
-//	}
+	public static void main(String[] args) {
+		new Customer_Delete();
+	}
 	
 	public static JTextField getCustomerName(){
 		return customerName;
 	}
+	
+	
 	
 }
 
