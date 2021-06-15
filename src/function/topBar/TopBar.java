@@ -27,9 +27,9 @@ public class TopBar extends JPanel{
 		
 		JLabel btn1 = new JLabel();
 		btn1.setBackground(new Color(43, 51, 62));
-		btn1.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/supermarker.png"));
+		btn1.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/supermarket.png"));
 		btn1.setSize(400, 35);
-		btn1.setLocation(475, 15);
+		btn1.setLocation(830, 15);
 		btn1.setBorder(null);
 		add(btn1);
 		
@@ -55,7 +55,7 @@ public class TopBar extends JPanel{
 		btn2.setBackground(new Color(43, 51, 62));
 		btn2.setIcon(new ImageIcon("C:/Users/user/git/first_project_bykgitbank/files/supermarker.png"));
 		btn2.setSize(400, 35);
-		btn2.setLocation(475, 15);
+		btn2.setLocation(800, 15);
 		add(btn2, BorderLayout.CENTER);
 		
 		JButton test2 = new ClickMainDesign();
