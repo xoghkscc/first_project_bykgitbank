@@ -1,4 +1,4 @@
-package view.Members.Design;
+package function.member.design;
 
 import java.awt.Color;
 import java.awt.Font;

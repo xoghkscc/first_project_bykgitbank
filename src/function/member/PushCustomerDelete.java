@@ -1,4 +1,4 @@
-package view.Members.Customer_Function;
+package function.member;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

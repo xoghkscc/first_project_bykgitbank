@@ -7,7 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import view.Payment.east.Coustomer_List.Customer_List;
+import function.payment.Customer_List.Customer_List;
+
+
 
 
 public class MemberPanel extends JPanel{

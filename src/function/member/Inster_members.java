@@ -1,4 +1,4 @@
-package view.Members.Customer_Function;
+package function.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
