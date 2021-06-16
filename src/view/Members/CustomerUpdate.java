@@ -88,7 +88,7 @@ public class CustomerUpdate extends JFrame {
 		pane.setLocation(30, 150);
 		pane.setSize(1200,300);
 		
-		JButton modify = new MemberJoin("회원 수정 완료");
+		JButton modify = new MemberJoin("회원 수정");
 		modify.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
 		modify.setLocation(450, 500);
 		modify.setSize(300,100);

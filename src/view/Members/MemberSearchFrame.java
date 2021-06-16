@@ -121,7 +121,6 @@ public class MemberSearchFrame extends JFrame{
 		modify.setLocation(480, 500);
 		modify.setSize(300,100);
 		modify.setForeground(new Color(153, 255, 153));
-		modify.addActionListener(new PushCustomerUpdateButton());
 		
 		JButton remove = new MemberRemove("회원 삭제");
 		remove.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
@@ -202,15 +201,6 @@ public class MemberSearchFrame extends JFrame{
 			}
 		});
 		
-		
-		
-		remove.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Customer_Delete();
-				
-			}
-		});
 		table.addMouseListener(new ClickReceipt());
 		
 		setSize(jf.getWidth(), jf.getHeight());
