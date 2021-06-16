@@ -53,7 +53,7 @@ public class Login_Frame extends JFrame {
 		
 		add(payment_btn);
 				 
-//		d
+
 		JButton privilege_btn = new MainButton(380, 400, "관리자 모드");
 		privilege_btn.addActionListener(new PushPrivilegeMode(this));
 		privilege_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
