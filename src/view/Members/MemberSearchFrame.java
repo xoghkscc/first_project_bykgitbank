@@ -42,7 +42,7 @@ public class MemberSearchFrame extends JFrame{
 	
 	private static DefaultTableModel model;
 	private static JTextField CustomerPhoneNumber;
-	private static JTable table;
+	public static JTable table;
 	JFrame jf;
 	
 	public MemberSearchFrame (JFrame jf) {
@@ -211,7 +211,19 @@ public class MemberSearchFrame extends JFrame{
 				
 			}
 		});
-		table.addMouseListener(new ClickReceipt());
+		table.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {		
+				TableModel tm = table.getModel();
+				int row = table.getSelectedRow();
+				System.out.println(tm.getValueAt(row, 0));
+				int id = (int)tm.getValueAt(row, 0);
+				System.out.println("123");
+				new ReceiptButton();
+				
+			}
+		});
 		
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());

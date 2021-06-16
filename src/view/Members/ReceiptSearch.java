@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,9 +44,9 @@ public class ReceiptSearch extends JFrame {
 		JDatePickerImpl datePickerEnd = new JDatePickerImpl(datePanelEnd);
 		
 		//데이트 피커 안의 글자 
-		datePickerStart.getJFormattedTextField().setText("  처음날짜를 선택하세요");
+		datePickerStart.getJFormattedTextField().setText("  구입한 날짜를 입력해주세요");
 		datePickerStart.getJFormattedTextField().setForeground(new Color(145,145,145));
-		datePickerStart.setBounds(40,40,200,25);
+		datePickerStart.setBounds(40,40,300,25);
 		datePickerStart.getJFormattedTextField().setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		
 		datePickerEnd.getJFormattedTextField().setText("  마지막날짜를 선택하세요");
@@ -95,7 +98,7 @@ public class ReceiptSearch extends JFrame {
 		datePickerEnd.addActionListener(dc2);
 		
 		panel1.add(datePickerStart);
-		panel1.add(datePickerEnd);
+		//panel1.add(datePickerEnd);
 		panel1.add(field);
 		panel1.add(btn);
 		panel1.add(pane);
@@ -103,12 +106,29 @@ public class ReceiptSearch extends JFrame {
 		panel1.setLocation(50,50);
 		panel1.setBackground(new Color(43,51 ,62));
 		
-	
 		getContentPane().add(panel1);
-				
 		setBounds(500,50,600,600);
 		setVisible(true);
-	}
+	
+		
+		MouseListener mm = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if (e.getSource() instanceof JTextField) {
+					
+					((JTextField) e.getSource()).setText("");
+					while(model.getRowCount() > 0) {
+						model.removeRow(0);
+					}
+					((JTextField) e.getSource()).setForeground(new Color(000,000,000));
+				}
+			}
+		};
+			field.addMouseListener(mm);
+				
+		}
 
 	public static DefaultTableModel getModel() {
 		return model;
