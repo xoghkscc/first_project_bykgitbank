@@ -92,8 +92,8 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			
 			DeliveryRightPanel dr = DeliveryRightPanel.getRightPanel();
 			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.members_id));
-			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.delivery_id));
-			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.payment));
+			dr.getAddressText().setText(String.format("%d", DeliveryLeftTable.delivery_id));
+			dr.getPaymentText().setText(String.format("%d", DeliveryLeftTable.payment));
 			
 			
 			

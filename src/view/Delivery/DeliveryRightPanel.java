@@ -37,7 +37,7 @@ public class DeliveryRightPanel extends JPanel {
 //		public static int payment;
 		
 		JLabel information = new DeliveryRightLabel("주문자 정보");
-		informationText = new DeliveryRightText(주문자정보);
+		informationText = new DeliveryRightText("   ");
 		JLabel address = new DeliveryRightLabel("주소지 정보");
 		addressText = new DeliveryRightText(주소지정보);
 		JLabel phoneNumber = new DeliveryRightLabel("연락처 정보");
