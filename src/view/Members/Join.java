@@ -14,6 +14,7 @@ import function.member.design.RoundButtonDesign;
 
 
 
+
 public class Join extends JFrame {
 	
 	private static JTextField memberName;
@@ -24,7 +25,7 @@ public class Join extends JFrame {
 	public Join () {
 		
 		super("회원 등록");
-		
+				
 		setLayout(null);
 				
 //		JLabel join = new JLabel("#회원 등록#");
@@ -60,21 +61,23 @@ public class Join extends JFrame {
 		label1.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		label1.setForeground(new Color(255, 255, 255));
 		
-		memberName.setBounds(180, 100, 200, 40);
+		memberName.setBounds(180, 230, 200, 30);
 		memberName.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+	
 		
 		label2.setBounds(80, 280, 200, 30);
 		label2.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		label2.setForeground(new Color(255, 255, 255));
 		
-		memberAddress.setBounds(180, 180, 200, 40);
+		memberAddress.setBounds(180, 280, 200, 30);
 		memberAddress.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+	
 		
 		label3.setBounds(80, 330, 100, 30);
 		label3.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		label3.setForeground(new Color(255, 255, 255));
 		
-		memberPhoneNumber.setBounds(180, 260, 200, 40);
+		memberPhoneNumber.setBounds(180, 330, 200, 30);
 		memberPhoneNumber.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		
 		btn.setBounds(150,390,200,50);
@@ -86,6 +89,9 @@ public class Join extends JFrame {
 		getContentPane().setBackground(new Color(0,36,62));
 		setVisible(true);
 		
+	}
+	public static void main(String[] args) {
+		new Join();
 	}
 	
 	public static JTextField getMemberName(){
