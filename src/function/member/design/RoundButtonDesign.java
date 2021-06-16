@@ -12,7 +12,8 @@ public class RoundButtonDesign extends RoundedButton {
 
 		public RoundButtonDesign(String name) {
 			super(name);
-			super.c = new Color(255, 255, 153); 
+			super.o = new Color(100, 100, 100);
+			super.c = new Color(255, 255, 240); 
 			setHorizontalAlignment(JLabel.CENTER);
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		}

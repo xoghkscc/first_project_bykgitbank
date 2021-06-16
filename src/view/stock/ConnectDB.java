@@ -44,7 +44,7 @@ public class ConnectDB {
 					rs.getDate("EXPIRATION_DATE"),
 					rs.getString("DISCOUNT_TYPE"),
 					rs.getInt("DISCOUNT_RATE"),
-					rs.getString("PRUDUCT_ORIGIN"),
+					rs.getString("PRODUCT_ORIGIN"),
 					rs.getInt("STOCKS"),
 					rs.getInt("GRAM"),
 					rs.getString("SALES_TYPE"),

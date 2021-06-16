@@ -23,14 +23,14 @@ public class StockMainFrame extends JFrame{
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
 		
-		JButton test2 = new ClickMainDesign();
-		test2.addActionListener(new ClickMain(jf, this));
-
-		System.out.println();
-		add(test2);
+//		JButton test2 = new ClickMainDesign();
+//		test2.addActionListener(new ClickMain(jf, this));
+//
+//		System.out.println();
+//		add(test2);
 
 		//탑바 고정 판넬
-		JPanel topBar = new TopBar();
+		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
 		//왼쪽 버튼 판넬

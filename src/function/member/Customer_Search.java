@@ -26,6 +26,9 @@ public class Customer_Search {
 		
 		String sql = "SELECT * FROM member_informations ";
 		
+		//물음표는 회원서치에서 아이디를 받아온 숫자
+	
+		
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -13,7 +13,7 @@ public class ClickMain implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		jf.setVisible(false);
+		jf.setVisible(false);	
 		mainJf.setVisible(true);
 	}
 
