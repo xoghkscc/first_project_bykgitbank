@@ -49,8 +49,11 @@ public class PointUse implements ActionListener{
 			EastPayPanel.getMoneypaymentValue().setText(formatMoney.format(Integer.parseInt(EastPayPanel.getPaymentValue().getText().trim())));
 			PaymentInsertTable.getTotal_payment().setText(EastPayPanel.getPaymentValue().getText().trim());
 			TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(PaymentInsertTable.getTotal_payment().getText().trim())));
+			
 		}
-	
+		
+		
+		
 	}
 
 }
