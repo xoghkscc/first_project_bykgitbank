@@ -11,7 +11,8 @@ import com.zaxxer.hikari.HikariDataSource;
 
 public class ConnectDB {
 
-	private String result;
+	private Double resultRate;
+	private int resultID;
 	private ArrayList<Object[]> arr;
 	public ConnectDB(String sql) {	
 		// TODO Auto-generated constructor stub
@@ -34,40 +35,74 @@ public class ConnectDB {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 		){
-			
-			while(rs.next()) {
-	
-				 arr.add(new Object[]{rs.getInt("PRODUCT_ID"),
-					rs.getString("PRODUCT_NAME"),
-					rs.getString("PRODUCT_TYPE"),
-					rs.getInt("PRODUCT_PRICE"),
-					rs.getDate("EXPIRATION_DATE"),
-					rs.getString("DISCOUNT_TYPE"),
-					rs.getInt("DISCOUNT_RATE"),
-					rs.getString("PRODUCT_ORIGIN"),
-					rs.getInt("STOCKS"),
-					rs.getInt("GRAM"),
-					rs.getString("SALES_TYPE"),
-					rs.getString("COST")
-				 });
-				 
+
+			if(sql.charAt(7) == 'D') {//select *
 				
+				while(rs.next()) {
+	
+					resultRate = rs.getDouble("DISCOUNT_RATE");
+				}
+			}else if(sql.charAt(7) == 'M'){
+				while(rs.next()) {
+	
+					resultID = rs.getInt("PRODUCT_ID");
+				}
+			}else {
+				if(sql.equals("SELECT * FROM PRODUCTS INNER JOIN (SELECT product_id,(product_price - COST) AS 순이익 FROM PRODUCTS) USING(product_id)")) {
+
+					while(rs.next()) {		
+						arr.add(new Object[]{rs.getInt("PRODUCT_ID"),
+								rs.getString("PRODUCT_NAME"),
+								rs.getString("PRODUCT_TYPE"),
+								rs.getInt("PRODUCT_PRICE"),
+								rs.getDate("EXPIRATION_DATE"),
+								rs.getString("DISCOUNT_TYPE"),
+								rs.getDouble("DISCOUNT_RATE"),
+								rs.getString("PRODUCT_ORIGIN"),
+								rs.getInt("STOCKS"),
+								rs.getInt("GRAM"),
+								rs.getString("SALES_TYPE"),
+								rs.getInt("COST"),
+								rs.getInt("순이익")
+						});
+					}
+				}else {
+					while(rs.next()) {		
+						arr.add(new Object[]{rs.getInt("PRODUCT_ID"),
+								rs.getString("PRODUCT_NAME"),
+								rs.getString("PRODUCT_TYPE"),
+								rs.getInt("PRODUCT_PRICE"),
+								rs.getDate("EXPIRATION_DATE"),
+								rs.getString("DISCOUNT_TYPE"),
+								rs.getDouble("DISCOUNT_RATE"),
+								rs.getString("PRODUCT_ORIGIN"),
+								rs.getInt("STOCKS"),
+								rs.getInt("GRAM"),
+								rs.getString("SALES_TYPE"),
+								rs.getInt("COST")
+						});
+					}
+				}
 			}
 			rs.close();
 			pstmt.close();
 			conn.close();
 			ds.close();	//커넥션풀을 꼭닫아주세요
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public String getResult() {
-		return result;
+	public Double getResultRate() {
+		return resultRate;
 	}
-	
+	public int getResultID() {
+		return resultID;
+	}
 	public ArrayList<Object[]> getSelect(){
 		return arr;
 	}
 
 }
+

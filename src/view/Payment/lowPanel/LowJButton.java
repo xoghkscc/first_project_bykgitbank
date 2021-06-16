@@ -2,15 +2,7 @@ package view.Payment.lowPanel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
 
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class LowJButton extends RoundedButton{

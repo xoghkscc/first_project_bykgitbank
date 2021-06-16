@@ -3,10 +3,7 @@ package view.Payment.middlePanel;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 
 public class MiddleJLabel extends JLabel{
 	public MiddleJLabel(String name) {

@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
@@ -21,17 +24,22 @@ public class type_search_buttons extends JFrame{
 	String sql = "";
 	String CompleteSql;
 	String fullsql = null;
-	public type_search_buttons(JFrame jf, String sql, String fullsql) {//JFrame jf, String sql 
+	String doit;
+	public type_search_buttons(JFrame jf, String sql, String fullsql, String doit) {//JFrame jf, String sql 
 		
 		this.sql = sql;
 		this.jf = jf;
 		this.fullsql = fullsql;
-		
+		this.doit = doit;
 		
 		String nameString = null;
 		
 //		sql = sql.trim();
-		if(sql == null) {
+
+		if(sql == null && fullsql.equals("SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NULL")) {
+			sql = "등록가능한 품목현황";
+			nameString = "등록가능한 품목현황";
+		}else if(sql == null) {
 			sql = "행사품목현황";
 			nameString = "행사품목현황";
 		}else if(sql.equals("유통기한초과물품")) {
@@ -41,9 +49,10 @@ public class type_search_buttons extends JFrame{
 			setTitle( "\'"+ sql + "\' 유형 재고 현황");			
 			nameString = "\'"+ sql + "\'유형";
 		}
-		
-		
-		if(sql.equals("유통기한초과물품")) {
+		if(sql.equals("원가 및 마진율")) {
+			
+			CompleteSql = "SELECT * FROM PRODUCTS INNER JOIN (SELECT product_id,(product_price - COST) AS 순이익 FROM PRODUCTS) USING(product_id)";
+		}else if(sql.equals("유통기한초과물품")) {
 			
 			CompleteSql = "SELECT * FROM PRODUCTS WHERE EXPIRATION_DATE < SYSDATE";
 		}else {
@@ -54,10 +63,7 @@ public class type_search_buttons extends JFrame{
 		if(fullsql != null) {
 			CompleteSql = fullsql;
 		}
-		
-		System.out.println(CompleteSql);
-		
-		JPanel tablePanel = new Table_make(CompleteSql);
+		JPanel tablePanel = new Table_make(CompleteSql,null, doit);
 		JPanel namePanel = new JPanel();
 		JLabel name = new JLabel(nameString);
 		
@@ -117,4 +123,6 @@ public class type_search_buttons extends JFrame{
 //	public static void main(String[] args) {
 //		new type_search_buttons();
 //	}
+
 }
+

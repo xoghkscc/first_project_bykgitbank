@@ -5,8 +5,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,9 +24,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 
 import function.member.EnterCustomerSerachText;
 import function.member.PushCustomerUpdateButton;
+//import com.sun.media.sound.ModelAbstractChannelMixer;
+
+import function.model.Member_Informations_DB;
+import function.topBar.ClickMain;
+import function.topBar.TopBar;
+import view.Members.Customer_Function.Delete_Customer;
+import view.Members.Customer_Function.*;
 import view.Payment.lowPanel.RoundedButton;
 
 
@@ -56,9 +68,7 @@ public class MemberSearchFrame extends JFrame{
 		CustomerPhoneNumber.addActionListener(new EnterCustomerSerachText());
 		
 		JLabel label = new JLabel("회원 정보 검색: ");
-		
-		
-		
+				
 		label.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		label.setForeground(Color.white);		
 		CustomerPhoneNumber.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
@@ -70,11 +80,7 @@ public class MemberSearchFrame extends JFrame{
 	
 		
 		panel.setBackground(new Color (43,51,62));
-		add(new TopBar());
-		ClickManager cm = new ClickManager();
-		cm.addActionListener(new BackToMemberSearchMain(jf, this));
-		add(cm);
-//		add(new ClickManager());
+		add(new TopBar(jf, this));
 		
 		
 		JPanel panel2 = new JPanel();
@@ -83,9 +89,17 @@ public class MemberSearchFrame extends JFrame{
 		// JTable header
 		String[] header = {"회원ID","회원 이름", "회원 주소", "회원 연락처","회원 포인트"};
 		
-		model = new DefaultTableModel(header, 0);
+		model = new DefaultTableModel(header, 0) {
+	
+		 public boolean isCellEditable(int rowIndex, int mColIndex) {
+             return false;
+         }
+     };
 		
 		table = new JTable(model);
+		table.setFont(new Font("맑은 고딕", Font.PLAIN,17));
+		table.getTableHeader().setReorderingAllowed(false);
+	    table.getTableHeader().setResizingAllowed(false);
 		table.setRowHeight(30);
 		
 		JTableHeader header1 = table.getTableHeader();
@@ -124,6 +138,7 @@ public class MemberSearchFrame extends JFrame{
 		content_panel2.add(panel2);
 		
 		MouseListener mm = new MouseAdapter() {
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -136,6 +151,7 @@ public class MemberSearchFrame extends JFrame{
 					((JTextField) e.getSource()).setForeground(new Color(000,000,000));
 				}
 			}
+		
 		};
 		
 		CustomerPhoneNumber.addMouseListener(mm);
@@ -144,16 +160,36 @@ public class MemberSearchFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				
 			}
 		});
 		
+		btn.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+					if (e.getSource() instanceof JTextField) {
+					
+						((JTextField) e.getSource()).setText("");
+				}
+					while(model.getRowCount() > 0) {
+						model.removeRow(0);
+			}	
+			}
+		
+		});
 		
 		join.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Join();
+				
+			}
+		});
+		modify.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CustomerUpdate();
 				
 			}
 		});
@@ -167,6 +203,16 @@ public class MemberSearchFrame extends JFrame{
 		});
 		
 		
+		
+		remove.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Customer_Delete();
+				
+			}
+		});
+		table.addMouseListener(new ClickReceipt());
+		
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
 		
@@ -176,6 +222,11 @@ public class MemberSearchFrame extends JFrame{
 		
 	}
 	
+	private void add(ClickMain cm) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public static JTextField getCustomerPhoneNumber() {
 		return CustomerPhoneNumber;
 	}
@@ -183,11 +234,11 @@ public class MemberSearchFrame extends JFrame{
 	public static DefaultTableModel getModel() {
 		return model;
 	}
-	
 	public static JTable getTable() {
 		return table;
 	}
 }
+
 
 class Search extends RoundedButton{
 	public Search(String name) {
@@ -219,7 +270,7 @@ class MemberModify extends RoundedButton{
 class MemberRemove extends RoundedButton{
 	public MemberRemove(String name) {
 		super(name);
-		super.c = new Color(255, 204, 204); 
+		super.c = new Color(255, 000, 102); 
 		setHorizontalAlignment(JLabel.CENTER);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}

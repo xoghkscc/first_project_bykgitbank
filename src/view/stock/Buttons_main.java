@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import view.stock.nextFrame.Product_event;
 import view.stock.nextFrame.Product_expiry_disposal;
 import view.stock.nextFrame.Product_expiry_search;
 import view.stock.nextFrame.Product_order;
@@ -17,6 +16,7 @@ import view.stock.nextFrame.Product_profit_rate;
 import view.stock.nextFrame.Product_regist;
 import view.stock.nextFrame.Product_type_search;
 import view.stock.nextFrame.Product_update;
+import view.stock.nextFrame.findImage.NOPE;
 
 public class Buttons_main extends JPanel{
 
@@ -41,7 +41,7 @@ public class Buttons_main extends JPanel{
 		jbArr.get(0).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_regist(jf);					
 			}
 			
@@ -49,21 +49,21 @@ public class Buttons_main extends JPanel{
 		jbArr.get(1).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_update(jf);					
 			}	
 		});
 		jbArr.get(2).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_order(jf);					
 			}	
 		});
 		jbArr.get(3).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_type_search(jf);					
 			}	
 		});
@@ -71,7 +71,7 @@ public class Buttons_main extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				String num = "0";
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_expiry_search(jf,num);					
 			}	
 		});
@@ -85,15 +85,15 @@ public class Buttons_main extends JPanel{
 		jbArr.get(6).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
-				new Product_event(jf);	
-//				new NOPE(jf);
+//				jf.setVisible(false);
+//				new Product_event(jf);	
+				new NOPE(jf);
 			}	
 		});
 		jbArr.get(7).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				jf.setVisible(false);
+//				jf.setVisible(false);
 				new Product_profit_rate(jf);					
 			}	
 		});

@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
@@ -15,9 +16,13 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 public class DateCheck {
 
 //	JFrame jf; 
+	String startDate;
+	String endDate;
+	public static JPanel table_panel;
+	
 	private JPanel indexes;
 	
-	public DateCheck() {
+	public DateCheck(JFrame jf) {
 		
 		UtilDateModel modelStart = new UtilDateModel();
 		UtilDateModel modelEnd = new UtilDateModel();
@@ -49,18 +54,8 @@ public class DateCheck {
 		indexes.add(datePanel);
 		datePanel.add(datePickerStart);
 		datePanel.add(datePickerEnd);
-
-		
-		datePanel = new Searching_product(datePanel).getIndex();
 		
 
-		DateCheckAction dc = new DateCheckAction(modelStart);
-		DateCheckAction dc2 = new DateCheckAction(modelEnd);
-		
-		//DateCheckAction 
-		datePickerStart.addActionListener(dc);
-		datePickerEnd.addActionListener(dc2);
-		
 		//컬러
 		indexes.setBackground(new Color(43,51,62));
 		
@@ -69,11 +64,17 @@ public class DateCheck {
 //		
 		indexes.add(datePanel, BorderLayout.NORTH);
 		
-		JPanel table_panel = new Table_make("SELECT * FROM PRODUCTS");
+		JPanel table_panel = new Table_make("SELECT * FROM PRODUCTS",null,null);
+//		JPanel table_panel = new JPanel();
+		table_panel.setBounds(0, 0, 700, 700);
+		table_panel.setSize(700, 700);
+		table_panel.setPreferredSize(new Dimension(870,520));
+		
 		table_panel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
 		table_panel.setBackground(new Color(43,51,62));
 		indexes.add(table_panel, FlowLayout.CENTER);
 		
+		datePanel = new Searching_product(jf,indexes, table_panel,datePanel,datePickerStart,datePickerEnd,modelStart,modelEnd).getIndex();
 
 		datePanel.setVisible(true);
 		indexes.setVisible(true);
