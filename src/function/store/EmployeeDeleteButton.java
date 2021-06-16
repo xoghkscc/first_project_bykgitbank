@@ -1,4 +1,4 @@
-package view.store;
+package function.store;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,14 +15,14 @@ import function.model.Employee_DB;
 import hikariCP.HikariCP;
 import view.store.centerPanel.RightPanel;
 
-public class DeleteButton implements ActionListener{
+public class EmployeeDeleteButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int employee_id =Integer.parseInt(RightPanel.getemployee_id().getText().trim());
-		if(employee_id == 0) {
+		if(RightPanel.getemployee_id().getText().trim().equals("")) {
 			JOptionPane.showMessageDialog(null, "삭제하려는 직원을 눌러주세요.");
 		}else {
+			int employee_id =Integer.parseInt(RightPanel.getemployee_id().getText().trim());
 			HikariCP cp = new HikariCP();
 			HikariDataSource ds = cp.getHikariDataSource();
 			String sql = String.format("DELETE FROM employee WHERE employee_id = %d", employee_id);
