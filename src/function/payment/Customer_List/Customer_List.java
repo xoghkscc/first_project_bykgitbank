@@ -19,7 +19,7 @@ public class Customer_List implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 	
 	if(!(Pattern.matches("[0-9]{4}", MemberPanel.getMemberPhoneNumberValue().getText().trim()))) {
-		JOptionPane.showMessageDialog(null, "전화번호 숫자4자리를 입력해주세요");
+		JOptionPane.showMessageDialog(null, "전화번호 숫자 4자리를 입력해주세요");
 	} else {
 		new CustomerListFrame(Integer.parseInt(MemberPanel.getMemberPhoneNumberValue().getText().trim()));
 	}
