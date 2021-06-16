@@ -82,7 +82,7 @@ class EmployeeTable extends JTable {
 //		getTableHeader().setBackground(new Color(218, 222, 227));
 		employeeModel.setColumnIdentifiers(header);
 
-		String sql = "SELECT *  FROM employee";
+		String sql = "SELECT *  FROM employee ORDER BY employee_id ASC ";
 
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			ResultSet rs = pstmt.executeQuery();

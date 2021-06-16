@@ -20,7 +20,7 @@ public class CustomerSearch {
 	
 	public CustomerSearch(int CustomerNumber) {
 		
-		String sql = "SELECT * FROM member_informations WHERE members_phonenumber LIKE ? ";
+		String sql = "SELECT * FROM member_informations WHERE members_phonenumber LIKE ? ORDER BY employee_id ASC ";
 		
 		try (
 				Connection conn = ds.getConnection();
