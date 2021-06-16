@@ -16,10 +16,14 @@ public class PointReset extends MouseAdapter{
 		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		String pointValue = ((JTextField) e.getSource()).getText().trim();
-		
-		if(Integer.parseInt(pointValue) == 0 ) {
+			
+			if(pointValue.equals("")) {
+				((JTextField) e.getSource()).setText("");
+				
+			} else if (Integer.parseInt(pointValue) == 0) {
 			((JTextField) e.getSource()).setText("");
-			} else {	
+			
+			} else if (Integer.parseInt(pointValue) != 0) {	
 				((JTextField) e.getSource()).setText("0");
 				int pointReset = Integer.parseInt(finalPrice) + Integer.parseInt(pointValue);
 				
