@@ -5,8 +5,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,13 +24,23 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 
+import com.sun.media.sound.ModelAbstractChannelMixer;
+
+import function.model.Member_Informations_DB;
 import function.topBar.ClickMain;
+import function.topBar.TopBar;
+import view.Members.Customer_Function.Delete_Customer;
+import view.Members.Customer_Function.EnterCustomerSerachText;
 import view.Payment.lowPanel.RoundedButton;
 
 
 public class MemberSearchFrame extends JFrame{
 	
+	private static DefaultTableModel model;
+	private static JTextField CustomerPhoneNumber;
+	private static JTable table;
 	JFrame jf;
 	
 	public MemberSearchFrame (JFrame jf) {
@@ -45,30 +59,26 @@ public class MemberSearchFrame extends JFrame{
 		panel.setSize(1000,70);
 		
 		
-		JButton btn = new Search("검색");		
-		JTextField text = new JTextField(20);
-		text.setText("※ 휴대폰 번호 4자리를 입력해주세요");
+		JButton btn = new Search("검색");
+		btn.addActionListener(new EnterCustomerSerachText());
+		CustomerPhoneNumber = new JTextField(20);
+		CustomerPhoneNumber.setText("※ 휴대폰 번호 4자리를 입력해주세요");
+		CustomerPhoneNumber.addActionListener(new EnterCustomerSerachText());
 		
 		JLabel label = new JLabel("회원 정보 검색: ");
-		
-		
-		
+				
 		label.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
 		label.setForeground(Color.white);		
-		text.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-		text.setForeground(new Color(220,220,220));
+		CustomerPhoneNumber.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+		CustomerPhoneNumber.setForeground(new Color(220,220,220));
 			
 		panel.add(label);
-		panel.add(text);	
+		panel.add(CustomerPhoneNumber);	
 		panel.add(btn);
 	
 		
 		panel.setBackground(new Color (43,51,62));
-		add(new TopBar());
-		ClickManager cm = new ClickManager();
-		cm.addActionListener(new BackToMemberSearchMain(jf, this));
-		add(cm);
-//		add(new ClickManager());
+		add(new TopBar(jf, this));
 		
 		
 		JPanel panel2 = new JPanel();
@@ -77,9 +87,17 @@ public class MemberSearchFrame extends JFrame{
 		// JTable header
 		String[] header = {"회원ID","회원 이름", "회원 주소", "회원 연락처","회원 포인트"};
 		
-		DefaultTableModel model = new DefaultTableModel(header, 0);
+		model = new DefaultTableModel(header, 0) {
+	
+		 public boolean isCellEditable(int rowIndex, int mColIndex) {
+             return false;
+         }
+     };
 		
-		JTable table = new JTable(model);
+		table = new JTable(model);
+		table.setFont(new Font("맑은 고딕", Font.PLAIN,17));
+		table.getTableHeader().setReorderingAllowed(false);
+	    table.getTableHeader().setResizingAllowed(false);
 		table.setRowHeight(30);
 		
 		JTableHeader header1 = table.getTableHeader();
@@ -117,28 +135,46 @@ public class MemberSearchFrame extends JFrame{
 		content_panel2.add(panel2);
 		
 		MouseListener mm = new MouseAdapter() {
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				if (e.getSource() instanceof JTextField) {
 					
 					((JTextField) e.getSource()).setText("");
+					while(model.getRowCount() > 0) {
+						model.removeRow(0);
+					}
 					((JTextField) e.getSource()).setForeground(new Color(000,000,000));
 				}
 			}
+		
 		};
 		
-		text.addMouseListener(mm);
+		CustomerPhoneNumber.addMouseListener(mm);
 		
 		btn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				
 			}
 		});
 		
+		btn.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+					if (e.getSource() instanceof JTextField) {
+					
+						((JTextField) e.getSource()).setText("");
+				}
+					while(model.getRowCount() > 0) {
+						model.removeRow(0);
+			}	
+			}
+		
+		});
 		
 		join.addActionListener(new ActionListener() {		
 			@Override
@@ -147,7 +183,24 @@ public class MemberSearchFrame extends JFrame{
 				
 			}
 		});
+		modify.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CustomerUpdate();
+				
+			}
+		});
 		
+		
+		
+		remove.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Customer_Delete();
+				
+			}
+		});
+		table.addMouseListener(new ClickReceipt());
 		
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
@@ -157,13 +210,25 @@ public class MemberSearchFrame extends JFrame{
 		setVisible(true);
 		
 	}
+	
+	private void add(ClickMain cm) {
+		// TODO Auto-generated method stub
 		
-//	public static void main(String[] args) {
-//		new MemberSearchFrame();
-//		
-//	
-//	}
+	}
+
+	public static JTextField getCustomerPhoneNumber() {
+		return CustomerPhoneNumber;
+	}
+	
+	public static DefaultTableModel getModel() {
+		return model;
+	}
+	public static JTable getTable() {
+		return table;
+	}
+	
 }
+
 
 class Search extends RoundedButton{
 	public Search(String name) {
@@ -195,8 +260,9 @@ class MemberModify extends RoundedButton{
 class MemberRemove extends RoundedButton{
 	public MemberRemove(String name) {
 		super(name);
-		super.c = new Color(255, 204, 204); 
+		super.c = new Color(255, 000, 102); 
 		setHorizontalAlignment(JLabel.CENTER);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
 }
+
