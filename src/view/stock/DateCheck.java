@@ -64,8 +64,8 @@ public class DateCheck {
 //		
 		indexes.add(datePanel, BorderLayout.NORTH);
 		
-//		JPanel table_panel = new Table_make("SELECT * FROM PRODUCTS");
-		JPanel table_panel = new JPanel();
+		JPanel table_panel = new Table_make("SELECT * FROM PRODUCTS",null,null);
+//		JPanel table_panel = new JPanel();
 		table_panel.setBounds(0, 0, 700, 700);
 		table_panel.setSize(700, 700);
 		table_panel.setPreferredSize(new Dimension(870,520));

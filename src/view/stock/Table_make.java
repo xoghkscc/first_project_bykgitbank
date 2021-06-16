@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -79,11 +81,21 @@ public class Table_make extends JPanel{
 		
 		//중요 리스너!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		if(doit != null) {
-			
-			if(doit.equals("registEvent")) {
-				
-				table.addMouseListener(new MouseListener_getDataFromTable(table, "regist")); //테이블에 마우스리스너 감지하는 클래스를 추가
-			}
+			table.addMouseListener(new MouseListener_getDataFromTable(table, doit));
+//			if(doit.equals("productUpdate")) {
+//				table.addMouseListener(new MouseListener_getDataFromTable(table, "productUpdate"));
+//			}
+//			
+//			if(doit.equals("registEvent")) {
+//				
+//				table.addMouseListener(new MouseListener_getDataFromTable(table, "registEvent")); //테이블에 마우스리스너 감지하는 클래스를 추가
+//			}
+//			
+//			if(doit.equals("disposal")) {
+//				
+//				table.addMouseListener(new MouseListener_getDataFromTable(table, "disposal"));
+//				
+//			}
 		}
 		
 		table.setRowHeight(40);	//테이블의 셀 높이 조정
@@ -117,6 +129,7 @@ public class Table_make extends JPanel{
 		header.getColumnModel().getColumn(9).setHeaderValue("무게");
 		header.getColumnModel().getColumn(10).setHeaderValue("판매유형");
 		header.getColumnModel().getColumn(11).setHeaderValue("원가");
+		
 		
 		//빈 테이블 객체 생성
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
@@ -152,16 +165,4 @@ public class Table_make extends JPanel{
 			model.addRow(arr.get(i));
 		}
 	}
-
-//	public static void main(String[] args) {
-//		
-//		Table_make tm = new Table_make();
-//		JFrame win = new JFrame();
-//		
-//		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		
-//		win.add(tm);
-//		win.setSize(800,800);
-//		win.setVisible(true);
-//	}
 }

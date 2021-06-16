@@ -62,7 +62,7 @@ public class MouseListener_getDataFromTable implements MouseListener{
 					    		sales_type, 
 					    		cost);
 				
-				if(doit.equals("regist")) {
+				if(doit.equals("registEvent")) {
 					String confirmStr = "품목번호 : " + selectUser.product_id + "\n품목이름 : " + selectUser.product_name + 
 							"\n\t행사를 등록하시겠습니까?";
 					int confirm = JOptionPane.showConfirmDialog(null,confirmStr,"이벤트 등록", JOptionPane.YES_NO_OPTION);
@@ -71,13 +71,28 @@ public class MouseListener_getDataFromTable implements MouseListener{
 						//UPDATE coffees SET cname = '인절미빙수' where cname = '팥빙수';
 						String eventSql = "UPDATE PRODUCTS SET DISCOUNT_TYPE = '" +NOPE.eventName+ "', DISCOUNT_RATE = " +NOPE.rate
 										+ " WHERE PRODUCT_ID = " + selectUser.product_id;
-						System.out.println(eventSql);
 						new InsertDB_product(eventSql);
 					}
 				}
-//				UpdateFrame uf = new UpdateFrame(selectUser);
 				
 				
+				if(doit.equals("productUpdate")) {
+					
+					UpdateFrame uf = new UpdateFrame(selectUser);
+				}
+				
+				if(doit.equals("disposal")) {
+					String confirmStr = "품목번호 : " + selectUser.product_id + "\n품목이름 : " + selectUser.product_name + "\n유통기한 : " 
+										+selectUser.expiration_date+ "\n원산지 : " +  selectUser.product_origin +
+										"\n\t상품을 폐기하시겠습니까?";
+					int confirm = JOptionPane.showConfirmDialog(null,confirmStr,"상품폐기", JOptionPane.YES_NO_OPTION);
+					
+					if(confirm == JOptionPane.YES_OPTION) {
+						//UPDATE coffees SET cname = '인절미빙수' where cname = '팥빙수';
+						String eventSql = "DELETE FROM PRODUCTS WHERE PRODUCT_ID = " + selectUser.product_id;
+						new InsertDB_product(eventSql);
+					}
+				}
 		
 					
 			}

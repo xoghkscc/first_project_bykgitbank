@@ -35,6 +35,7 @@ public class type_search_buttons extends JFrame{
 		String nameString = null;
 		
 //		sql = sql.trim();
+
 		if(sql == null && fullsql.equals("SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NULL")) {
 			sql = "등록가능한 품목현황";
 			nameString = "등록가능한 품목현황";

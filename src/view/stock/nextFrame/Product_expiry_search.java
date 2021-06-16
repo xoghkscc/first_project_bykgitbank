@@ -135,7 +135,6 @@ public class Product_expiry_search extends JFrame{
 //		centerPanel.setForeground(Color.YELLOW);
 		add(topPanel, BorderLayout.NORTH);
 		add(centerPanel);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(925,730);
 		setLocation(100,40);
 		setVisible(true);

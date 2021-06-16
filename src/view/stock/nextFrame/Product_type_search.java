@@ -104,8 +104,6 @@ public class Product_type_search extends JFrame{
 		
 		add(top, BorderLayout.NORTH);
 		add(center);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setSize(725,520);
 		setLocation(200,100);

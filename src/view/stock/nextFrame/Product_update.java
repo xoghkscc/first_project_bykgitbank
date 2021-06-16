@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -348,11 +349,21 @@ public class Product_update extends JFrame{
 				
 				ConnectDB cdb = new ConnectDB(uv.completeSql);
 				JFrame jf = new JFrame();
+				JLabel jl = new JLabel("수정할 품목을 고르세요");
+				jf.setLayout(null);
+				jf.getContentPane().setBackground(new Color(0,32,61));
+				jl.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
+				jl.setForeground(new Color(255,255,200));
+				jl.setBounds(5, 5, 300, 70);
+				jf.add(jl);
 				jf.setVisible(true);
-				jf.setBounds(100,100,1000,1000);
+				jf.setBounds(100,100,940,680);
 				
-				jf.add(new Table_make(uv.completeSql, null,null), BorderLayout.CENTER);
-				
+				Table_make tb = new Table_make(uv.completeSql, null,"productUpdate");
+//				jf.add(new Table_make(uv.completeSql, null,"productUpdate"), BorderLayout.CENTER);
+				tb.setBounds(30, 100, 870, 500);
+				tb.setVisible(true);
+				jf.add(tb);
 //				sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
 //						+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
 //				

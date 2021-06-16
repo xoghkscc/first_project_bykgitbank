@@ -100,12 +100,14 @@ public class Product_regist extends JFrame{
 		ArrayList<String> eventArr = new ConnectDBgetData("DISCOUNT_TYPE",null).getColumnArr();
 		
 		String[] types = new String[typeArr.size()]; //콤보박스에 넣을 스트링배열생성
-		String[] event = new String[eventArr.size()]; 
+		String[] event = new String[eventArr.size()+1]; 
+		event[0] = "선택안함";
+		
 		for(int i = 0; i < typeArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
 			types[i] = typeArr.get(i);
 		}
 		for(int i = 0; i < eventArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
-			event[i] = eventArr.get(i);
+			event[i+1] = eventArr.get(i);
 		}
 		System.out.println("types배열 : " + Arrays.toString(types));
 		System.out.println("eventArr배열 : " + Arrays.toString(event));
@@ -257,6 +259,9 @@ public class Product_regist extends JFrame{
 				String origin = jTextField3.getText();
 				String cost = jTextField4.getText();
 				String salesType;
+				if(productType.equals("선택안함")) {
+					productType = null;
+				}
 				if(radioBtn1.isSelected()) {
 					
 					salesType = radioBtn1.getText();

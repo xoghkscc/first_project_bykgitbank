@@ -38,56 +38,94 @@ public class UpdateValue {
 			String expiration_date, String discount_type, Double discount_rate, String product_origin, String stocks,
 			String gram, String sales_type, String cost) {
 		super();
+		
+
+		System.out.println("product_id : " +product_id);
+		System.out.println("product_name : " +product_name);
+		System.out.println("product_type : " +product_type);
+		System.out.println("product_price : " +product_price);
+		System.out.println("expiration_date : " +expiration_date);
+		System.out.println("discount_type : " +discount_type);
+//		System.out.println("discount_rate : " +discount_rate);
+		System.out.println("product_origin : " + product_origin);
+		System.out.println("stocks : " + stocks);
+		System.out.println("gram : " +gram);
+		System.out.println("sales_type : " +sales_type);
+		System.out.println("cost : " +cost);
+
 		PRODUCT_ID = product_id;
 		PRODUCT_NAME = product_name;
 		PRODUCT_TYPE = product_type;
 		PRODUCT_PRICE = product_price;
 		EXPIRATION_DATE = expiration_date;
 		DISCOUNT_TYPE = discount_type;
-		DISCOUNT_RATE = discount_rate;
+//		DISCOUNT_RATE = discount_rate;
 		PRODUCT_ORIGIN = product_origin;
 		STOCKS = stocks;
 		GRAM = gram;
 		SALES_TYPE = sales_type;
 		COST = cost;
 		
-		/*
-		SELECT PRODUCTS SET WHERE PRODUCT_ID = 108,PRODUCT_NAME = '치토스',
-								PRODUCT_TYPE = 'null',PRODUCT_PRICE = 1111,
-								EXPIRATION_DATE = 'null',DISCOUNT_TYPE = 'null',
-								DISCOUNT_RATE = null,PRODUCT_ORIGIN = '미국',
-								STOCKS = null,GRAM = 21,SALES_TYPE = '무게',COST = 2222
-		*/
-//		new NullCheck(PRODUCT_NAME);
-//		price = ", PRODUCT_PRICE = " + PRODUCT_PRICE;
-//		date = ", EXPIRATION_DATE = \'" + EXPIRATION_DATE + "\'";
-//		discountType = ", DISCOUNT_TYPE = \'" + DISCOUNT_TYPE + "\'";
-//		discountRate = ", DISCOUNT_RATE = " + DISCOUNT_RATE + "";
-//		origin = ", PRODUCT_ORIGIN = \'" + PRODUCT_ORIGIN + "\'";
-//		stock = ", STOCKS = " + STOCKS;
-//		gram = ", GRAM = " + GRAM;
-//		salesType = ", SALES_TYPE = \'" + SALES_TYPE + "\'";
-//		cost = ", COST = " + COST;
+		
+		
+		if(PRODUCT_NAME.equals("")){
+		}else {
+			name = "(PRODUCT_NAME LIKE \'" + PRODUCT_NAME + "%\' OR PRODUCT_NAME LIKE \'" +PRODUCT_NAME+"\')";
+			
+//			WHERE(name LIKE '%한%' OR name LIKE '%은%')
+		}
+		
+		if(PRODUCT_TYPE == null) {
+		}else {
+			productType = "(PRODUCT_TYPE = \'" + PRODUCT_TYPE + "%\' OR PRODUCT_TYPE LIKE \'" +PRODUCT_TYPE+ "\')";
+		}
+		
+		if(PRODUCT_PRICE.equals("")) {
+		}else {
+			price = "PRODUCT_PRICE = " + PRODUCT_PRICE;
+		}
+		
+		if(expiration_date == null) {
+		}else {
+			date = "expiration_date = \'" + expiration_date + "\'";
+		}
+		
+		if(discount_type == null) {
+		}else {
+			discountType = "(discount_type LIKE \'" + discount_type + "%\' OR discount_type LIKE \'" + discount_type+ "\')";
+		}
+		
+//		if(discount_rate == null) {
+//			System.out.println("무야호6");	
+//		}else {
+//			discountRate = "discount_Rate = " + discountRate;
+//		}
+		
 		if(PRODUCT_ORIGIN.equals("")){
 			PRODUCT_ORIGIN = null;
+		}else {
+			origin = "(PRODUCT_ORIGIN LIKE \'" + PRODUCT_ORIGIN + "%\' OR PRODUCT_ORIGIN LIKE \'" +product_origin+"\')";
 		}
-	
-		name =	new NullCheck((String)PRODUCT_NAME, "PRODUCT_NAME").sentence;
-		productType = new NullCheck((String)PRODUCT_TYPE, "PRODUCT_TYPE").sentence;
-		price = new NullCheck(PRODUCT_PRICE, "PRODUCT_PRICE").sentence;
-		date = new NullCheck((String)EXPIRATION_DATE, "EXPIRATION_DATE").sentence;
-		discountType = new NullCheck((String)DISCOUNT_TYPE, "DISCOUNT_TYPE").sentence;
-		if(DISCOUNT_RATE == null) {
-			discountRate = null;
-		}else{
-			
-			discountRate = new NullCheck((double)DISCOUNT_RATE, "DISCOUNT_RATE").sentence;
+		
+		if(STOCKS !=null) {
+			if(STOCKS.equals("") || STOCKS ==null) {
+				stock = "SALES_TYPE = \'개수\'";
+			}else {
+				stock = "stock = " + stock;
+			}
 		}
-		origin = new NullCheck((String)PRODUCT_ORIGIN, "PRODUCT_ORIGIN").sentence;
-		stock = new NullCheck((String)STOCKS, "STOCKS").sentence;
-		gram = new NullCheck((String)GRAM, "GRAM").sentence;
-		salesType = new NullCheck((String)SALES_TYPE, "SALES_TYPE").sentence;
-		cost = new NullCheck((String)COST, "COST").sentence;
+		if(GRAM !=null) {
+			if(GRAM.equals("")) {
+				gram = "SALES_TYPE = \'무게\'";
+			}else {
+				gram = "gram = " + gram;
+			}
+		}
+		if(COST.equals("")) {
+			PRODUCT_PRICE = null;
+		}else {
+			cost = "COST = " + COST;
+		}
 	
 		System.out.println("name : " + name);
 		System.out.println("productType : " + productType);
@@ -104,47 +142,41 @@ public class UpdateValue {
 		ArrayList<String> arr = new ArrayList<>();
 		arr.add(name); arr.add(productType);
 		arr.add(price); arr.add(date);
-		arr.add(discountType); arr.add(discountRate);
+		arr.add(discountType);
+//		arr.add(discountRate);
 		arr.add(origin); arr.add(stock);
 		arr.add(gram); arr.add(salesType);
 		arr.add(cost);
+		
+		String arrValues=null;
+		int count = 0;
 		for(int i = 0; i < arr.size(); i++) {
 		
+			if(arr.get(i) == null || arr.get(i).equals("")) {
+				continue;
+			}else {
+				
 				String a = arr.get(i);
 				arr.remove(i);
-				arr.add(i, "AND " + a);
-			
+				arr.add(i, " AND " + a);
+				arrValues += arr.get(i);
+				count++;
+			}
 		}
-		String arrValues = arr.get(0) 
-						+ arr.get(1)
-						+ arr.get(2)
-						+ arr.get(3)
-						+ arr.get(4)
-						+ arr.get(5)
-						+ arr.get(6)
-						+ arr.get(7)
-						+ arr.get(8)
-						+ arr.get(9)
-						+ arr.get(10);
-		arrValues = arrValues.substring(4);
 		
-		completeSql = "SELECT * FROM PRODUCTS WHERE "
-				+ arrValues;
+		System.out.println("카운트수 : " + count);
+		if(count > 0) {
+
+			System.out.println(arrValues);
+			arrValues = arrValues.substring(8);
+			completeSql = "SELECT * FROM PRODUCTS WHERE "
+					+ arrValues;
+		}else {
+			completeSql = "SELECT * FROM PRODUCTS";
+		}
 		
+
 		System.out.println("comsql : " + completeSql);
-//		completeSql = "SELECT PRODUCTS SET WHERE "
-//				+ name
-//				+ productType
-//				+ price
-//				+ date
-//				+ discountType
-//				+ discountRate
-//				+ origin
-//				+ stock
-//				+ gram
-//				+ salesType
-//				+ cost;
-		
 	}
 
 }
@@ -167,34 +199,12 @@ class NullCheck{
 				sentence = name + " = " + thing;
 			}else {
 				
-				sentence = name + " = \'" + thing + "\'";
+				sentence = name + " LIKE \'" + thing + "%\' ";
 			}
 
 	
 		}
 		
 	}
-	public NullCheck(int thingInt, String name) {
-		// TODO Auto-generated constructor stub
-		this.thingInt = thingInt;
-		this.name = name;
-		if(thingInt == 0) {
-			sentence = null;
-		}else{
-//				/	name = "PRODUCT_NAME = \'" +PRODUCT_NAME + "\'";
-			sentence = name + " = " + thingInt +" ";
-		}
-	}
-	
-	public NullCheck(double thingDouble, String name) {
-		// TODO Auto-generated constructor stub
-		this.thingDouble = thingDouble;
-		this.name = name;
-		if(thingDouble == 0) {
-			sentence = null;
-		}else{
-//				/	name = "PRODUCT_NAME = \'" +PRODUCT_NAME + "\'";
-			sentence = name + " = \'" + thingDouble + "\' ";
-		}
-	}
+
 }
