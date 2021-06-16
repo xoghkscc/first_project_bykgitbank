@@ -5,7 +5,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import function.topBar.*;
+import function.topBar.ClickMain;
+import function.topBar.ClickMainDesign;
+import function.topBar.TopBar;
 public class StoreMainFrame extends JFrame{
 	JFrame jf;
 	public StoreMainFrame(JFrame jf) {
