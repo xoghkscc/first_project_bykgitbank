@@ -1,6 +1,7 @@
 package view.stock.nextFrame;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,8 +14,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -41,10 +44,17 @@ public class Product_type_search extends JFrame{
 		
 		//뒤로가기버튼 생성및 뒤로가기 기능
 		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		top.add(backButton, BorderLayout.WEST);
+//		backButton.addActionListener(new BackToStock(jf, this));
+//		top.add(backButton, BorderLayout.WEST);
 		
-		top.setPreferredSize(new Dimension(203,50));
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/대분류조회.png"));
+		logo.setBounds(20, 20, 350, 70);
+		top.add(logo);
+		
+//		top.setBackground(new Color(43,51,62));
+		top.setPreferredSize(new Dimension(203,90));
+//		top.setSize(50, 100);
 		top.setVisible(true);
 		
 		//센터 판넬 만들어두기

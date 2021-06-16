@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -33,8 +35,13 @@ public class DeliveryLeftTable extends JPanel {
 		};
 	
 private DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+	JPanel center;
+	JFrame jf;
 	
-	public DeliveryLeftTable() {
+	public DeliveryLeftTable(JFrame jf, JPanel center, JPanel DeliveryRightPanel) {
+		this.jf = jf;
+		this.center = center;
 //		setLayout(null);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		//테이블 생성
@@ -76,6 +83,21 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			delivery_id = (int) tm.getValueAt(row, 0);
 			members_id = (int)tm.getValueAt(row, 1);
 			payment = (int)tm.getValueAt(row, 2);
+			
+//			DeliveryRightPanel.informationText = new JLabel(Integer.toString(delivery_id));
+			System.out.println(delivery_id);
+			System.out.println(members_id);
+			System.out.println(payment);
+//			DeliveryCenterPanel dc = new DeliveryCenterPanel(DeliveryMainFrame.jf);
+			
+			DeliveryRightPanel dr = DeliveryRightPanel.getRightPanel();
+			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.members_id));
+			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.delivery_id));
+			dr.getInformationText().setText(String.format("%d", DeliveryLeftTable.payment));
+			
+			
+			
+//			DeliveryMainFrame.jf.add(dc);
 		}
 
 	@Override

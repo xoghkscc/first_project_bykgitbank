@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -33,19 +35,24 @@ public class Product_expiry_search extends JFrame{
 		setTitle("유통기한조회");
 		
 		JPanel topPanel = new JPanel();
-		JPanel centerPanel = new JPanel();
+		topPanel.setBounds(10, 30, 290, 80);
+		topPanel.setBackground(new Color(43,51,62));
+		topPanel.setLayout(null);
 		
-		topPanel.setLayout(null); //꼭해야함
-		
+		//뒤로가기버튼 생성및 뒤로가기 기능
 		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		topPanel.add(backButton, BorderLayout.WEST);
+//		backButton.addActionListener(new BackToStock(jf, this));
+//		top.add(backButton, BorderLayout.WEST);
 		
-		topPanel.setPreferredSize(new Dimension(503,50));
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/유통기한조회.png"));
+		logo.setBounds(10, 20, 350, 70);
+		topPanel.add(logo);
 		
+		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(null);
 		centerPanel.setSize(new Dimension(600,600));
-		centerPanel.setLocation(10, 100);
+		centerPanel.setLocation(40, 100);
 //		centerPanel.setBackground(Color.YELLOW);
 		centerPanel.setVisible(true);
 
@@ -132,10 +139,11 @@ public class Product_expiry_search extends JFrame{
 		centerPanel.add(tablePanel, BorderLayout.SOUTH);
 		
 		centerPanel.setBackground(new Color(43,51,62));
+//		centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 //		centerPanel.setForeground(Color.YELLOW);
-		add(topPanel, BorderLayout.NORTH);
+		add(topPanel);
 		add(centerPanel);
-		setSize(925,730);
+		setSize(925,680);
 		setLocation(100,40);
 		setVisible(true);
 	}

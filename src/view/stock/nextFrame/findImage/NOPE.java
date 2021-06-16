@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,25 +34,25 @@ public class NOPE extends JFrame{
 		
 		setLayout(null);
 		
-		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
+//		JButton backButton = new BackButton();
+//		backButton.addActionListener(new BackToStock(jf, this));
 		
 		//판넬 나누기
-		JPanel backButtonPanel = new JPanel();
+//		JPanel backButtonPanel = new JPanel();
 		JPanel centerPanel = new JPanel();  
 		
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/logo_stock3.JPG"));
+		logo.setBounds(290, 30, 170, 170);
+		add(logo);
 		
-		backButtonPanel.setLayout(null);
-		backButtonPanel.setBackground(new Color(43,51,62));
-		backButtonPanel.setSize(560, 50);
-		backButtonPanel.setLocation(0, 0);
-		backButtonPanel.add(backButton, BorderLayout.WEST);
+		
 		
 		centerPanel.setLayout(null);
 		centerPanel.setPreferredSize(new Dimension(500,600));
 		centerPanel.setSize(560,600);
 		centerPanel.setLocation(0, 50);
-		centerPanel.setBackground(new Color(43,51,62));
+		centerPanel.setBackground(new Color(0,32,61));
 		centerPanel.setVisible(true);
 		
 		
@@ -150,8 +151,9 @@ public class NOPE extends JFrame{
 		centerPanel.add(updateButton);
 		centerPanel.add(searchButton);
 		
-		add(backButtonPanel, BorderLayout.NORTH);
-		add(centerPanel, BorderLayout.CENTER);
+		getContentPane().setBackground(new Color(0,32,61));
+		setLayout(null);
+		add(centerPanel);
 
 //		setSize(jf.getWidth(), jf.getHeight());
 //		setLocation(jf.getX(), jf.getY());

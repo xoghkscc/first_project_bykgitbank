@@ -9,8 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -55,7 +57,7 @@ public class Product_update extends JFrame{
 		
 		this.jf = jf;
 		
-		setTitle("물품등록");
+		setTitle("물품수정");
 		
 		JPanel top = new JPanel();
 		JPanel center = new JPanel();
@@ -64,10 +66,16 @@ public class Product_update extends JFrame{
 		
 		//뒤로가기버튼 생성및 뒤로가기 기능
 		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		top.add(backButton, BorderLayout.WEST);
+//		backButton.addActionListener(new BackToStock(jf, this));
+//		top.add(backButton, BorderLayout.WEST);
 		
-		top.setPreferredSize(new Dimension(203,50));
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/품목수정.png"));
+		logo.setBounds(20, 20, 350, 70);
+		top.add(logo);
+		
+		top.setBackground(new Color(255,204,204));
+		top.setPreferredSize(new Dimension(203,90));
 //		top.setSize(50, 100);
 		top.setVisible(true);
 		
@@ -143,7 +151,7 @@ public class Product_update extends JFrame{
 		//품목이름과 필드
 		JPanel border1 = new JPanel();
 		new Panel_titleBorder(border1);
-		border1.setBounds(30, 50, 730, 62);
+		border1.setBounds(30, 20, 730, 62);
 		center.add(border1);
 		
 		new Regist_layout(jLabel);
@@ -161,7 +169,7 @@ public class Product_update extends JFrame{
 		//가격과 텍스트필드
 		JPanel border2 = new JPanel();
 		new Panel_titleBorder(border2);
-		border2.setBounds(30, 150, 730, 62);
+		border2.setBounds(30, 120, 730, 62);
 		center.add(border2);
 		
 		new Regist_layout(jLabel3);
@@ -187,7 +195,7 @@ public class Product_update extends JFrame{
 		//행사유형과 콤보박스
 		JPanel border3 = new JPanel();
 		new Panel_titleBorder(border3);
-		border3.setBounds(30, 250, 730, 62);
+		border3.setBounds(30, 220, 730, 62);
 		center.add(border3);
 		
 		new Regist_layout(jLabel5);
@@ -232,7 +240,7 @@ public class Product_update extends JFrame{
 		//
 		JPanel border4 = new JPanel();
 		new Panel_titleBorder(border4);
-		border4.setBounds(30, 350, 730, 62);
+		border4.setBounds(30, 320, 730, 62);
 		center.add(border4);
 		
 		new Regist_layout(jLabel7);
@@ -247,7 +255,7 @@ public class Product_update extends JFrame{
 		
 		
 		//검색버튼
-		jButton.setLocation(300,450);
+		jButton.setLocation(300,420);
 		jButton.setSize(100, 35);
 		jButton.setVisible(true);
 		
@@ -303,11 +311,32 @@ public class Product_update extends JFrame{
 				String stock;
 				String weight;
 				if(salesType.equals("무게")) {
-					
-					weight = JOptionPane.showInputDialog("무게를 입력하세요");
+					while(true) {
+						weight = (String) JOptionPane.showInputDialog(null,"무게를 입력하세세요","무게입력",JOptionPane.PLAIN_MESSAGE, null, null, null);
+						String pattern = "^[0-9]*$"; //숫자만
+			            
+			            boolean regex = Pattern.matches(pattern, weight);
+			            if(regex == true) {
+			            	break;
+			            }else {
+			            	JOptionPane.showInternalMessageDialog(null, "숫자를 입력하세요!", "입력오류", 3);
+			            }
+			            
+					}
 					stock = null;
 				}else {
-					stock = JOptionPane.showInputDialog("개수를 입력하세요");
+					while(true) {
+						
+						stock = (String) JOptionPane.showInputDialog(null,"개수를 입력하세세요","개수입력",JOptionPane.PLAIN_MESSAGE, null, null, null);
+						String pattern = "^[0-9]*$"; //숫자만
+						
+						boolean regex = Pattern.matches(pattern, stock);
+						if(regex == true) {
+							break;
+						}else {
+							JOptionPane.showInternalMessageDialog(null, "숫자를 입력하세요!", "입력오류", 3);
+						}
+					}
 					weight = null;
 					
 				}
