@@ -41,7 +41,6 @@ public class LeftPanel extends JPanel{
 		JLabel employee_lookup = new SubLabel("직원 관리");
 		employee_lookup.addMouseListener(new SubClickAction(new Employee_enrollment()) {
 		});
-		
 		JLabel date_sales = new SubLabel("날짜별 매출 조회");
 		
 		JLabel item_search = new SubLabel("품목별 매출 조회");
@@ -110,6 +109,7 @@ public class LeftPanel extends JPanel{
 	public static JLabel getSales() {
 		return sales;
 	}
+	
 }
 
 
@@ -156,9 +156,15 @@ class SubClickAction extends MouseAdapter{
 	}
 	
 	public void mouseClicked(MouseEvent e) {
-		((JLabel) e.getSource()).setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		rightPanel.setPreferredSize(new Dimension(30, 50));
-		LeftPanel.getStoreMainFrame().add(rightPanel, BorderLayout.CENTER);
+		if(rightPanel.isVisible()) {
+			rightPanel.setVisible(false);
+			((JLabel) e.getSource()).setFont(new Font("맑은 고딕", Font.PLAIN, 12));
+		}else {
+			rightPanel.setVisible(true);
+			((JLabel) e.getSource()).setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			rightPanel.setPreferredSize(new Dimension(30, 50));
+			LeftPanel.getStoreMainFrame().add(rightPanel, BorderLayout.CENTER);
+		}
 	}
 }
 

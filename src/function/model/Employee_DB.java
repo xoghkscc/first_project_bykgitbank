@@ -23,11 +23,41 @@ public class Employee_DB {
 		this.salary = salary;
 	}
 	
+	public void setEmployee_id(int employee_id) {
+		this.employee_id = employee_id;
+	}
+
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
+	}
+
+	public void setJob_id(String job_id) {
+		this.job_id = job_id;
+	}
+
+	public void setPhone_number(String phone_number) {
+		this.phone_number = phone_number;
+	}
+
+	public void setPositions(String positions) {
+		this.positions = positions;
+	}
+
+	public void setDuty_hours(int duty_hours) {
+		this.duty_hours = duty_hours;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
 	public int getEmployee_id() {
 		return employee_id;
 	}
-
-
 
 
 	public String getEmployee_name() {

@@ -1,5 +1,6 @@
 package view;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,7 +9,7 @@ import javax.swing.JPanel;
 import function.topBar.*;
 import view.store.leftMenu.LeftPanel;
 public class StoreMainFrame extends JFrame{
-	JFrame jf;
+	static JFrame jf;
 	public StoreMainFrame(JFrame jf) {
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,4 +27,5 @@ public class StoreMainFrame extends JFrame{
 		
 		setVisible(true);
 	}
+	
 }
