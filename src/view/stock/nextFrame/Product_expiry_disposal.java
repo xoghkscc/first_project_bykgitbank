@@ -12,6 +12,8 @@ public class Product_expiry_disposal extends JFrame{
 		// TODO Auto-generated constructor stub
 		this.jf = jf;
 		
+		setTitle("유통기한 초과물품");
+		
 		String disposal = "유통기한초과물품";
 		
 		new type_search_buttons(jf,disposal, null,"disposal");

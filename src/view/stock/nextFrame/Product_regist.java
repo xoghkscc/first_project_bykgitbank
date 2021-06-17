@@ -116,8 +116,8 @@ public class Product_regist extends JFrame{
 		for(int i = 0; i < eventArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
 			event[i+1] = eventArr.get(i);
 		}
-		System.out.println("types배열 : " + Arrays.toString(types));
-		System.out.println("eventArr배열 : " + Arrays.toString(event));
+//		System.out.println("types배열 : " + Arrays.toString(types));
+//		System.out.println("eventArr배열 : " + Arrays.toString(event));
 		
 		jComboBoxProductType = new JComboBox<String>(types); 
 		jComboBoxEvent = new JComboBox<String>(event); 
@@ -301,7 +301,6 @@ public class Product_regist extends JFrame{
 //				COST   
 				String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
 				String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
-				System.out.println(discountRateSql);
 				
 				ConnectDB con = new ConnectDB(discountRateSql);
 				Double discountRate = con.getResultRate();
@@ -344,10 +343,6 @@ public class Product_regist extends JFrame{
 //				System.out.println("12 : " + cost);
 				sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
 						+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
-				
-				System.out.println(sql);
-				
-				
 				
 				new InsertDB_product(sql);
 			}

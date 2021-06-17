@@ -1,4 +1,4 @@
-package view.stock.nextFrame.findImage;
+package view.stock.nextFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,13 +22,17 @@ import view.stock.nextFrame.BackToStock;
 import view.stock.nextFrame.productEvent.UpdateEvent;
 import view.stock.nextFrame.type_search.type_search_buttons;
 
-public class NOPE extends JFrame{
+public class NOPE2 extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame jf;
 	public static String eventName;
 	public static String rate;
 	
-	public NOPE(JFrame jf) {
+	public NOPE2(JFrame jf) {
 		// TODO Auto-generated constructor stub
 		this.jf = jf;
 		
@@ -82,10 +86,13 @@ public class NOPE extends JFrame{
 		searchButton.setFocusPainted(false);
 		searchButton.setHorizontalTextPosition(JButton.CENTER);
 
-		registButton.addMouseListener(new Actions(registButton));
-		updateButton.addMouseListener(new Actions(updateButton));
-		searchButton.addMouseListener(new Actions(searchButton));
+		registButton.addMouseListener(new ActionMouse(registButton));
+		updateButton.addMouseListener(new ActionMouse(updateButton));
+		searchButton.addMouseListener(new ActionMouse(searchButton));
 		
+		registButton.setForeground(new Color(0,32,61));
+		updateButton.setForeground(new Color(0,32,61));
+		searchButton.setForeground(new Color(0,32,61));
 		
 		registButton.addActionListener(new ActionListener() {
 
@@ -167,13 +174,12 @@ public class NOPE extends JFrame{
 //		new NOPE();
 //	}
 
-//	JFrame jf
 }
-class Actions  implements MouseListener {
+class ActionMouse  implements MouseListener {
 
 	JButton button;
 	
-	public Actions(JButton button) {
+	public ActionMouse(JButton button) {
 		// TODO Auto-generated constructor stub
 		this.button = button;
 		

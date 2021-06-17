@@ -37,13 +37,15 @@ public class type_search_buttons extends JFrame{
 //		sql = sql.trim();
 
 		if(sql == null && fullsql.equals("SELECT * FROM PRODUCTS WHERE DISCOUNT_TYPE IS NULL")) {
+			setTitle("등록가능 품목현황");
 			sql = "등록가능한 품목현황";
 			nameString = "등록가능한 품목현황";
 		}else if(sql == null) {
+			setTitle("행사품목현황");
 			sql = "행사품목현황";
 			nameString = "행사품목현황";
 		}else if(sql.equals("유통기한초과물품")) {
-			setTitle( "sql");
+			setTitle( "유통기한 초과물품");
 			nameString = "\'"+ sql + "\'";
 		}else {
 			setTitle( "\'"+ sql + "\' 유형 재고 현황");			

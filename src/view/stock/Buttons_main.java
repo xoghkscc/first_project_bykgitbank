@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import view.stock.nextFrame.NOPE2;
 import view.stock.nextFrame.Product_expiry_disposal;
 import view.stock.nextFrame.Product_expiry_search;
 import view.stock.nextFrame.Product_order;
@@ -16,7 +17,6 @@ import view.stock.nextFrame.Product_profit_rate;
 import view.stock.nextFrame.Product_regist;
 import view.stock.nextFrame.Product_type_search;
 import view.stock.nextFrame.Product_update;
-import view.stock.nextFrame.findImage.NOPE;
 
 public class Buttons_main extends JPanel{
 
@@ -87,7 +87,8 @@ public class Buttons_main extends JPanel{
 			public void actionPerformed(ActionEvent e) {				
 //				jf.setVisible(false);
 //				new Product_event(jf);	
-				new NOPE(jf);
+//				new NOPE(jf);
+				new NOPE2(jf);
 			}	
 		});
 		jbArr.get(7).addActionListener(new ActionListener() {
