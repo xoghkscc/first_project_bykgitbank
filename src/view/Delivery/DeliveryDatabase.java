@@ -21,7 +21,7 @@ public class DeliveryDatabase {
 		columnArr = new ArrayList<>();
 		
 		HikariDataSource ds = new HikariCP().getHikariDataSource();
-		String sql = "SELECT DISTINCT " + column + " FROM DELIVERY WHERE " + column + " IS NOT NULL";
+		String sql = " SELECT " + column + " FROM DELIVERY WHERE " + column + " IS NOT NULL";
 		
 		try(
 				Connection conn = ds.getConnection();

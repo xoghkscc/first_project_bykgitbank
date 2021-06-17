@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,7 +21,7 @@ public class DeliveryLeftTable extends JPanel {
 
 	public static int row;
 	public static int delivery_id;
-	public static String members_name;
+	public static String MEMBERS_NAME;
 	public static int payment;
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +35,7 @@ public class DeliveryLeftTable extends JPanel {
 	
 private DefaultTableModel model = new DefaultTableModel(columns, 0);
 	
-	public DeliveryLeftTable() {
+	public DeliveryLeftTable(JFrame jf, JPanel center, JPanel DeliveryRightPanel) {
 //		setLayout(null);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		//테이블 생성
@@ -59,24 +60,28 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 //		dtcr.setBackground(new Color(43, 51, 62));
 		
 		scrollPane = new JScrollPane(table);
-		scrollPane.setPreferredSize(new Dimension(510, 400));
+		scrollPane.setPreferredSize(new Dimension(510, 410));
 //		scrollPane.setLocation(0,0);
 		add(scrollPane);
 	
 //		initialize();
-		select("select * from delivery INNER JOIN member_informations USING(members_id) ");
+		select("select * from delivery INNER JOIN member_informations USING(members_id)");
 
 	}
-	
 	private class JTableMouseListener implements MouseListener{	
 		
 		//마우스클릭했을때의 액션
 		public void mouseClicked(MouseEvent e) {	
 			TableModel tm = table.getModel();
 			row = table.getSelectedRow();
-			delivery_id = (int) tm.getValueAt(row, 0);
-			members_name = (String)tm.getValueAt(row, 1);
-			payment = (int)tm.getValueAt(row, 2);
+			delivery_id = (int)tm.getValueAt(row, 0);
+			MEMBERS_NAME = (String) tm.getValueAt(row, 1);
+			payment = (int)tm.getValueAt(row, 2);  
+			
+			DeliveryRightPanel drp = DeliveryRightPanel.getRightPanel();
+			drp.getInformationText().setText(DeliveryLeftTable.MEMBERS_NAME);
+//			drp.getAddressText().setText();
+			drp.getPaymentText().setText(String.format("%d", DeliveryLeftTable.payment));	
 		}
 
 	@Override
@@ -99,4 +104,5 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			model.addRow(arr.get(i));
 		}
 	}
+
 }

@@ -7,6 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DeliveryRightPanel extends JPanel {
+	static private DeliveryRightPanel rightPanel;
+	
+	public static JLabel informationText;
+	public static JLabel addressText;
+	public static JLabel phoneNumberText;
+	public static JLabel paymentText;
+	
 	public DeliveryRightPanel() {
 		setLayout(new GridLayout(8, 0, 5, 5));
 		setBackground(new Color(43, 51, 62));
@@ -42,4 +49,28 @@ public class DeliveryRightPanel extends JPanel {
 		add(paymentText);
 
 	}
+
+	public static DeliveryRightPanel getRightPanel() {
+		if (rightPanel == null) {
+			rightPanel = new DeliveryRightPanel();
+		}
+		return rightPanel;
+	}
+
+	public static JLabel getInformationText() {
+		return informationText;
+	}
+
+	public static JLabel getAddressText() {
+		return addressText;
+	}
+
+	public static JLabel getPhoneNumberText() {
+		return phoneNumberText;
+	}
+
+	public static JLabel getPaymentText() {
+		return paymentText;
+	}
+	
 }

@@ -10,6 +10,7 @@ import function.topBar.ClickMain;
 import function.topBar.ClickMainDesign;
 import function.topBar.TopBar;
 import view.Delivery.DeliveryCenterPanel;
+import view.Delivery.DeliveryRightPanel;
 
 public class DeliveryMainFrame extends JFrame {
 	public static JFrame jf;
@@ -26,10 +27,12 @@ public class DeliveryMainFrame extends JFrame {
 //
 //		add(test2);
 		
+		DeliveryRightPanel.getRightPanel();
+		
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
-		JPanel DeliveryCenterPanel = new DeliveryCenterPanel();
+		JPanel DeliveryCenterPanel = new DeliveryCenterPanel(this);
 		add(DeliveryCenterPanel, BorderLayout.CENTER);
 
 		setVisible(true);
