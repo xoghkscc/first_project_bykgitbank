@@ -14,7 +14,11 @@ public class DeliveryConnectDB {
 
 	private String result;
 	private ArrayList<Object[]> arr;
-	public DeliveryConnectDB(String sql) {	
+	private ArrayList<String> arr2;
+	String check;
+	
+	public DeliveryConnectDB(String sql, String check) {	
+		this.check = check;
 		// TODO Auto-generated constructor stub
 		HikariConfig config = new HikariConfig();
 		
@@ -28,6 +32,7 @@ public class DeliveryConnectDB {
 		HikariDataSource ds = new HikariDataSource(config);
 
 		arr = new ArrayList<Object[]>();
+		arr2 = new ArrayList<>();
 		
 		
 		try(
@@ -36,14 +41,24 @@ public class DeliveryConnectDB {
 				ResultSet rs = pstmt.executeQuery();
 		){
 			
-			while(rs.next()) {
-				 arr.add(new Object[]{
-					rs.getInt("DELIVERY_ID"),
-					rs.getString("MEMBERS_NAME"),
-					rs.getInt("PAYMENT")
-				 });
-				 
-			}
+			if (check == null) {
+				
+				while(rs.next()) {
+					arr.add(new Object[]{
+							rs.getInt("DELIVERY_ID"),
+							rs.getString("MEMBERS_NAME"),
+							rs.getInt("PAYMENT"),
+							rs.getDate("SALES_TIME")
+					});
+					
+				}
+			} else {
+				while(rs.next()) {
+					arr2.add(rs.getString("MEMBERS_ADDRESS"));
+					arr2.add(rs.getString("MEMBERS_PHONENUMBER"));
+					};
+				}
+	
 			rs.close();
 			pstmt.close();
 			conn.close();
@@ -59,6 +74,18 @@ public class DeliveryConnectDB {
 	
 	public ArrayList<Object[]> getSelect(){
 		return arr;
+	}
+
+	public ArrayList<Object[]> getArr() {
+		return arr;
+	}
+
+	public ArrayList<String> getArr2() {
+		return arr2;
+	}
+
+	public String getCheck() {
+		return check;
 	}
 
 }

@@ -7,14 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class DeliveryLeftPanel extends JPanel {
-	public DeliveryLeftPanel (JFrame jf, JPanel center, JPanel DelivryRightPanel) {
+	public DeliveryLeftPanel () {
 	setBackground(new Color(43, 51, 62));
 	setLocation(0, 0);
 	setSize(635, 700);
 	setLayout(null);
 	
 	JButton DeliveryLeftButton = new DeliveryLeftButton("주문 정보");
-	JPanel DeliveryTable = new DeliveryLeftTable(jf, center, DelivryRightPanel);
+	JPanel DeliveryTable = new DeliveryLeftTable();
 
 	DeliveryLeftButton.setSize(500, 50);
 	DeliveryLeftButton.setLocation(65, 50);

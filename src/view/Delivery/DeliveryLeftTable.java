@@ -30,18 +30,19 @@ public class DeliveryLeftTable extends JPanel {
 	private String columns[] = { 
 			"DELIVERY_ID",    
 			"MEMBERS_NAME", 
-			"PAYMENT"
+			"PAYMENT",
+			"SALES_TIME"
 		};
 	
 private DefaultTableModel model = new DefaultTableModel(columns, 0);
 	
-	public DeliveryLeftTable(JFrame jf, JPanel center, JPanel DeliveryRightPanel) {
+	public DeliveryLeftTable() {
 //		setLayout(null);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		//테이블 생성
 		table = new JTable(model);	
 		//테이블에 마우스리스너 감지하는 클래스를 추가
-		table.addMouseListener(new JTableMouseListener()); 
+		table.addMouseListener(new JTableMouseListener());
 		table.getColumn("DELIVERY_ID").setPreferredWidth(WIDTH);
 		table.getColumn("MEMBERS_NAME").setPreferredWidth(WIDTH); 
 		table.getColumn("PAYMENT").setPreferredWidth(WIDTH);
@@ -65,7 +66,7 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		add(scrollPane);
 	
 //		initialize();
-		select("select * from delivery INNER JOIN member_informations USING(members_id)");
+		select("select DISTINCT * from delivery INNER JOIN member_informations USING(members_id) LEFT OUTER JOIN SALES USING(DELIVERY_ID)", null);
 
 	}
 	private class JTableMouseListener implements MouseListener{	
@@ -79,9 +80,16 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			payment = (int)tm.getValueAt(row, 2);  
 			
 			DeliveryRightPanel drp = DeliveryRightPanel.getRightPanel();
+			
+			DeliveryConnectDB dcb = new DeliveryConnectDB("select DISTINCT * from delivery INNER JOIN member_informations USING(members_id) WHERE delivery_id = " + delivery_id , "check");
+			
+			
 			drp.getInformationText().setText(DeliveryLeftTable.MEMBERS_NAME);
-//			drp.getAddressText().setText();
+			drp.getAddressText().setText(dcb.getArr2().get(0));
+			drp.getPhoneNumberText().setText(dcb.getArr2().get(1));
 			drp.getPaymentText().setText(String.format("%d", DeliveryLeftTable.payment));	
+		
+			
 		}
 
 	@Override
@@ -94,8 +102,10 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 	public void mouseExited(MouseEvent e) {}
 	}
 	
-	private void select(String sql) {	
-		DeliveryConnectDB cdb = new DeliveryConnectDB(sql);
+	
+	private void select(String sql, String check) {	
+		
+		DeliveryConnectDB cdb = new DeliveryConnectDB(sql, check);
 		
 		ArrayList<Object[]> arr = new ArrayList<>();
 		

@@ -19,7 +19,7 @@ public class DeliveryCenterPanel extends JPanel {
 		DeliveryRightPanel dp = DeliveryRightPanel.getRightPanel();
 	
 		
-		JPanel DeliveryLeftPanel = new DeliveryLeftPanel(jf, this, dp);
+		JPanel DeliveryLeftPanel = new DeliveryLeftPanel();
 		
 
 		
