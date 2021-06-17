@@ -242,7 +242,7 @@ class Search extends RoundedButton{
 class MemberJoin extends RoundedButton{
 	public MemberJoin(String name) {
 		super(name);
-		super.c = new Color(153, 153, 255); 
+		super.c = new Color(245, 173, 37); 
 		setHorizontalAlignment(JLabel.CENTER);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
@@ -251,7 +251,7 @@ class MemberJoin extends RoundedButton{
 class MemberModify extends RoundedButton{
 	public MemberModify(String name) {
 		super(name);
-		super.c = new Color(153, 255, 153); 
+		super.c = new Color(111, 195, 11); 
 		setHorizontalAlignment(JLabel.CENTER);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
@@ -260,7 +260,7 @@ class MemberModify extends RoundedButton{
 class MemberRemove extends RoundedButton{
 	public MemberRemove(String name) {
 		super(name);
-		super.c = new Color(255, 000, 102); 
+		super.c = new Color(255, 62, 62); 
 		setHorizontalAlignment(JLabel.CENTER);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 	}
