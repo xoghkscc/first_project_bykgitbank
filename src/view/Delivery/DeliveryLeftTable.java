@@ -20,7 +20,7 @@ public class DeliveryLeftTable extends JPanel {
 
 	public static int row;
 	public static int delivery_id;
-	public static int members_id;
+	public static String members_name;
 	public static int payment;
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class DeliveryLeftTable extends JPanel {
 	private JScrollPane scrollPane;
 	private String columns[] = { 
 			"DELIVERY_ID",    
-			"MEMBERS_ID", 
+			"MEMBERS_NAME", 
 			"PAYMENT"
 		};
 	
@@ -42,7 +42,7 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		//테이블에 마우스리스너 감지하는 클래스를 추가
 		table.addMouseListener(new JTableMouseListener()); 
 		table.getColumn("DELIVERY_ID").setPreferredWidth(WIDTH);
-		table.getColumn("MEMBERS_ID").setPreferredWidth(WIDTH); 
+		table.getColumn("MEMBERS_NAME").setPreferredWidth(WIDTH); 
 		table.getColumn("PAYMENT").setPreferredWidth(WIDTH);
 		table.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		table.setSize(500, 400);
@@ -64,9 +64,10 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		add(scrollPane);
 	
 //		initialize();
-		select("select * from DELIVERY");
+		select("select * from delivery INNER JOIN member_informations USING(members_id) ");
 
 	}
+	
 	private class JTableMouseListener implements MouseListener{	
 		
 		//마우스클릭했을때의 액션
@@ -74,7 +75,7 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			TableModel tm = table.getModel();
 			row = table.getSelectedRow();
 			delivery_id = (int) tm.getValueAt(row, 0);
-			members_id = (int)tm.getValueAt(row, 1);
+			members_name = (String)tm.getValueAt(row, 1);
 			payment = (int)tm.getValueAt(row, 2);
 		}
 
