@@ -28,7 +28,8 @@ public class Payment_Custormer_infor implements ActionListener {
 		
 		int Customer_Phone_num = Integer.parseInt(((JTextField) e.getSource()).getText().trim());
 		member_informations_DB = new Customer_Search(Customer_Phone_num).getMember_Informations_DB();
-	
+		
+		
 		int Customer_id = member_informations_DB.getMEMBERS_ID();
 		String name = member_informations_DB.getMEMBERS_NAME();
 		int point = member_informations_DB.getMEMBERS_POINT();

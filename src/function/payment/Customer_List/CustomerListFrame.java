@@ -69,6 +69,8 @@ public class CustomerListFrame extends JFrame {
 					
 					if(!MemberPanel.getMemberNameValue().getText().trim().equals("")) {
 						MemberPanel.getAccumulateValue().setText("" + reserved_point);
+					MemberPanel.getMemberPhoneNumberValue().setForeground(Color.black);
+						
 					}
 					
 					setVisible(false);
