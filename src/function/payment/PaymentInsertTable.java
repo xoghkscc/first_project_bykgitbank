@@ -37,22 +37,30 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		this.total_payment = total_payment;
 	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int product_id = Integer.parseInt(((JTextField) e.getSource()).getText());
+		int product_id = Integer.parseInt(((JTextField) e.getSource()).getText().trim());
+	
+	
 		productDb = new Products_Select(product_id).getProducts_DB();
+		
+	
 		if (productDb.getStocks() == 0) {// 단위가 무게일 경우 무게를 입력하게 하는 팝업창이 띄워짐
 			stocksOrgram = JOptionPane.showInputDialog("무게를 입력하세요.");
 		} else {
 			stocksOrgram = "" + 1;
 		}
+		
 		int discount;
-		if (productDb.getDiscount_rate() > 0) {
+		if (productDb.getDiscount_rate() > 0 ) {
 			discount = (int) Math.round((productDb.getProduct_price() * Integer.parseInt(stocksOrgram)
 					* (1 - productDb.getDiscount_rate())));
 		} else {
 			discount = 0;
 		}
+		
+	
 		int before_discount = productDb.getProduct_price() * Integer.parseInt(stocksOrgram);// 가격*(무게 혹은 1개)
 		String[] data = { "" + productDb.getProduct_id(), // 물건번호
 				productDb.getProduct_name(), // 물건이름
@@ -83,7 +91,7 @@ public class PaymentInsertTable implements ActionListener {// 생성자에 table
 		
 		String pointValue = EastPayPanel.getPointValue().getText().trim();//포인트 사용
 		
-		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))));//
+		EastPayPanel.getPaymentValue().setText(Integer.toString((Integer.parseInt(sumPrice) - (Integer.parseInt(disCountPrice) + Integer.parseInt(pointValue)))).trim());//
 		EastPayPanel.getMoneypaymentValue().setText(formatMoney.format(Integer.parseInt(EastPayPanel.getPaymentValue().getText())));//최종 금액을 화폐단위로 출력
 
 		total_payment.setText("" + (Integer.parseInt(total_payment.getText().trim()) + Integer.parseInt(data[6])));//큰 글씨 합계

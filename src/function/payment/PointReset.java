@@ -1,5 +1,6 @@
 package function.payment;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
@@ -16,10 +17,18 @@ public class PointReset extends MouseAdapter{
 		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		String pointValue = ((JTextField) e.getSource()).getText().trim();
+	
 		
-		if(Integer.parseInt(pointValue) == 0 ) {
+			if(((JTextField) e.getSource()).getForeground() == Color.gray) {
+				((JTextField) e.getSource()).setText("");
+				
+			} else if(pointValue.equals("")) {
+				((JTextField) e.getSource()).setText("");
+				
+			} else if (Integer.parseInt(pointValue) == 0) {
 			((JTextField) e.getSource()).setText("");
-			} else {	
+			
+			} else if (Integer.parseInt(pointValue) != 0) {	
 				((JTextField) e.getSource()).setText("0");
 				int pointReset = Integer.parseInt(finalPrice) + Integer.parseInt(pointValue);
 				
@@ -28,7 +37,7 @@ public class PointReset extends MouseAdapter{
 				
 				PaymentInsertTable.getTotal_payment().setText(Integer.toString(pointReset));
 				TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(PaymentInsertTable.getTotal_payment().getText())));//최종 금액을 화폐단위로 출력
-				
+				EastPayPanel.getPointValue().setForeground(Color.gray);
 				//((JTextField) e.getSource()).setText("");
 			}
 	}

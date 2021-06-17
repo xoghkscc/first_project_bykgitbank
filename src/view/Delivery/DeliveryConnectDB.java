@@ -39,7 +39,7 @@ public class DeliveryConnectDB {
 			while(rs.next()) {
 				 arr.add(new Object[]{
 					rs.getInt("DELIVERY_ID"),
-					rs.getInt("MEMBERS_ID"),
+					rs.getString("MEMBERS_ID"),
 					rs.getInt("PAYMENT")
 				 });
 				 
