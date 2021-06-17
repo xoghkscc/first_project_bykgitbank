@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.store.centerPanel.Employee_enrollment;
+import view.store.centerPanel.StoreLookup;
 
 
 public class LeftPanel extends JPanel{
@@ -42,9 +43,12 @@ public class LeftPanel extends JPanel{
 		employee_lookup.addMouseListener(new SubClickAction(new Employee_enrollment()) {
 		});
 		JLabel date_sales = new SubLabel("날짜별 매출 조회");
+		date_sales.addMouseListener(new SubClickAction(new StoreLookup("date")));
 		
 		JLabel item_search = new SubLabel("품목별 매출 조회");
-		JLabel inquiry_search = new SubLabel("매출순 조회");
+		item_search.addMouseListener(new SubClickAction(new StoreLookup("product")));
+		JLabel inquiry_search = new SubLabel("회원별 매출 조회");
+		inquiry_search.addMouseListener(new SubClickAction(new StoreLookup("member")));
 		
 		add(employee);
 		
