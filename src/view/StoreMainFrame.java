@@ -20,10 +20,6 @@ public class StoreMainFrame extends JFrame{
 		getContentPane().setBackground(new Color(43, 51, 62));
 
 		
-		JLabel logo = new JLabel();
-		logo.setIcon(new ImageIcon("./files/logo8.png"));
-		logo.setBackground(new Color(43, 51, 62));
-		add(logo);
 		
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
