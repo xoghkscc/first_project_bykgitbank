@@ -66,7 +66,9 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		add(scrollPane);
 	
 //		initialize();
-		select("select DISTINCT * from delivery INNER JOIN member_informations USING(members_id) LEFT OUTER JOIN SALES USING(DELIVERY_ID)", null);
+		select("select DISTINCT DELIVERY_ID, MEMBERS_NAME, PAYMENT, MEMBERS_PHONENUMBER, TO_DATE(SALES_TIME, 'YY/MM/DD') as Sales_time from delivery "
+				+ "INNER JOIN member_informations USING (members_id) "
+				+ "LEFT OUTER JOIN SALES USING (DELIVERY_ID)", null);
 
 	}
 	private class JTableMouseListener implements MouseListener{	

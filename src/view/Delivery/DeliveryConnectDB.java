@@ -33,7 +33,9 @@ public class DeliveryConnectDB {
 
 		arr = new ArrayList<Object[]>();
 		arr2 = new ArrayList<>();
-		
+//		select DISTINCT DELIVERY_ID, MEMBERS_NAME, MEMBERS_PHONENUMBER, TO_DATE(SALES_TIME, 'YY/MM/DD') as Sales_time from delivery 
+//		INNER JOIN member_informations USING(members_id) 
+//		LEFT OUTER JOIN SALES USING(DELIVERY_ID);
 		
 		try(
 				Connection conn = ds.getConnection();
