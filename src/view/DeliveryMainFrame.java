@@ -14,8 +14,8 @@ import view.Delivery.DeliveryRightPanel;
 
 public class DeliveryMainFrame extends JFrame {
 	public static JFrame jf;
-	public DeliveryMainFrame() {
-//		this.jf = jf;
+	public DeliveryMainFrame(JFrame jf) {
+		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
@@ -38,8 +38,5 @@ public class DeliveryMainFrame extends JFrame {
 
 		setVisible(true);
 		
-	}
-	public static void main(String[] args) {
-		new DeliveryMainFrame();
 	}
 }
