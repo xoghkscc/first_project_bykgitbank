@@ -43,6 +43,7 @@ public class MemberSearchFrame extends JFrame{
 	private static DefaultTableModel model;
 	private static JTextField CustomerPhoneNumber;
 	public static JTable table;
+	public static String id;
 	JFrame jf;
 	
 	public MemberSearchFrame (JFrame jf) {
@@ -217,9 +218,7 @@ public class MemberSearchFrame extends JFrame{
 			public void mouseClicked(MouseEvent e) {		
 				TableModel tm = table.getModel();
 				int row = table.getSelectedRow();
-				System.out.println(tm.getValueAt(row, 0));
-				int id = (int)tm.getValueAt(row, 0);
-				System.out.println("123");
+				id = String.format("" + tm.getValueAt(row, 0));
 				new ReceiptButton();
 				
 			}
@@ -235,7 +234,6 @@ public class MemberSearchFrame extends JFrame{
 	}
 	
 	private void add(ClickMain cm) {
-		// TODO Auto-generated method stub
 		
 	}
 

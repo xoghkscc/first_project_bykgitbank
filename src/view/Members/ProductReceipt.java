@@ -43,7 +43,7 @@ public class ProductReceipt extends JFrame {
 		btn.setBounds(420,40, 50,25);
 		btn.setForeground(new Color(245, 173, 37));
 		
-		String[] header = {"물건을 구입한 날짜", "결제 금액"};
+		String[] header = {"물건을 구입한 날짜","수량", "결제 금액"};
 		
 		model = new DefaultTableModel(header, 0) {
 	

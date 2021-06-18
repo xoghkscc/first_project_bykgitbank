@@ -18,10 +18,9 @@ public class ProductReceiptFun {
 	
 	public ProductReceiptFun(String product_name) {
 		
-		String sql = "SELECT * FROM sales_simple "
-				+ "Inner Join sales USING(members_id) "
+		String sql = "SELECT * FROM sales "
 				+ "Inner Join products USING(product_id) " 
-				+ "WHERE product_name LIKE \'"+ product_name +"%\' AND members_id = " + MemberSearchFrame.id;
+				+ "WHERE (product_name LIKE \'"+ product_name +"%\' OR product_name = \'"+ product_name + "\') AND members_id = " + MemberSearchFrame.id ;
 		
 		try (
 				Connection conn = ds.getConnection();
@@ -29,13 +28,16 @@ public class ProductReceiptFun {
 		){
 			ResultSet rs = pstmt.executeQuery();
 			
-			System.out.println(sql);
 			while (rs.next()) {
-				String[] data = {"" + rs.getDate("SALES_TIME"), String.format("%d", rs.getInt("결제 금액"))};
+				int price = rs.getInt("product_price");
+				int num = rs.getInt("NUMBER_OF_SALES");
+				String[] data = {"" + rs.getDate("SALES_TIME"),"" + num, String.format("%d", price * num)};
 				ProductReceipt.getModel().addRow(data);	
 			}	
 			
 			rs.close();
+			pstmt.close();
+			conn.close();	
 			ds.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
