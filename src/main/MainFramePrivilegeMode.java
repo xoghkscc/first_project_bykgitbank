@@ -49,6 +49,8 @@ public class MainFramePrivilegeMode extends JFrame{
 		JPanel topBar = new TorBar_Main(log_jf, this);
 		add(topBar, BorderLayout.NORTH);
 		
+		topBar.setBackground(new Color(0, 36, 62));
+		
 		JButton logo = new JButton();
 		logo.setIcon(new ImageIcon("./files/logo6.png"));
 		logo.setBounds(447, 50, 338, 338);

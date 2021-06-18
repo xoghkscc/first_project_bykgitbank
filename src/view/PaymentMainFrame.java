@@ -35,6 +35,7 @@ public class PaymentMainFrame extends JFrame{
 		
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
+		topBar.setBackground(new Color(43, 51, 62));
 		
 		JPanel center = new CenterPayPanel(this);
 		table = ((CenterPayPanel) center).getTop();

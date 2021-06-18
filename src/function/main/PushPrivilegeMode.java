@@ -17,6 +17,7 @@ public class PushPrivilegeMode implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		
+		
 		new Privilege_Mode_Login(jf1);
 		
 		

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,11 +29,12 @@ public class MemberMainFrame extends JFrame{
 		
 		JButton test2 = new ClickMainDesign();
 		test2.addActionListener(new ClickMain(jf, this));
-
+		
 		add(test2);
 		
 		JPanel topBar = new TopBar();
 		add(topBar, BorderLayout.NORTH);
+		topBar.setBackground(new Color(43, 51, 62));
 		
 		new MemberSearchFrame(jf);
 		

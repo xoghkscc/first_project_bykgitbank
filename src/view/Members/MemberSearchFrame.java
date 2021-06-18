@@ -81,8 +81,9 @@ public class MemberSearchFrame extends JFrame{
 	
 		
 		panel.setBackground(new Color (43,51,62));
-		add(new TopBar(jf, this));
-		
+		TopBar tb = new TopBar(jf, this);
+		add(tb);
+		tb.setBackground(new Color(43, 51, 62));
 		
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(null);

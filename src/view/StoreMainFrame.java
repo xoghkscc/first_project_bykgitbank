@@ -23,7 +23,7 @@ public class StoreMainFrame extends JFrame{
 		
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
-		
+		topBar.setBackground(new Color(43, 51, 62));
 		
 		JPanel leftPanle = new LeftPanel(this);
 		add(leftPanle, BorderLayout.WEST);

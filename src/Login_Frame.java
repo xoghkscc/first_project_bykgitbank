@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -58,7 +60,26 @@ public class Login_Frame extends JFrame {
 		
 		add(payment_btn);
 				 
-
+		payment_btn.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {}
+			@Override
+			public void mousePressed(MouseEvent arg0) {}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				payment_btn.setIcon(new ImageIcon("./files/button.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				payment_btn.setIcon(new ImageIcon("./files/buttonclick2.png"));
+			}
+			@Override
+			public void mouseClicked(MouseEvent arg0) {}
+		});
+		
+		
 		JButton privilege_btn = new JButton();
 		privilege_btn.setSize(178, 100);
 		privilege_btn.setBackground(new Color(0, 36, 62));
@@ -68,6 +89,25 @@ public class Login_Frame extends JFrame {
 		privilege_btn.addActionListener(new PushPrivilegeMode(this));
 		privilege_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
 		add(privilege_btn);
+		
+		privilege_btn.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {}
+			@Override
+			public void mousePressed(MouseEvent arg0) {}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				privilege_btn.setIcon(new ImageIcon("./files/button2.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				privilege_btn.setIcon(new ImageIcon("./files/button2click2.png"));
+			}
+			@Override
+			public void mouseClicked(MouseEvent arg0) {}
+		});
 		 
 		
 		setVisible(true);

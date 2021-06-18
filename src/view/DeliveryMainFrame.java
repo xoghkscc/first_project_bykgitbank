@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ public class DeliveryMainFrame extends JFrame {
 		
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
+		topBar.setBackground(new Color(43, 51, 62));
 		
 		JPanel DeliveryCenterPanel = new DeliveryCenterPanel(this);
 		add(DeliveryCenterPanel, BorderLayout.CENTER);

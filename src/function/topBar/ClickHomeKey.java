@@ -9,10 +9,10 @@ public class ClickHomeKey extends JButton {
 	
 	public ClickHomeKey() {
 		
-		setSize(80, 80);
+		setSize(50, 50);
 		setIcon(new ImageIcon("./files/homeKey.jpg"));
 		setBackground(new Color(0, 36, 62));
-		setLocation(30, 30);
+		setLocation(0, 0);
 		setBorder(null);
 	}
 }

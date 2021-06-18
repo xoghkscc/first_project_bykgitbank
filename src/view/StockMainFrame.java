@@ -35,6 +35,7 @@ public class StockMainFrame extends JFrame{
 		//탑바 고정 판넬
 		JPanel topBar = new TopBar(jf, this);
 		add(topBar, BorderLayout.NORTH);
+		topBar.setBackground(new Color(43, 51, 62));
 		
 		//왼쪽 버튼 판넬
 		JPanel buttons = new JPanel();
