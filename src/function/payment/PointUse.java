@@ -20,15 +20,15 @@ public class PointUse implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		DecimalFormat formatMoney = new DecimalFormat("###,### ");
 		DecimalFormat formatPoint = new DecimalFormat("# ");
-		((JTextField) e.getSource()).setForeground(Color.BLACK);
 		String pointValue = ((JTextField) e.getSource()).getText().trim();
 		
 		((JTextField) e.getSource()).setText(formatPoint.format(Integer.parseInt(pointValue)).trim());
 		
 		String finalPrice = EastPayPanel.getPaymentValue().getText().trim();
 		
-	
-		if(Integer.parseInt(EastPayPanel.getPaymentValue().getText().trim()) < 
+		if(EastPayPanel.getPointValue().getForeground() == Color.BLACK ) {
+			JOptionPane.showMessageDialog(null, "이미포인트를 사용하셨습니다");
+		} else if(Integer.parseInt(EastPayPanel.getPaymentValue().getText().trim()) < 
 				Integer.parseInt(EastPayPanel.getPointValue().getText())) {
 			JOptionPane.showMessageDialog(null, "결재금액보다 포인트가 더 많습니다");
 			PaymentInsertTable.getTotal_payment().setText(EastPayPanel.getPaymentValue().getText());
@@ -49,7 +49,7 @@ public class PointUse implements ActionListener{
 			EastPayPanel.getMoneypaymentValue().setText(formatMoney.format(Integer.parseInt(EastPayPanel.getPaymentValue().getText().trim())));
 			PaymentInsertTable.getTotal_payment().setText(EastPayPanel.getPaymentValue().getText().trim());
 			TotalPaymentPanel.get_money_total_payment().setText(formatMoney.format(Integer.parseInt(PaymentInsertTable.getTotal_payment().getText().trim())));
-			
+			((JTextField) e.getSource()).setForeground(Color.BLACK);
 		}
 		
 		

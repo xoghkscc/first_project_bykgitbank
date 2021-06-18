@@ -12,10 +12,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,30 +28,35 @@ import javax.swing.table.DefaultTableModel;
 import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Employee_DB;
-import function.store.EmployeeDeleteButton;
 import hikariCP.HikariCP;
 import view.store.RoundButtonStore;
+import function.store.*;
 
 public class Employee_enrollment extends JPanel {
 	private static JTable employeeTable;
+	private static JScrollPane scrollPane;
 	public Employee_enrollment() {
 		setPreferredSize(new Dimension(300, 500));
 		setLayout(new GridLayout(1, 2, 0, 30));
-//		setBackground(new Color(43, 51, 62));
+		setBackground(new Color(43, 51, 62));
 		JButton btn = new RoundButtonStore("직원 등록");
+		btn.addActionListener(new EmployeeCreateButton());
 		JButton btn2 = new RoundButtonStore("직원 삭제");
 		btn2.addActionListener(new EmployeeDeleteButton());
 		
 		employeeTable = new EmployeeTable();
-		employeeTable.addMouseListener(new tableMouse());
+		employeeTable.addMouseListener(new TableMouse());
 		JPanel left = new JPanel();
+		left.setBackground(new Color(43, 51, 62));
 		JPanel emptyPanel = new JPanel();
+		emptyPanel.setBackground(new Color(43, 51, 62));
 		emptyPanel.setPreferredSize(new Dimension(300, 70));
 //		emptyPanel.setBackground(new Color(43, 51, 62));
 //		left.setBackground(new Color(43, 51, 62));
 		JPanel right = new JPanel();
+		right.setBackground(new Color(43, 51, 62));
 		right.add(new RightPanel());
-		JScrollPane scrollPane = new JScrollPane(employeeTable);
+		scrollPane = new JScrollPane(employeeTable);
 		left.add(emptyPanel);
 		left.add(scrollPane);
 		left.add(btn);
@@ -62,6 +69,9 @@ public class Employee_enrollment extends JPanel {
 	
 	public static JTable getEmployeeTable() {
 		return employeeTable;
+	}
+	public static JScrollPane getscrollPane() {
+		return scrollPane;
 	}
 }
 
@@ -100,37 +110,11 @@ class EmployeeTable extends JTable {
 			e.printStackTrace();
 		}
 	}
-
-	public static DefaultTableModel getEmployeeModel() {
-		return employeeModel;
-	}
-	public static ArrayList<Employee_DB> getdata2() {
-		return data2;
-	}
-	
 }
 
-class tableMouse extends MouseAdapter{
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		int clickRow = ((JTable) e.getSource()).getSelectedRow();
-		int employee_id =Integer.parseInt((String) Employee_enrollment.getEmployeeTable().getValueAt(clickRow, 0));
-		for(int i = 0; i<EmployeeTable.getdata2().size(); i++) {
-			if(employee_id == EmployeeTable.getdata2().get(i).getEmployee_id()) {
-				RightPanel.getemployee_id().setText(""+EmployeeTable.getdata2().get(i).getEmployee_id());
-				RightPanel.getemployeeName().setText(EmployeeTable.getdata2().get(i).getEmployee_name());
-				RightPanel.getemployeedJob_id().setText(""+EmployeeTable.getdata2().get(i).getJob_id());
-				RightPanel.getemployeePhone_Number().setText(""+EmployeeTable.getdata2().get(i).getPhone_number());
-				RightPanel.getemployeePositions().setText(EmployeeTable.getdata2().get(i).getPositions());
-				RightPanel.getemployeeDuty_hours().setText(""+EmployeeTable.getdata2().get(i).getDuty_hours());
-				RightPanel.getemployeeEmail().setText(EmployeeTable.getdata2().get(i).getEmail());
-				RightPanel.getemployeesalary().setText(""+EmployeeTable.getdata2().get(i).getSalary());
-				break;
-			}
-			
-		}
-//		Employee_DB db = EmployeeTable.getdata2().get
-	}
-}
+
+
+
+
 
 

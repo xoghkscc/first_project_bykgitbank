@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import com.zaxxer.hikari.HikariDataSource;
 
 import function.model.Employee_DB;
 import hikariCP.HikariCP;
+import view.store.centerPanel.Employee_enrollment;
 import view.store.centerPanel.RightPanel;
 
 public class EmployeeDeleteButton implements ActionListener{
@@ -34,7 +36,16 @@ public class EmployeeDeleteButton implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(null, "삭제되었습니다..");
+			int i=0;
+			while(true) {
+				int tableRow = Integer.parseInt((String) Employee_enrollment.getEmployeeTable().getValueAt(i, 0));
+				if(tableRow ==  employee_id) {
+					EmployeeTable.getEmployeeModel().removeRow(i);
+					break;
+				}
+				i++;
+			}
+			JOptionPane.showMessageDialog(null, "삭제되었습니다.");
 		}
 	}
 

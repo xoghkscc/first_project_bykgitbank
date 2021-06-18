@@ -2,12 +2,17 @@ package view.Payment.east;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import function.payment.PaymentInsertTable;
 import function.payment.Customer_List.Customer_List;
+import view.Payment.middlePanel.TotalPaymentPanel;
 
 
 
@@ -27,6 +32,7 @@ public class MemberPanel extends JPanel{
 		JLabel MemberPhoneNumber = new EastLabel("전화 번호");
 		memberPhoneNumberValue = new EastJText3("뒷자리 입력");
 		memberPhoneNumberValue.addActionListener(new Customer_List());	
+		memberPhoneNumberValue.addMouseListener(new PhoneNumberValueColor());
 		JLabel memberNumber = new EastLabel("회원 번호");
 		memberNumberValue = new EastLabel2("");
 		JLabel memberName = new EastLabel("회원 이름");
@@ -76,4 +82,16 @@ public class MemberPanel extends JPanel{
 			setBackground(Color.white);
 		}
 	}
+	
+	public class PhoneNumberValueColor extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+					MemberPanel.getMemberPhoneNumberValue().setForeground(Color.gray);
+
+				}
+		
+	}
+
+	
 }

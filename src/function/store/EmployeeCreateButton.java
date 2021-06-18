@@ -17,8 +17,7 @@ public class EmployeeCreateButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	
-		
+		new EmployeeCreateFrame();
 	}
 
 }

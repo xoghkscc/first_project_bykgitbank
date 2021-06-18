@@ -22,6 +22,7 @@ public class DeliveryLeftTable extends JPanel {
 	public static int row;
 	public static int delivery_id;
 	public static String MEMBERS_NAME;
+	public static int members_id;
 	public static int payment;
 
 	private static final long serialVersionUID = 1L;
@@ -44,7 +45,7 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		//테이블에 마우스리스너 감지하는 클래스를 추가
 		table.addMouseListener(new JTableMouseListener());
 		table.getColumn("DELIVERY_ID").setPreferredWidth(WIDTH);
-		table.getColumn("MEMBERS_NAME").setPreferredWidth(WIDTH); 
+		table.getColumn("MEMBERS_ID").setPreferredWidth(WIDTH); 
 		table.getColumn("PAYMENT").setPreferredWidth(WIDTH);
 		table.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		table.setSize(500, 400);
@@ -91,7 +92,6 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			drp.getPhoneNumberText().setText(dcb.getArr2().get(1));
 			drp.getPaymentText().setText(String.format("%d", DeliveryLeftTable.payment));	
 		
-			
 		}
 
 	@Override
