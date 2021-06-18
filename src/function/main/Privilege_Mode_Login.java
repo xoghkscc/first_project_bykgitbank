@@ -26,7 +26,7 @@ public class Privilege_Mode_Login extends JFrame {
 		member_id = new JTextField();
 		JLabel label2 = new JLabel("비밀번호  ");
 		member_password = new JTextField();
-		JButton btn = new RoundButtonDesign("로그인");
+		JButton btn = new JButton();
 		
 		add(Privilege_Mode_Login);
 		add(label1);
@@ -55,9 +55,11 @@ public class Privilege_Mode_Login extends JFrame {
 		member_password.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		member_password.setForeground(new Color(0, 0, 0));
 		
-		btn.setBounds(350,330, 100 , 73);
-		btn.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
+		btn.setBounds(350,330,100 , 73);
+		btn.setIcon(new ImageIcon("./files/login.png"));
+		btn.setBackground(new Color(0, 36, 62));
 		btn.addActionListener(new push_login(this, jf1));
+		btn.setBorder(null);
 	
 		
 		setBounds(500, 50, 500, 500);
