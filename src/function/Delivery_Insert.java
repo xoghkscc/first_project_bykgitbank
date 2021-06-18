@@ -30,7 +30,7 @@ public class Delivery_Insert {
 			}
 			max_delivery_id += 1;
 			
-			String insert_sql = String.format("INSERT INTO DELIVERY VALUES (%d, %d, %d)",
+			String insert_sql = String.format("INSERT INTO DELIVERY VALUES (%d, %d, %d, 'N')",
 					max_delivery_id,Integer.parseInt(MemberPanel.getMemberNumberValue().getText().trim()),
 					Integer.parseInt(EastPayPanel.getAmountValue().getText().trim()));
 			
