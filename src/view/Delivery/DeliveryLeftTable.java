@@ -45,8 +45,9 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		//테이블에 마우스리스너 감지하는 클래스를 추가
 		table.addMouseListener(new JTableMouseListener());
 		table.getColumn("DELIVERY_ID").setPreferredWidth(WIDTH);
-		table.getColumn("MEMBERS_ID").setPreferredWidth(WIDTH); 
+		table.getColumn("MEMBERS_NAME").setPreferredWidth(WIDTH); 
 		table.getColumn("PAYMENT").setPreferredWidth(WIDTH);
+		table.getColumn("SALES_TIME").setPreferredWidth(WIDTH);
 		table.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		table.setSize(500, 400);
 		//빈 테이블 객체 생성
