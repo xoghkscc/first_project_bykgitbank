@@ -10,6 +10,7 @@ public class MainButton2 extends JButton{
 		setSize(150, 150);
 		setLocation(new Point(x, y));
 		setBackground(new Color(0, 36, 62));
+		setContentAreaFilled(false);
 		setBorder(null);
 	}
 }

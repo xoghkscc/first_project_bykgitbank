@@ -58,6 +58,8 @@ public class Login_Frame extends JFrame {
 		payment_btn.addActionListener(new NormalModePush(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
 		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
 		
+		payment_btn.setContentAreaFilled(false);
+		
 		add(payment_btn);
 				 
 		payment_btn.addMouseListener(new MouseListener() {
@@ -88,6 +90,9 @@ public class Login_Frame extends JFrame {
 		privilege_btn.setBorder(null);
 		privilege_btn.addActionListener(new PushPrivilegeMode(this));
 		privilege_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
+		
+		privilege_btn.setContentAreaFilled(false);
+		
 		add(privilege_btn);
 		
 		privilege_btn.addMouseListener(new MouseListener() {

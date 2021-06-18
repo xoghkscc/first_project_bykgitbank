@@ -131,7 +131,7 @@ public class MainFramePrivilegeMode extends JFrame{
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				delivery_btn.setIcon(new ImageIcon("./files/delivery.png"));
+				delivery_btn.setIcon(new ImageIcon("./files/delivery2.png"));
 			}
 		});
 		

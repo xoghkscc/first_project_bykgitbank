@@ -29,6 +29,7 @@ public class Privilege_Mode_Login extends JFrame {
 		JLabel label2 = new JLabel("비밀번호  ");
 		member_password = new JTextField();
 		JButton btn = new JButton();
+		btn.setContentAreaFilled(false);
 		
 		btn.addMouseListener(new MouseListener() {
 			
