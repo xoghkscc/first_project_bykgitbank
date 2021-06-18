@@ -20,7 +20,7 @@ public class Login_Frame extends JFrame {
 	public int getWidth() {
 		return WIDTH;
 	}
-
+//d
 	public int getHeight() {
 		return HEIGHT;
 	}
