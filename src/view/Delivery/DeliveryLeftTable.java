@@ -86,8 +86,7 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			DeliveryRightPanel drp = DeliveryRightPanel.getRightPanel();
 			
 			DeliveryConnectDB dcb = new DeliveryConnectDB("select DISTINCT * from delivery INNER JOIN member_informations USING(members_id) WHERE delivery_id = " + delivery_id , "check");
-			
-			
+//			dd
 			drp.getInformationText().setText(DeliveryLeftTable.MEMBERS_NAME);
 			drp.getAddressText().setText(dcb.getArr2().get(0));
 			drp.getPhoneNumberText().setText(dcb.getArr2().get(1));
