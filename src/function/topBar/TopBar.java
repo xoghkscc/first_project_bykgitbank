@@ -19,7 +19,7 @@ public class TopBar extends JPanel{
 		this.mainjf = mainjf;
 		this.paymentjf = paymentjf;
 		
-		JTextField text = new JTextField();
+		JPanel text = new JPanel();
 		setSize(1280, 50);
 		setLocation(0, 0);
 		text.setBackground(new Color(43, 51, 62));
@@ -32,11 +32,9 @@ public class TopBar extends JPanel{
 		btn1.setLocation(830, 15);
 		btn1.setBorder(null);
 		add(btn1);
-		paymentjf.add(btn1);
 		
 		setLayout(new BorderLayout());
 		add(text);
-		paymentjf.add(text);
 		JButton test2 = new ClickMainDesign();
 		test2.addActionListener(new ClickMain(mainjf, paymentjf));
 		test2.setPreferredSize(new Dimension(50, 50));
