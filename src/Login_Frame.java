@@ -47,14 +47,24 @@ public class Login_Frame extends JFrame {
 		add(logo);
 		
 		
-		JButton payment_btn = new MainButton(135, 400, "일반 모드");
+		JButton payment_btn = new JButton();
+		payment_btn.setSize(178, 100);
+		payment_btn.setBackground(new Color(0, 36, 62));
+		payment_btn.setLocation(115, 420);
+		payment_btn.setIcon(new ImageIcon("./files/button.png"));
+		payment_btn.setBorder(null);
 		payment_btn.addActionListener(new NormalModePush(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
 		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
 		
 		add(payment_btn);
 				 
 
-		JButton privilege_btn = new MainButton(380, 400, "관리자 모드");
+		JButton privilege_btn = new JButton();
+		privilege_btn.setSize(178, 100);
+		privilege_btn.setBackground(new Color(0, 36, 62));
+		privilege_btn.setLocation(375, 420);
+		privilege_btn.setIcon(new ImageIcon("./files/button2.png"));
+		privilege_btn.setBorder(null);
 		privilege_btn.addActionListener(new PushPrivilegeMode(this));
 		privilege_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 27));
 		add(privilege_btn);
