@@ -50,7 +50,8 @@ public class DeliveryConnectDB {
 							rs.getInt("DELIVERY_ID"),
 							rs.getString("MEMBERS_NAME"),
 							rs.getInt("PAYMENT"),
-							rs.getDate("SALES_TIME")
+							rs.getDate("SALES_TIME"),
+							rs.getString("delivery_check")
 					});
 					
 				}
