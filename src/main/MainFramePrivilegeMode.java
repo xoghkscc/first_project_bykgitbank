@@ -2,6 +2,9 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import function.viewToGo.ClickPayment;
 import function.viewToGo.ClickStock;
 import function.viewToGo.ClickStore;
 import function.viewToGo.MainButton;
+import main.*;
 
 public class MainFramePrivilegeMode extends JFrame{
 	static final int WIDTH = 1280; 
@@ -58,26 +62,79 @@ public class MainFramePrivilegeMode extends JFrame{
 		add(logo);
 		
 		
-		JButton payment_btn = new MainButton(135, 400, "계산");
+		JButton payment_btn = new MainButton2(135, 400);
+		payment_btn.setIcon(new ImageIcon("./files/payment.png"));
 		payment_btn.addActionListener(new ClickPayment(this));//MainFrame의 JFrame을 계산 Frame에 ActionListener로 넘김
-		payment_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
+		payment_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				payment_btn.setIcon(new ImageIcon("./files/payment.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				payment_btn.setIcon(new ImageIcon("./files/payment2.png"));
+			}
+		});
+		payment_btn.setVisible(true);
 		
-		JButton member_btn = new MainButton(340, 400, "회원 관리");
+		JButton member_btn = new MainButton2(340, 400);
+		member_btn.setIcon(new ImageIcon("./files/member.png"));
 		member_btn.addActionListener(new ClickMember(this));
-		member_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
+		member_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				member_btn.setIcon(new ImageIcon("./files/member.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				member_btn.setIcon(new ImageIcon("./files/member2.png"));
+			}
+		});
 		
-		JButton stock_btn = new MainButton(544, 400, "재고 관리");
+		
+		JButton stock_btn = new MainButton2(544, 400);
 		stock_btn.addActionListener(new ClickStock(this));
-		stock_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
+		stock_btn.setIcon(new ImageIcon("./files/stock.png"));
+		stock_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				stock_btn.setIcon(new ImageIcon("./files/stock.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				stock_btn.setIcon(new ImageIcon("./files/stock2.png"));
+			}
+		});
 		
-		JButton store_btn = new MainButton(749, 400, "매장 관리");
+		
+		JButton store_btn = new MainButton2(749, 400);
 		store_btn.addActionListener(new ClickStore(this));
-		store_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
+		store_btn.setIcon(new ImageIcon("./files/store.png"));
+		store_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				store_btn.setIcon(new ImageIcon("./files/store.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				store_btn.setIcon(new ImageIcon("./files/store2.png"));
+			}
+		});
 		                                 
-		JButton delivery_btn = new MainButton(953, 400, "배달 관리");
+		JButton delivery_btn = new MainButton2(953, 400);
+		delivery_btn.setIcon(new ImageIcon("./files/delivery.png"));
 		delivery_btn.addActionListener(new DeliveryFunctionMain(this));
-		delivery_btn.setFont(new Font("함초롬돋움", Font.PLAIN, 33));
-	
+		delivery_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				delivery_btn.setIcon(new ImageIcon("./files/delivery.png"));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				delivery_btn.setIcon(new ImageIcon("./files/delivery.png"));
+			}
+		});
+		
 		add(payment_btn);
 		add(member_btn);
 		add(stock_btn);
