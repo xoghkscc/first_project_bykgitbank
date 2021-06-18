@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -36,8 +37,13 @@ public class DeliveryLeftTable extends JPanel {
 		};
 	
 private DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+	JPanel center;
+	JFrame jf;
 	
-	public DeliveryLeftTable() {
+	public DeliveryLeftTable(JFrame jf, JPanel center, JPanel DeliveryRightPanel) {
+		this.jf = jf;
+		this.center = center;
 //		setLayout(null);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		//테이블 생성
@@ -86,7 +92,8 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 			DeliveryRightPanel drp = DeliveryRightPanel.getRightPanel();
 			
 			DeliveryConnectDB dcb = new DeliveryConnectDB("select DISTINCT * from delivery INNER JOIN member_informations USING(members_id) WHERE delivery_id = " + delivery_id , "check");
-//			dd
+			
+			
 			drp.getInformationText().setText(DeliveryLeftTable.MEMBERS_NAME);
 			drp.getAddressText().setText(dcb.getArr2().get(0));
 			drp.getPhoneNumberText().setText(dcb.getArr2().get(1));

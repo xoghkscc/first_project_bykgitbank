@@ -17,16 +17,19 @@ import view.stock.DateCheck;
 
 public class StockMainFrame extends JFrame{
 	JFrame jf;
-	public StockMainFrame(JFrame jf) {
+	public StockMainFrame(JFrame jf) {//JFrame jf
 		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setSize(1280, 720);
+//		setLocation(50, 50);
 		
 //		JButton test2 = new ClickMainDesign();
 //		test2.addActionListener(new ClickMain(jf, this));
-//
-//		System.out.println();
+
+
 //		add(test2);
 
 		//탑바 고정 판넬
@@ -53,4 +56,7 @@ public class StockMainFrame extends JFrame{
 		
 		setVisible(true);
 	}
+//	public static void main(String[] args) {
+//		new StockMainFrame();
+//	}
 }

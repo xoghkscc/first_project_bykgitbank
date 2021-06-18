@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -43,10 +44,16 @@ public class Product_order extends JFrame{
 		
 		//뒤로가기버튼 생성및 뒤로가기 기능
 		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		top.add(backButton, BorderLayout.WEST);
+//		backButton.addActionListener(new BackToStock(jf, this));
+//		top.add(backButton, BorderLayout.WEST);
 		
-		top.setPreferredSize(new Dimension(203,50));
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/품목주문.png"));
+		logo.setBounds(20, 20, 350, 70);
+		top.add(logo);
+		
+		top.setBackground(new Color(43,51,62));
+		top.setPreferredSize(new Dimension(203,90));
 //		top.setSize(50, 100);
 		top.setVisible(true);
 		
@@ -95,7 +102,7 @@ public class Product_order extends JFrame{
 		//품목이름과 필드
 		JPanel border1 = new JPanel();
 		new Panel_titleBorder(border1);
-		border1.setBounds(30, 50, 650, 62);
+		border1.setBounds(30, 20, 650, 62);
 		center.add(border1);
 		
 		new Regist_layout(jLabel);
@@ -114,7 +121,7 @@ public class Product_order extends JFrame{
 		//행사유형과 콤보박스
 		JPanel border2 = new JPanel();
 		new Panel_titleBorder(border2);
-		border2.setBounds(30, 150, 650, 62);
+		border2.setBounds(30, 120, 650, 62);
 		center.add(border2);
 		
 
@@ -157,7 +164,7 @@ public class Product_order extends JFrame{
 		
 		
 		//검색버튼
-		jButton.setLocation(300,250);
+		jButton.setLocation(300,220);
 		jButton.setSize(100, 35);
 		jButton.setVisible(true);
 		
