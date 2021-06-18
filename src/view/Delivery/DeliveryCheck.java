@@ -13,9 +13,9 @@ public class DeliveryCheck {
 	HikariCP cp = new HikariCP();
 	HikariDataSource ds = cp.getHikariDataSource();		
 	
-	public DeliveryCheck(String checkString) {
+	public DeliveryCheck(int checkString) {
 		
-		String sql = "UPDATE delivery SET delivery_check = ? WHERE delivery_check = ? ";
+		String sql = "UPDATE delivery SET delivery_check = ? WHERE delivery_id = ? ";
 		
 		try (
 				Connection conn = ds.getConnection();
@@ -24,8 +24,8 @@ public class DeliveryCheck {
 			
 			String no = "N";
 			
-			pstmt.setString(1, checkString);
-			pstmt.setString(2, no);
+			pstmt.setString(1, no);
+			pstmt.setString(2, "" + checkString);
 		
 			
 			pstmt.executeUpdate();

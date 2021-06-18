@@ -22,6 +22,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
+import function.member.design.RoundButtonDesign;
 import function.model.Member_Informations_DB;
 import view.Members.Customer_Function.CustomerUpdateText;
 import view.Members.Customer_Function.CustomerUpdateText2;
@@ -47,7 +49,7 @@ public class CustomerUpdate extends JFrame {
 		panel.setSize(1000,70);
 		panel.setBackground(new Color(43,51,62));
 		
-		JButton btn = new Search("검색");
+		JButton btn = new RoundButtonDesign("검색");
 		btn.addActionListener(new CustomerUpdateText());
 		CustomerPhoneNumber = new JTextField(20);
 		CustomerPhoneNumber.setText("※ 휴대폰 번호 4자리를 입력해주세요");
@@ -88,7 +90,7 @@ public class CustomerUpdate extends JFrame {
 		pane.setLocation(30, 150);
 		pane.setSize(1200,300);
 		
-		JButton modify = new MemberJoin("회원 수정");
+		JButton modify = new RoundButtonDesign("회원 수정");
 		modify.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
 		modify.setLocation(450, 500);
 		modify.setSize(300,100);
