@@ -41,7 +41,7 @@ public class RightPanel extends JPanel {
 		JLabel name = new EmployeeLabel("이름");
 		employeeName = new RightJText();
 		JLabel label2 = new EmployeeLabel("직책");
-		employeedJob_id = new JComboBox<String>(new String[] {"", "store-owner", "manager", "distribution"}); 
+		employeedJob_id = new JComboBox<String>(new String[] {"", "store-owner", "manager", "distribution", "cashier"}); 
 		employeedJob_id.setBackground(Color.WHITE);
 		employeedJob_id.setPreferredSize(new Dimension(200, 40));
 		employeedJob_id.setFont(new Font("맑은 고딕", Font.BOLD, 12));
