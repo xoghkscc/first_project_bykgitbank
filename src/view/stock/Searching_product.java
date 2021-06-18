@@ -41,7 +41,7 @@ public class Searching_product{
 		JTextField jTextField = new JTextField(20);
 		
 
-		JButton jButton = new JButton("검색");
+		JButton jButton = new Button_round_search("검색");
 
 //		select * from products where expiration_date BETWEEN '21-06-10' and '21-06-30'; 
 		

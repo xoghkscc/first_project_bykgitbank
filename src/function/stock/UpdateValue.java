@@ -38,20 +38,6 @@ public class UpdateValue {
 			String expiration_date, String discount_type, Double discount_rate, String product_origin, String stocks,
 			String gram, String sales_type, String cost) {
 		super();
-		
-
-		System.out.println("product_id : " +product_id);
-		System.out.println("product_name : " +product_name);
-		System.out.println("product_type : " +product_type);
-		System.out.println("product_price : " +product_price);
-		System.out.println("expiration_date : " +expiration_date);
-		System.out.println("discount_type : " +discount_type);
-//		System.out.println("discount_rate : " +discount_rate);
-		System.out.println("product_origin : " + product_origin);
-		System.out.println("stocks : " + stocks);
-		System.out.println("gram : " +gram);
-		System.out.println("sales_type : " +sales_type);
-		System.out.println("cost : " +cost);
 
 		PRODUCT_ID = product_id;
 		PRODUCT_NAME = product_name;
@@ -127,17 +113,17 @@ public class UpdateValue {
 			cost = "COST = " + COST;
 		}
 	
-		System.out.println("name : " + name);
-		System.out.println("productType : " + productType);
-		System.out.println("price : " + price);
-		System.out.println("date : " + date);
-		System.out.println("discountType : " + discountType);
-		System.out.println("discountRate : " + discountRate);
-		System.out.println("origin : " + origin);
-		System.out.println("stock : " + stock);
-		System.out.println("gram : " + gram);
-		System.out.println("salesType : " + salesType);
-		System.out.println("cost : " + cost);
+//		System.out.println("name : " + name);
+//		System.out.println("productType : " + productType);
+//		System.out.println("price : " + price);
+//		System.out.println("date : " + date);
+//		System.out.println("discountType : " + discountType);
+//		System.out.println("discountRate : " + discountRate);
+//		System.out.println("origin : " + origin);
+//		System.out.println("stock : " + stock);
+//		System.out.println("gram : " + gram);
+//		System.out.println("salesType : " + salesType);
+//		System.out.println("cost : " + cost);
 		
 		ArrayList<String> arr = new ArrayList<>();
 		arr.add(name); arr.add(productType);
@@ -170,13 +156,13 @@ public class UpdateValue {
 			System.out.println(arrValues);
 			arrValues = arrValues.substring(8);
 			completeSql = "SELECT * FROM PRODUCTS WHERE "
-					+ arrValues;
+					+ arrValues + " ORDER BY PRODUCT_ID";
 		}else {
-			completeSql = "SELECT * FROM PRODUCTS";
+			completeSql = "SELECT * FROM PRODUCTS ORDER BY PRODUCT_ID";
 		}
 		
 
-		System.out.println("comsql : " + completeSql);
+//		System.out.println("comsql : " + completeSql);
 	}
 
 }

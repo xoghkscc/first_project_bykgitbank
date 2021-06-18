@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -61,10 +62,16 @@ public class Product_regist extends JFrame{
 		
 		//뒤로가기버튼 생성및 뒤로가기 기능
 		JButton backButton = new BackButton();
-		backButton.addActionListener(new BackToStock(jf, this));
-		top.add(backButton, BorderLayout.WEST);
+//		backButton.addActionListener(new BackToStock(jf, this));
+//		top.add(backButton, BorderLayout.WEST);
 		
-		top.setPreferredSize(new Dimension(203,50));
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon("./files/품목등록.png"));
+		logo.setBounds(20, 20, 350, 70);
+		top.add(logo);
+		
+		top.setBackground(new Color(255,255,204));
+		top.setPreferredSize(new Dimension(203,90));
 //		top.setSize(50, 100);
 		top.setVisible(true);
 		
@@ -109,8 +116,8 @@ public class Product_regist extends JFrame{
 		for(int i = 0; i < eventArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
 			event[i+1] = eventArr.get(i);
 		}
-		System.out.println("types배열 : " + Arrays.toString(types));
-		System.out.println("eventArr배열 : " + Arrays.toString(event));
+//		System.out.println("types배열 : " + Arrays.toString(types));
+//		System.out.println("eventArr배열 : " + Arrays.toString(event));
 		
 		jComboBoxProductType = new JComboBox<String>(types); 
 		jComboBoxEvent = new JComboBox<String>(event); 
@@ -140,7 +147,7 @@ public class Product_regist extends JFrame{
 		//품목이름과 필드
 		JPanel border1 = new JPanel();
 		new Panel_titleBorder(border1);
-		border1.setBounds(30, 50, 650, 62);
+		border1.setBounds(30, 20, 650, 62);
 		center.add(border1);
 		
 		new Regist_layout(jLabel);
@@ -158,7 +165,7 @@ public class Product_regist extends JFrame{
 		//가격과 텍스트필드
 		JPanel border2 = new JPanel();
 		new Panel_titleBorder(border2);
-		border2.setBounds(30, 150, 650, 62);
+		border2.setBounds(30, 120, 650, 62);
 		center.add(border2);
 		
 		new Regist_layout(jLabel3);
@@ -178,7 +185,7 @@ public class Product_regist extends JFrame{
 		//행사유형과 콤보박스
 		JPanel border3 = new JPanel();
 		new Panel_titleBorder(border3);
-		border3.setBounds(30, 250, 650, 62);
+		border3.setBounds(30, 220, 650, 62);
 		center.add(border3);
 		
 		new Regist_layout(jLabel5);
@@ -223,7 +230,7 @@ public class Product_regist extends JFrame{
 		//
 		JPanel border4 = new JPanel();
 		new Panel_titleBorder(border4);
-		border4.setBounds(30, 350, 650, 62);
+		border4.setBounds(30, 320, 650, 62);
 		center.add(border4);
 		
 		new Regist_layout(jLabel7);
@@ -238,7 +245,7 @@ public class Product_regist extends JFrame{
 		
 		
 		//검색버튼
-		jButton.setLocation(300,450);
+		jButton.setLocation(300,420);
 		jButton.setSize(100, 35);
 		jButton.setVisible(true);
 		
@@ -280,38 +287,53 @@ public class Product_regist extends JFrame{
 					weight = null;
 					
 				}
-//				PRODUCT_ID      NOT NULL NUMBER(4)    
-//				PRODUCT_NAME    NOT NULL VARCHAR2(40) 
-//				PRODUCT_TYPE             VARCHAR2(30) 
-//				PRODUCT_PRICE            NUMBER(10)   
-//				EXPIRATION_DATE          DATE         
-//				DISCOUNT_TYPE            VARCHAR2(30) 
-//				DISCOUNT_RATE            NUMBER(3,2)  
-//				PRUDUCT_ORIGIN           VARCHAR2(30) 
-//				STOCKS                   NUMBER(10)   
-//				GRAM                     NUMBER(6)    
-//				SALES_TYPE               VARCHAR2(20) 
-//				COST   
-				String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
-				String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
-				System.out.println(discountRateSql);
-				ConnectDB con = new ConnectDB(discountRateSql);
-				Double discountRate = con.getResultRate();
-				ConnectDB con2 = new ConnectDB(sequenceSql);
-				int sequenceID = con2.getResultID() + 1;
 				
-				sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
-						+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
-				
-				System.out.println(sql);
-				
-				new InsertDB_product(sql);
+				int yes = JOptionPane.showConfirmDialog(null, "등록하시겠습니까?", "등록알림창", JOptionPane.YES_NO_OPTION);
+				if(yes == JOptionPane.NO_OPTION) {
+					
+				}else {
+					
+ 
+					String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
+					String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
+					
+					ConnectDB con = new ConnectDB(discountRateSql);
+					Double discountRate = con.getResultRate();
+					ConnectDB con2 = new ConnectDB(sequenceSql);
+					int sequenceID = con2.getResultID() + 1;
+					
+					if(name.equals("")) {
+						name = null;
+					}
+					if(String.format(price).equals("")) {
+						price = null;
+					}
+					if(origin.equals("")) {
+						origin = null;
+					}
+					if(stock != null) {
+						if(stock.equals("")) {
+							stock = null;
+						}					
+					}
+					if(weight != null) {
+						if(weight.equals("")) {
+							weight = null;
+						}					
+					}
+					if(cost.equals("")) {
+						cost = null;
+					}
+
+					sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
+							+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
+					
+					new InsertDB_product(sql);
+				}
 			}
 			
 		});
-		
-//		jButton.addActionListener(new SearchAction(jButton, comArr));
-		
+
 		border1.add(jLabel);
 		border1.add(jTextField);
 		border1.add(jLabel2);
@@ -346,18 +368,12 @@ public class Product_regist extends JFrame{
 		
 		//판넬 2개 프레임에 추가
 		add(top, BorderLayout.NORTH);
-//		add(center, BorderLayout.CENTER);
 		add(center);
-		
-		
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setSize(725,620);
 		setLocation(200,100);
 		setVisible(true);
 	}
-//	public static void main(String[] args) {
-//		new Product_regist();
-//	}
+
 
 }

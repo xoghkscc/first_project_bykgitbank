@@ -14,11 +14,12 @@ import view.Delivery.DeliveryRightPanel;
 
 public class DeliveryMainFrame extends JFrame {
 	public static JFrame jf;
-	public DeliveryMainFrame(JFrame jf) {
-		this.jf = jf;
+	public DeliveryMainFrame() {
+//		this.jf = jf;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(jf.getWidth(), jf.getHeight());
-		setLocation(jf.getX(), jf.getY());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1280, 720);
+		setLocation(50, 50);
 	
 //		setLayout(null);
 		
@@ -38,5 +39,7 @@ public class DeliveryMainFrame extends JFrame {
 		setVisible(true);
 		
 	}
-
+	public static void main(String[] args) {
+		new DeliveryMainFrame();
+	}
 }

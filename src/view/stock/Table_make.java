@@ -1,13 +1,13 @@
 package view.stock;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 import function.stock.MouseListener_getDataFromTable;
@@ -57,8 +58,10 @@ public class Table_make extends JPanel{
 			"COST",
 			"순이익"
 		};
+	
 	private DefaultTableModel model;
-
+	DefaultTableCellRenderer dtcr;
+	
 	String update = null;
 	String sql;
 	String doit;
@@ -77,7 +80,7 @@ public class Table_make extends JPanel{
 		}
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
-		table = new JTable(model);	//테이블 생성
+		table = new ColorGrayTable(model);	//테이블 생성
 		
 		//중요 리스너!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		if(doit != null) {
@@ -106,6 +109,8 @@ public class Table_make extends JPanel{
 		table.getColumn("DISCOUNT_RATE").setPreferredWidth(50);
 		table.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		
+	
+	
 		if(sql.equals("SELECT * FROM PRODUCTS INNER JOIN "
 				+ "(SELECT product_id,(product_price - COST) AS 순이익 FROM PRODUCTS) USING(product_id)")){
 			table.getColumn("순이익").setPreferredWidth(150);
@@ -132,7 +137,7 @@ public class Table_make extends JPanel{
 		
 		
 		//빈 테이블 객체 생성
-		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(SwingConstants.CENTER);
 		TableColumnModel tcm = table.getColumnModel();
 		
@@ -140,12 +145,17 @@ public class Table_make extends JPanel{
 		for(int i = 0; i < tcm.getColumnCount(); i++) {
 			tcm.getColumn(i).setCellRenderer(dtcr);
 		}
-
-		dtcr.setBackground(new Color(255,255,255));
+		
+		
+		
+		
+		dtcr.setBackground(model.getRowCount() % 2 == 0? new Color(255,255,255) : Color.BLUE);
+//		dtcr.setBackground(new Color(255,255,255));
 		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setPreferredSize(new Dimension(850,490));
 		scrollPane.setLocation(100, 100);
+		
 		
 		add(scrollPane);
 
@@ -153,6 +163,7 @@ public class Table_make extends JPanel{
 		select(sql);
 
 	}
+	
 	
 	private void select(String sql) {	
 
@@ -163,6 +174,28 @@ public class Table_make extends JPanel{
 		arr = cdb.getSelect();
 		for(int i = 0; i < arr.size(); i++) {
 			model.addRow(arr.get(i));
+			
+//			dtcr.setb
+//			dtcr.setBackground(table.isRowSelected(i) % 2 == 0? new Color(255,255,255) : Color.BLUE);
 		}
 	}
 }
+class ColorGrayTable extends JTable {
+	
+	public ColorGrayTable(DefaultTableModel dtm) { 
+		// TODO Auto-generated constructor stub 
+		super(dtm); 
+	} 
+	@Override 
+	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+		// TODO Auto-generated method stub 
+		
+		JComponent component = (JComponent) super.prepareRenderer(renderer, row, column); 
+		component.setBackground(row % 2 == 0 ? new Color(230,230,230) : Color.WHITE); 
+		return component;
+
+	}
+	
+}
+
+
