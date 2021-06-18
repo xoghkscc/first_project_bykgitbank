@@ -194,16 +194,6 @@ public class MemberSearchFrame extends JFrame{
 			}
 		});
 		
-		remove.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Customer_Delete();
-				
-			}
-		});
-		
-		table.addMouseListener(new ClickReceipt());
-		
 		
 		remove.addActionListener(new ActionListener() {		
 			@Override
