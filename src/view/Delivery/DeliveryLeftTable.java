@@ -130,17 +130,37 @@ private DefaultTableModel model = new DefaultTableModel(columns, 0);
 		//마우스클릭했을때의 액션
 		public void mouseClicked(MouseEvent e) {	
 			int selectRow = ((JTable) e.getSource()).getSelectedRow();
-			String YesOrNo = "";
-			int choice = JOptionPane.showConfirmDialog(null, "배달확인하시겠습니까?", "배달 확인", JOptionPane.YES_NO_OPTION);	
-			if(choice == 0) {
-				YesOrNo = "Y";
+			int YesOrNo = 0;
+			
+			
+			if(((DefaultTableModel) table.getModel()).getValueAt(selectRow, 4).equals("Y")) {
+				
+				int choice = JOptionPane.showConfirmDialog(null, "배달취소하시겠습니까?", "배달 취소", JOptionPane.YES_NO_OPTION);	
+				YesOrNo = Integer.parseInt(String.format("%d", ((DefaultTableModel) table.getModel()).getValueAt(selectRow, 0)));
+				
+				if (choice == 0) {
 				new DeliveryCheck(YesOrNo);
+				((DefaultTableModel) table.getModel()).setValueAt('N', selectRow, 4);
+				JOptionPane.showMessageDialog(null, "배달취소하셨습니다");
+				
+				} else if (choice == 1) {
+					JOptionPane.showMessageDialog(null, "취소하셨습니다");
+				}
+			
+				
+			}	else if(((DefaultTableModel) table.getModel()).getValueAt(selectRow, 4).equals("N")) {
+				int choice = JOptionPane.showConfirmDialog(null, "배달완료하시겠습니까?", "배달 완료", JOptionPane.YES_NO_OPTION);	
+				YesOrNo = Integer.parseInt(String.format("%d", ((DefaultTableModel) table.getModel()).getValueAt(selectRow, 0)));
+				
+				if(choice == 0) {
+				new DeliveryCheck2(YesOrNo);
 				((DefaultTableModel) table.getModel()).setValueAt('Y', selectRow, 4);
 				JOptionPane.showMessageDialog(null, "배달완료하셨습니다");
-			}	else {
+			
+			} else if (choice == 1){
 				JOptionPane.showMessageDialog(null, "취소하셨습니다");
 			}
-		
+		}
 		}
 
 	@Override
