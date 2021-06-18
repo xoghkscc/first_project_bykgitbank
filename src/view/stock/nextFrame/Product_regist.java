@@ -287,70 +287,53 @@ public class Product_regist extends JFrame{
 					weight = null;
 					
 				}
-//				PRODUCT_ID      NOT NULL NUMBER(4)    
-//				PRODUCT_NAME    NOT NULL VARCHAR2(40) 
-//				PRODUCT_TYPE             VARCHAR2(30) 
-//				PRODUCT_PRICE            NUMBER(10)   
-//				EXPIRATION_DATE          DATE         
-//				DISCOUNT_TYPE            VARCHAR2(30) 
-//				DISCOUNT_RATE            NUMBER(3,2)  
-//				PRUDUCT_ORIGIN           VARCHAR2(30) 
-//				STOCKS                   NUMBER(10)   
-//				GRAM                     NUMBER(6)    
-//				SALES_TYPE               VARCHAR2(20) 
-//				COST   
-				String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
-				String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
 				
-				ConnectDB con = new ConnectDB(discountRateSql);
-				Double discountRate = con.getResultRate();
-				ConnectDB con2 = new ConnectDB(sequenceSql);
-				int sequenceID = con2.getResultID() + 1;
-				
-				if(name.equals("")) {
-					name = null;
+				int yes = JOptionPane.showConfirmDialog(null, "등록하시겠습니까?", "등록알림창", JOptionPane.YES_NO_OPTION);
+				if(yes == JOptionPane.NO_OPTION) {
+					
+				}else {
+					
+ 
+					String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
+					String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
+					
+					ConnectDB con = new ConnectDB(discountRateSql);
+					Double discountRate = con.getResultRate();
+					ConnectDB con2 = new ConnectDB(sequenceSql);
+					int sequenceID = con2.getResultID() + 1;
+					
+					if(name.equals("")) {
+						name = null;
+					}
+					if(String.format(price).equals("")) {
+						price = null;
+					}
+					if(origin.equals("")) {
+						origin = null;
+					}
+					if(stock != null) {
+						if(stock.equals("")) {
+							stock = null;
+						}					
+					}
+					if(weight != null) {
+						if(weight.equals("")) {
+							weight = null;
+						}					
+					}
+					if(cost.equals("")) {
+						cost = null;
+					}
+
+					sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
+							+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
+					
+					new InsertDB_product(sql);
 				}
-				if(String.format(price).equals("")) {
-					price = null;
-				}
-				if(origin.equals("")) {
-					origin = null;
-				}
-				if(stock != null) {
-					if(stock.equals("")) {
-						stock = null;
-					}					
-				}
-				if(weight != null) {
-					if(weight.equals("")) {
-						weight = null;
-					}					
-				}
-				if(cost.equals("")) {
-					cost = null;
-				}
-//				System.out.println("1 : " + sequenceID);
-//				System.out.println("2 : " + name);
-//				System.out.println("3 : " + productType);
-//				System.out.println("4 : " + price);
-//				System.out.println("5 : " + expiryDay);
-//				System.out.println("6 : " + event);
-//				System.out.println("7 : " + discountRate);
-//				System.out.println("8 : " + origin);
-//				System.out.println("9 : " + stock);
-//				System.out.println("10 : " + weight);
-//				System.out.println("11 : " + salesType);
-//				System.out.println("12 : " + cost);
-				sql = "INSERT INTO PRODUCTS VALUES(" +sequenceID+",\'" + name +"\',\'"+productType+"\',"+price+",\'"+expiryDay+"\',\'" 
-						+event+ "\'," +discountRate+ ",\'" +origin+ "\'," +stock+ "," +weight+ ",\'" +salesType+ "\'," +cost+ ")"; 
-				
-				new InsertDB_product(sql);
 			}
 			
 		});
-		
-//		jButton.addActionListener(new SearchAction(jButton, comArr));
-		
+
 		border1.add(jLabel);
 		border1.add(jTextField);
 		border1.add(jLabel2);
@@ -385,18 +368,12 @@ public class Product_regist extends JFrame{
 		
 		//판넬 2개 프레임에 추가
 		add(top, BorderLayout.NORTH);
-//		add(center, BorderLayout.CENTER);
 		add(center);
-		
-		
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setSize(725,620);
 		setLocation(200,100);
 		setVisible(true);
 	}
-//	public static void main(String[] args) {
-//		new Product_regist();
-//	}
+
 
 }

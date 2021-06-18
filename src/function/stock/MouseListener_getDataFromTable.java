@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
-import view.stock.nextFrame.findImage.NOPE;
+import view.stock.nextFrame.Product_event;
 import view.stock.nextFrame.productEvent.RowInfo;
 import view.stock.nextFrame.productEvent.UpdateFrame;
 
@@ -69,7 +69,7 @@ public class MouseListener_getDataFromTable implements MouseListener{
 					
 					if(confirm == JOptionPane.YES_OPTION) {
 						//UPDATE coffees SET cname = '인절미빙수' where cname = '팥빙수';
-						String eventSql = "UPDATE PRODUCTS SET DISCOUNT_TYPE = '" +NOPE.eventName+ "', DISCOUNT_RATE = " +NOPE.rate
+						String eventSql = "UPDATE PRODUCTS SET DISCOUNT_TYPE = '" +Product_event.eventName+ "', DISCOUNT_RATE = " +Product_event.rate
 										+ " WHERE PRODUCT_ID = " + selectUser.product_id;
 						new InsertDB_product(eventSql);
 					}
