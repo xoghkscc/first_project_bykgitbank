@@ -42,7 +42,8 @@ public class MemberSearchFrame extends JFrame{
 	
 	private static DefaultTableModel model;
 	private static JTextField CustomerPhoneNumber;
-	private static JTable table;
+	public static JTable table;
+	public static String id;
 	JFrame jf;
 	
 	public MemberSearchFrame (JFrame jf) {
@@ -203,6 +204,26 @@ public class MemberSearchFrame extends JFrame{
 		
 		table.addMouseListener(new ClickReceipt());
 		
+		
+		remove.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Customer_Delete();
+				
+			}
+		});
+		table.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {		
+				TableModel tm = table.getModel();
+				int row = table.getSelectedRow();
+				id = String.format("" + tm.getValueAt(row, 0));
+				new ReceiptButton();
+				
+			}
+		});
+		
 		setSize(jf.getWidth(), jf.getHeight());
 		setLocation(jf.getX(), jf.getY());
 		
@@ -213,7 +234,6 @@ public class MemberSearchFrame extends JFrame{
 	}
 	
 	private void add(ClickMain cm) {
-		// TODO Auto-generated method stub
 		
 	}
 
