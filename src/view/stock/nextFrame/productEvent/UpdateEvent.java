@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import function.stock.InsertDB_product;
 import view.Payment.lowPanel.RoundedButton;
 import view.stock.nextFrame.ConnectDBgetData;
 
@@ -64,8 +65,10 @@ public class UpdateEvent extends JFrame{
 		logo.setBounds(60, 20, 168, 168);
 //		logo.setBorderPainted(false);
 		
-		JButton jl = new roundButton_updateEvent("확인");
-		jl.setBounds(70, 70, 50, 25);
+		JButton jl = new roundButton_updateEvent("수정");
+		jl.setBounds(40, 70, 50, 25);
+		JButton jl2 = new roundButton_updateEvent("삭제");
+		jl2.setBounds(110, 70, 50, 25);
 		
 		//버튼 액션
 		jl.addActionListener(new ActionListener() {
@@ -85,9 +88,28 @@ public class UpdateEvent extends JFrame{
 			}
 			
 		});
-		
+		jl2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String item = (String)jComboBoxEvent.getSelectedItem();
+				String sql = "UPDATE PRODUCTS SET DISCOUNT_TYPE = null, DISCOUNT_RATE = NULL WHERE DISCOUNT_TYPE = '" + item + "\'";
+	
+				
+				setVisible(false);
+				int check = JOptionPane.showConfirmDialog(null, "\'" + item + "' 을 삭제하시겠습니까?", "이벤트 삭제", JOptionPane.YES_NO_OPTION);
+				if(check == JOptionPane.YES_OPTION) {
+					new InsertDB_product(sql);
+				}
+				
+			}
+			
+		});
+
 		ct.add(logo);
 		ct2.add(jl);
+		ct2.add(jl2);
 		ct2.add(jComboBoxEvent);
 		
 		ct.setBackground(new Color(0,36,62));
