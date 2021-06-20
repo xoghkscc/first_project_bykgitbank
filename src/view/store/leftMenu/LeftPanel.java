@@ -22,6 +22,7 @@ import view.store.centerPanel.StoreLookup;
 public class LeftPanel extends JPanel{
 	private static JFrame storeMainFrame;
 	private static JPanel leftPanel;
+	private static JPanel Employee_enrollment;
 	
 	private static JLabel employee;
 	private static JLabel sales;
@@ -42,7 +43,7 @@ public class LeftPanel extends JPanel{
 		sales = new MainLabel(" 매출 관리");
 		sales.addMouseListener(new ClickAction(sales));
 		
-		JPanel Employee_enrollment = new Employee_enrollment();
+		Employee_enrollment = new Employee_enrollment();
 		JPanel StoreLookup1 = new StoreLookup("date");
 		JPanel StoreLookup2 = new StoreLookup("product");
 		
@@ -102,6 +103,9 @@ public class LeftPanel extends JPanel{
 	
 	public static JFrame getStoreMainFrame() {
 		return storeMainFrame;
+	}
+	public static JPanel getEmployee_enrollment() {
+		return Employee_enrollment;
 	}
 	public static JPanel getLeftPanel() {
 		return leftPanel;
