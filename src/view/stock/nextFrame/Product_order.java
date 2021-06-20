@@ -95,11 +95,12 @@ public class Product_order extends JFrame{
 		JButton jButton = new Button_round_search("주문");
 		
 	
-		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType));
+		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType, null));
 		
 
 		//위치조정
 		//품목이름과 필드
+		
 		JPanel border1 = new JPanel();
 		new Panel_titleBorder(border1);
 		border1.setBounds(30, 20, 650, 62);

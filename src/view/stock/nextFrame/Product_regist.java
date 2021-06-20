@@ -49,7 +49,7 @@ public class Product_regist extends JFrame{
 	String date;
 	
 	ArrayList<Component> comArr;
-	public Product_regist(JFrame jf) {
+	public Product_regist(JFrame jf) {//JFrame jf
 		// TODO Auto-generated constructor stub
 		this.jf = jf;
 		
@@ -106,9 +106,10 @@ public class Product_regist extends JFrame{
 		ArrayList<String> typeArr = new ConnectDBgetData("PRODUCT_TYPE",null).getColumnArr();
 		ArrayList<String> eventArr = new ConnectDBgetData("DISCOUNT_TYPE",null).getColumnArr();
 		
-		String[] types = new String[typeArr.size()]; //콤보박스에 넣을 스트링배열생성
+		String[] types = new String[typeArr.size()+1]; //콤보박스에 넣을 스트링배열생성
 		String[] event = new String[eventArr.size()+1]; 
 		event[0] = "선택안함";
+		
 		
 		for(int i = 0; i < typeArr.size(); i++) { //스트링배열에 타입에 관한 내용 넣기
 			types[i] = typeArr.get(i);
@@ -118,6 +119,7 @@ public class Product_regist extends JFrame{
 		}
 //		System.out.println("types배열 : " + Arrays.toString(types));
 //		System.out.println("eventArr배열 : " + Arrays.toString(event));
+		types[typeArr.size()] = "직접입력";
 		
 		jComboBoxProductType = new JComboBox<String>(types); 
 		jComboBoxEvent = new JComboBox<String>(event); 
@@ -128,9 +130,13 @@ public class Product_regist extends JFrame{
 		
 		JButton jButton = new Button_round_search("등록");
 		
+		JTextField jtf = new JTextField();
+		jtf.setBounds(445, 13, 160, 37);
+		jtf.setVisible(false);
+		
 		datePickerStart.addActionListener(new DateCheckAction(modelStart));
 		
-		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType));
+		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType, jtf));
 		
 		date = new DateCheckAction(modelStart).getExpiryDate();
 		JTextField jTextFieldDate = new JTextField(date);
@@ -266,8 +272,8 @@ public class Product_regist extends JFrame{
 				String origin = jTextField3.getText();
 				String cost = jTextField4.getText();
 				String salesType;
-				if(productType.equals("선택안함")) {
-					productType = null;
+				if(productType.equals("직접입력")) {
+					productType = jtf.getText();
 				}
 				if(radioBtn1.isSelected()) {
 					
@@ -289,11 +295,8 @@ public class Product_regist extends JFrame{
 				}
 				
 				int yes = JOptionPane.showConfirmDialog(null, "등록하시겠습니까?", "등록알림창", JOptionPane.YES_NO_OPTION);
-				if(yes == JOptionPane.NO_OPTION) {
+				if(yes == JOptionPane.YES_OPTION) {
 					
-				}else {
-					
- 
 					String discountRateSql = "SELECT DISTINCT DISCOUNT_RATE FROM PRODUCTS WHERE DISCOUNT_TYPE = \'" + event + "\'";
 					String sequenceSql = "SELECT MAX(PRODUCT_ID) AS PRODUCT_ID FROM PRODUCTS";
 					
@@ -333,6 +336,7 @@ public class Product_regist extends JFrame{
 			}
 			
 		});
+		border1.add(jtf);
 
 		border1.add(jLabel);
 		border1.add(jTextField);
@@ -374,6 +378,5 @@ public class Product_regist extends JFrame{
 		setLocation(200,100);
 		setVisible(true);
 	}
-
 
 }

@@ -130,11 +130,11 @@ public class Product_update extends JFrame{
 		JRadioButton radioBtn1 = new JRadioButton("개수");
 		JRadioButton radioBtn2 = new JRadioButton("무게");
 		
-		JButton jButton = new Button_round_search("등록");
+		JButton jButton = new Button_round_search("수정");
 		
 		datePickerStart.addActionListener(new DateCheckAction(modelStart));
 		
-		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType));
+		jComboBoxProductType.addActionListener(new ComboBoxActions(jComboBoxProductType,null));
 		
 		date = new DateCheckAction(modelStart).getExpiryDate();
 		JTextField jTextFieldDate = new JTextField(date);
