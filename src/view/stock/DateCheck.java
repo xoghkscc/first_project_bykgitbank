@@ -39,6 +39,8 @@ public class DateCheck {
 		datePickerEnd.getJFormattedTextField().setText("  마지막날짜를 선택하세요");
 		datePickerEnd.getJFormattedTextField().setForeground(new Color(145,145,145));
 		
+		modelStart.setDate(2021, 00, 01);
+		modelEnd.setDate(2021, 11, 31);
 
 		indexes = new JPanel();
 		
