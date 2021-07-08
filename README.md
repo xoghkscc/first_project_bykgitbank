@@ -10,3 +10,26 @@
 ## 2_Usecase Diagram
 ![Usecase Diagram](https://user-images.githubusercontent.com/82793713/124924225-2fd0c900-e036-11eb-9cd9-f1c41cbdda8b.jpg)
 ## 3_ER Diagram
+![ER diagram](https://user-images.githubusercontent.com/82793713/124924220-2e9f9c00-e036-11eb-9e07-889593f5db2d.png)
+## 4_HikariCP
+  * HIKARI를 이용해 connection pool를 관리하였습니다
+```C
+public class HikariCP {
+	HikariDataSource ds;
+	public HikariCP() {
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl("jdbc:oracle:thin:@3.35.52.40:1521:xe");//AWS EC2 서버이다
+		config.setUsername("first_project");
+		config.setPassword("secret");
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		ds = new HikariDataSource(config);
+	}
+	public HikariDataSource getHikariDataSource() {
+		return ds;
+	}
+}
+```
+## 5_화면
+### 5.1_로그인
