@@ -35,3 +35,5 @@ public class HikariCP {
 ### 5.1_로그인
 ![image](https://user-images.githubusercontent.com/82793713/124926059-10d33680-e038-11eb-8cba-3f284577c430.png)
 #### 아이디: test, 비밀번호: 1234
+### 5.2_메인화면
+![image](https://user-images.githubusercontent.com/82793713/124926259-46781f80-e038-11eb-8f6e-53208edd8bae.png)
