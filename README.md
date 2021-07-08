@@ -8,3 +8,5 @@
   * Tool : eclipse
   * 외부 라이브러리 : jdbc(ojdbc8.jar), jdatepicker-1.3.2.jar, HikariCP-4.0.3.jar
 ## 2_Usecase Diagram
+![Usecase Diagram](https://user-images.githubusercontent.com/82793713/124924225-2fd0c900-e036-11eb-9cd9-f1c41cbdda8b.jpg)
+## 3_ER Diagram
