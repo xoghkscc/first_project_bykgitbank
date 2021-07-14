@@ -34,7 +34,6 @@ public class FinalPayment implements ActionListener{
 			new Member_informations_update(members_id, accumulate_point);
 		}
 		
-		
 		new Sales_Insert(Payment_type);//SALES에 반영하는 메서드
 		
 		DeliveryButton.resetDeliverycheck();//배달 상태를 다시원위치
