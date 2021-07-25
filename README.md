@@ -142,6 +142,7 @@ UPDATE employee SET employee_name=＇직원이름', job_id=‘직원id＇, phone
 INSERT INTO employee(직원id, 직원 이름, 직책id, 전화번호, 근무형태, 근무시간, email, 월급)
 ```
 3.  날짜별 매출 조회
+
 ![image](https://user-images.githubusercontent.com/82793713/126890418-7af12df4-5c63-49af-b5ee-ce70039165e5.png)
 ```C
 SELECT product_id, product_name, number_of_sales FROM sales INNER JOIN products USING ( product_id ) WHERE to_date(sales_time, 'yy/mm/dd') = to_date('"+date2+"', 'yy/mm/dd')
